@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIGGS Codelist Reference Update: A Unified Approach for All Users</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 2em;
+            background-color: #fff;
+            color: #222;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            color: #0077cc;
+            margin-bottom: 0.5em;
+        }
+        h2 {
+            color: #0077cc;
+            margin-top: 1.5em;
+            margin-bottom: 0.5em;
+        }
+        code {
+            background-color: #f5f5f5;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-family: Consolas, Monaco, 'Andale Mono', monospace;
+        }
+        pre {
+            background-color: #f5f5f5;
+            padding: 1em;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-family: Consolas, Monaco, 'Andale Mono', monospace;
+        }
+        .signature {
+            margin: 2em 0;
+            border-top: 1px solid #ddd;
+            padding-top: 1em;
+        }
+        .signature p {
+            margin-bottom: 0.5em;
+        }
+        .signature-name {
+            font-weight: bold;
+        }
+        .signature-details {
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <h1>DIGGS Codelist Reference Update: A Unified Approach for All Users</h1>
+    
+    <p>Dear DIGGS Community,</p>
+    
+    <p>We're excited to share an important update to how DIGGS handles references to codeTypes. This change, highlighted by Dan during our recent meeting, will make our data exchange standard more robust and consistent across all applications.</p>
+    
+    <h2>What's Changing?</h2>
+    
+    <p>Going forward, when referencing a codeType in DIGGS, we will require a specific format:</p>
+    <ul>
+        <li>A reference must include a hashtag (#) followed by the DIGGS name</li>
+        <li>Any additional text after this reference is optional and considered uncontrolled metadata</li>
+        <li>This optional text can be used for things like language translations or application-specific mappings</li>
+        <li>Importantly, this optional text is no longer part of the validation process</li>
+    </ul>
+    
+    <h3>Before and After Example:</h3>
+    
+    <p><strong>Previous approach (no longer valid):</strong></p>
+    <pre><code>&lt;rolePerformed codeSpace="https://diggsml.org/def/codes/DIGGS/0.1/roles.xml"&gt;helper&lt;/rolePerformed&gt;</code></pre>
+    
+    <p><strong>New unified approach:</strong></p>
+    <pre><code>&lt;rolePerformed codeSpace="https://diggsml.org/def/codes/DIGGS/0.1/roles.xml#helper"&gt;DrillingAssistant&lt;/rolePerformed&gt;</code></pre>
+    
+    <p>In this example, "helper" is the standardized DIGGS code, while "DrillingAssistant" is optional text that can provide additional context or translation.</p>
+    
+    <h2>Why This Matters: Real-World Examples</h2>
+    
+    <h3>Example 1: International Project Collaboration</h3>
+    <p>Imagine you're working on a dam monitoring project with international partners. Your team in the US uses the term "Driller" while your German colleagues use "Bohrarbeiter" for the same role. With the new approach:</p>
+    
+    <pre><code>&lt;rolePerformed codeSpace="https://diggsml.org/def/codes/DIGGS/0.1/roles.xml#driller"&gt;Bohrarbeiter&lt;/rolePerformed&gt;</code></pre>
+    
+    <p>The validation focuses on "#driller" (the standard code), while "Bohrarbeiter" provides human-readable context. This ensures both technical accuracy and clear communication.</p>
+    
+    <h3>Example 2: Piezometer Data Integration</h3>
+    <p>When integrating piezometer data from multiple vendors using different terminology:</p>
+    
+    <pre><code>&lt;measurand codeSpace="https://diggsml.org/def/codes/DIGGS/0.1/properties.xml#water_depth"&gt;PoreWaterPressure&lt;/measurand&gt;</code></pre>
+    
+    <p>The standard "#water_depth" ensures correct data integration, while "PoreWaterPressure" preserves the vendor's terminology.</p>
+    
+    <h2>Benefits of This Change</h2>
+    
+    <ol>
+        <li><strong>Consistency</strong>: One unified approach for all reference scenarios</li>
+        <li><strong>Flexibility</strong>: Supports translations, mapping to proprietary terms, and additional context</li>
+        <li><strong>Reliable Validation</strong>: Clear separation between the required standard code and optional metadata</li>
+        <li><strong>Future-Proofing</strong>: Better supports evolution of the standard while maintaining backward compatibility</li>
+    </ol>
+    
+    <h2>What This Means for You</h2>
+    
+    <ul>
+        <li><strong>Existing Files</strong>: Older DIGGS files will need to be updated to this new format</li>
+        <li><strong>Tools & Validators</strong>: Updates are in progress for validators and codelist reference generation tools</li>
+        <li><strong>Documentation</strong>: Dan is updating our documentation to reflect this change</li>
+    </ul>
+    
+    <p>While this change will impact backward compatibility, it's a necessary step toward a more robust and flexible standard that will serve the geotechnical community better in the long run.</p>
+    
+    <h2>Join the DIGGS Effort!</h2>
+    
+    <p>We're constantly working to improve DIGGS, and your input is valuable. Here's how you can participate:</p>
+    
+    <ul>
+        <li><strong>GitHub</strong>: Contribute to our repositories at <a href="https://github.com/DIGGSml/">https://github.com/DIGGSml/</a></li>
+        <li><strong>Monthly Meetings</strong>: Join our monthly discussions where we tackle issues like this one</li>
+        <li><strong>Feedback</strong>: Share your experiences implementing these changes</li>
+    </ul>
+    
+    
+    <p>Stay tuned for more updates as we continue to refine and enhance the DIGGS standard.</p>
+    
+    <p>Best regards,</p>
+    
+    <div class="signature">
+        <p class="signature-name">Ross Cutts, P.E. MSCE</p>
+        <div class="signature-details">
+            <p>President<br>Geosetta</p>
+            <p>Senior Engineer<br>Research, Development, and Innovation (RDI) Group<br>Schnabel Engineering</p>
+        </div>
+    </div>
+</body>
+</html>
