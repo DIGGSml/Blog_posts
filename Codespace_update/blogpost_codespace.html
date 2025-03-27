@@ -305,7 +305,7 @@
     <h2 id="guidance">NEW GUIDANCE FOR ENCODING CODETYPE PROPERTIES</h2>
 
     <p>Previous guidance on the use of DIGGS dictionaries with codeType properties was to have the codeSpace represent the URL
-         of the dictionary file, and the value hold the gml:id of the appropriate diggs:Definition. For example, a Unified Soil Classifiation (ASTM D2487)
+         of the dictionary file, and the value hold the gml:id of the appropriate diggs:Definition. For example, a Unified Soil classification (ASTM D2487)
         silty sand, the classificationCode codeType property would have been encoded as follows:</p>
         <pre><code>&lt;classificationCode codeSpace="https://diggsml.org/def/codes/DIGGS/0.1/astmD2487.xml"&gt;SM&lt;/classificationCode&gt;</code></pre>
         This encoding allows receiving and validating applications to retrieve the codeType property's definition unambiguously. 
@@ -336,7 +336,7 @@
 <h2>Example Encodings Using the New Guidance</h2>   
 <h3>DIGGS Standard Encoding of classificationCode (from the dictionary example above)</h3>
 
-<pre><code>&lt;classificationCode codeSpace="https://diggsml.org/def/codes/DIGGS/0.1/astmD2487.xml#SM"&gt;Silty sand&lt;/classifiationCode&gt;</code></pre>
+<pre><code>&lt;classificationCode codeSpace="https://diggsml.org/def/codes/DIGGS/0.1/astmD2487.xml#SM"&gt;Silty sand&lt;/classificationCode&gt;</code></pre>
 
 <caption><em>The codeSpace attribute holds the value of the gml:identifier for the silty sand definition, while the codeType value matches the 
     defnition's gml:name. Validators can retrieve the definition directly from the codeSpace value while processing applications can obtain the classificationCode value (Silty sand) without needing 
