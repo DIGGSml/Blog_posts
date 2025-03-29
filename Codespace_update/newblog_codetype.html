@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Important Update: New Guidelines for DIGGS CodeType References</title>
+    <style>
+        /* Base styles */
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 2em;
+            background-color: #fff;
+            color: #222;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #0077cc;
+            margin-bottom: 0.5em;
+        }
+
+        h2 {
+            color: #0077cc;
+            margin-top: 1.5em;
+            margin-bottom: 0.5em;
+        }
+
+        code {
+            color: #321009;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-family: Consolas, Monaco, 'Andale Mono', monospace;
+        }
+
+        pre {
+            background-color: #bcb7b7f8;
+            padding: 1em;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-family: Consolas, Monaco, 'Andale Mono', monospace;
+        }
+        
+        p {
+            margin-bottom: 1.2em;
+        }
+        
+        
+        /* Lists */
+        ul, ol {
+            margin-bottom: 1.5em;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 0.5em;
+        }
+        
+        /* Links */
+        a {
+            color: #0077cc;
+            text-decoration: none;
+            border-bottom: 1px dotted #0077cc;
+            transition: color 0.2s ease, border-color 0.2s ease;
+        }
+        
+        a:hover {
+            color: #005599;
+            border-bottom: 1px solid #005599;
+        }
+        
+        /* Divider */
+        hr {
+            border: 0;
+            height: 1px;
+            background-color: #ddd;
+            margin: 2em 0;
+        }
+        
+        /* Contact info */
+        .contact-info {
+            font-style: italic;
+            color: #666;
+            margin-top: 2em;
+            padding-top: 1em;
+            border-top: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <h1>Important Update: New Guidelines for DIGGS CodeType References</h1>
+    
+    <p>The DIGGS Team is pleased to announce updated guidelines for referencing code list dictionaries in DIGGS instances. These changes address key feedback from the 2025 DIGGS Code Jam Challenge and will improve both interoperability and flexibility across geotechnical data exchange.</p>
+    
+    <h2>What's Changing?</h2>
+    
+    <p>We're standardizing how codeType properties reference DIGGS dictionaries. This change offers significant benefits:</p>
+    
+    <ul>
+        <li><strong>Greater flexibility</strong>: Use your preferred terminology while maintaining compatibility</li>
+        <li><strong>Better interoperability</strong>: Ensure consistent interpretation across systems</li>
+        <li><strong>Simplified validation</strong>: Clear separation between definitions and displayed values</li>
+        <li><strong>Future-proofing</strong>: Support for evolution without breaking existing implementations</li>
+    </ul>
+    
+    <h2>The New Approach in Brief</h2>
+    
+    <p>Previously, code list dictionary references placed the dictionary URL in the codeSpace attribute and allowed either the code identifier 
+        or code name as the element value. For example::</p>
+    <ol>
+        <li>
+<pre><code>&lt;classificationCode codeSpace="https://diggsml.org/def/codes/DIGGS/0.1/astmD2487.xml"&gt;SM&lt;/classificationCode&gt;</code></pre></li>
+
+    <li><pre><code>&lt;classificationCode codeSpace="https://diggsml.org/def/codes/DIGGS/0.1/astmD2487.xml"&gt;Silty sand&lt;/classificationCode&gt;;</code></pre></li></ol> 
+    
+    <p>Our new guidelines now require a single encoding:</p>
+    <pre><code>&lt;classificationCode codeSpace="https://diggsml.org/def/codes/DIGGS/0.1/astmD2487.xml#SM"&gt;Silty sand&lt;/classificationCode&gt;</code></pre>
+    
+    <p>This change moves the code identifier (SM) into the codeSpace reference after a fragment identifier (#), with the element value being the code name or a synonymous term.</p>
+    
+    <h2>Real-World Benefits</h2>
+    
+    <p>This approach solves several practical problems:</p>
+    
+    <ol>
+        <li><strong>International collaboration</strong>: Teams can exchange data using their local terminology while maintaining technical accuracy</li>
+        <li><strong>Specialized terms</strong>: Organizations can use internal terminology without creating custom dictionaries</li>
+        <li><strong>Simplified processing</strong>: Applications can access standardized definitions directly from the codeSpace reference</li>
+    </ol>
+    
+    <h2>What You Need to Do</h2>
+    
+    <ul>
+        <li>Existing DIGGS files that reference dictionaries will need updating to pass code list validation</li>
+        <li>Review your codeType properties to ensure they follow the new reference format</li>
+    </ul>
+
+    <p>The DIGGS Team is committed to building a robust standard that serves the geotechnical community effectively. While this change does impact backward compatibility, we believe it's a necessary step toward a more flexible and interoperable future.</p>
+    
+
+    
+    <h2>Learn More</h2>
+    
+    <p>For developers and data managers who need detailed technical guidance, we've prepared <a href="https://github.com/DIGGSml/wiki/CodeTypeReferencingGuidelines">comprehensive documentation</a> covering:</p>
+    
+    <ul>
+        <li>Full explanation of codeType properties and dictionaries</li>
+        <li>Detailed examples of the new reference format</li>
+        <li>Validation requirements</li>
+    </ul>
+    
+    <h2>Join the DIGGS Effort!</h2>
+        <p>We're constantly working to improve DIGGS, and your input is valuable. Here's how you can participate:</p>
+    
+        <ul>
+            <li><strong>GitHub</strong>: Contribute to our repositories at <a href="https://github.com/DIGGSml/">https://github.com/DIGGSml/</a></li>
+            <li><strong>Monthly Meetings</strong>: Join our monthly onlinediscussions where we tackle issues like this one. Contact 
+            <a href="mailto:acadden@schnabel-eng.com">Allen Cadden</a> or <a href="mailto:rcutts@schnabel-eng.com">Ross Cutts</a> to receive
+            meeting invites.</li>
+            <li><strong>Feedback</strong>: Share your experiences implementing these changes</li>
+        </ul>
+</body>
+</html>
