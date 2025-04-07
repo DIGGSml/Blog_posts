@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DIGGS Codelist Reference Update: A Unified Approach for All Users</title>
+    <title>DIGGS CodeType Elements and Code List Revisions</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -15,123 +16,397 @@
             margin: 0 auto;
             padding: 20px;
         }
+
         h1 {
             color: #0077cc;
             margin-bottom: 0.5em;
         }
+
         h2 {
             color: #0077cc;
             margin-top: 1.5em;
             margin-bottom: 0.5em;
         }
+
         code {
-            background-color: #f5f5f5;
+            color: #321009;
             padding: 2px 4px;
             border-radius: 3px;
             font-family: Consolas, Monaco, 'Andale Mono', monospace;
         }
+
         pre {
-            background-color: #f5f5f5;
+            background-color: #bcb7b7f8;
             padding: 1em;
             border-radius: 5px;
             overflow-x: auto;
             font-family: Consolas, Monaco, 'Andale Mono', monospace;
         }
-        .signature {
-            margin: 2em 0;
-            border-top: 1px solid #ddd;
-            padding-top: 1em;
-        }
-        .signature p {
-            margin-bottom: 0.5em;
-        }
-        .signature-name {
+
+        strong {
             font-weight: bold;
         }
-        .signature-details {
-            color: #555;
+
+        ol,
+        ul {
+            margin-bottom: 1.5em;
+        }
+
+        li {
+            margin-bottom: 0.5em;
+        }
+
+        .important-block {
+            background-color: #fffbea;
+            border-left: 4px solid #ff6f00ca;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 3px;
+            box-shadow: 0 1px 3px rgba(0,0,0,.7);
+        }
+        .important-block::before {
+            content: "⚠️ IMPORTANT";
+            display: block;
+            font-weight: bold;
+            font-size: 1.1em;
+            margin-bottom: 10px;
+            color: #9e5603;
+        }
+        .important-block p {
+            margin-top: 0;
+            margin-bottom: 1em;
+        }
+        .important-block ol {
+            margin-top: 0.5em;
+            margin-bottom: 0.5em;
+            padding-left: 25px;
+        }
+        .important-block strong {
+            color: #b45309;
+        }
+ 
+        .note-block {
+            background-color: #ecedf7;
+            border-left: 4px solid #704dd8ca;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 3px;
+            box-shadow: 0 1px 3px rgba(0,0,0,.7);
+        }
+       .note-block::before {
+            content: "💡 NOTE";
+            display: block;
+            font-weight: bold;
+            font-size: 1.1em;
+            margin-bottom: 10px;
+            color: #5306b1;
+        }
+        .note-block p {
+            margin-top: 0;
+            margin-bottom: 1em;
+        }
+        .note-block ol {
+            margin-top: 0.5em;
+            margin-bottom: 0.5em;
+            padding-left: 25px;
+        }
+        .note-block strong {
+            color: #b45309;
         }
     </style>
 </head>
+
 <body>
-    <h1>DIGGS Codelist Reference Update: A Unified Approach for All Users</h1>
+    <h1>Standardizing DIGGS CodeType Properties and Code List Dictionaries: New Guidelines for 2025</h1>
     
-    <p>Dear DIGGS Community,</p>
+    <p>CodeType properties and code list dictionaries serve as foundational elements of DIGGS instances, critical to
+        ensuring both flexibility and interoperability. Following the 2025 DIGGS Code Jam Challenge, feedback from
+        participating vendors highlighted the need for more precise and consistent guidance on how these elements should be
+        implemented and encoded.</p>
     
-    <p>We're excited to share an important update to how DIGGS handles references to codeTypes. This change will make our data exchange standard more robust and consistent across all applications.</p>
+    <p>This article provides comprehensive background on the purpose and implementation of codeType properties and code list
+        dictionaries, featuring practical examples and <strong><a href="#guidance">NEW GUIDANCE</a></strong> for properly referencing these
+        dictionaries in your DIGGS instances.</p>
     
-    <h2>What's Changing?</h2>
+    <p>While this guidance represents a departure from previous documentation and examples, it introduces significant
+        benefits that will ensure that:</p>
     
-    <p>Going forward, when referencing a codeType in DIGGS, we will require a specific format:</p>
     <ul>
-        <li>A reference must include a hashtag (#) followed by the DIGGS name</li>
-        <li>Any additional text after this reference is optional and considered uncontrolled metadata</li>
-        <li>This optional text can be used for things like language translations or application-specific mappings</li>
-        <li>Importantly, this optional text is no longer part of the validation process</li>
+        <li>Your DIGGS instances will consistently pass code list validation</li>
+        <li>Interoperability between different systems is maintained</li>
+        <li>Sufficient flexibility exists to accommodate specialized terminology while reducing the need for custom dictionaries</li>
+        <li>Future extensions and modifications can be incorporated without breaking existing implementations</li>
     </ul>
     
-    <h3>Before and After Example:</h3>
-    
-    <p><strong>Previous approach (no longer valid):</strong></p>
-    <pre><code>&lt;rolePerformed codeSpace="https://diggsml.org/def/codes/DIGGS/0.1/roles.xml"&gt;helper&lt;/rolePerformed&gt;</code></pre>
-    
-    <p><strong>New unified approach:</strong></p>
-    <pre><code>&lt;rolePerformed codeSpace="https://diggsml.org/def/codes/DIGGS/0.1/roles.xml#helper"&gt;DrillingAssistant&lt;/rolePerformed&gt;</code></pre>
-    
-    <p>In this example, "helper" is the standardized DIGGS code, while "DrillingAssistant" is optional text that can provide additional context or translation.</p>
-    
-    <h2>Why This Matters: Real-World Examples</h2>
-    
-    <h3>Example 1: International Project Collaboration</h3>
-    <p>Imagine you're working on a dam monitoring project with international partners. Your team in the US uses the term "Driller" while your German colleagues use "Bohrarbeiter" for the same role. With the new approach:</p>
-    
-    <pre><code>&lt;rolePerformed codeSpace="https://diggsml.org/def/codes/DIGGS/0.1/roles.xml#driller"&gt;Bohrarbeiter&lt;/rolePerformed&gt;</code></pre>
-    
-    <p>The validation focuses on "#driller" (the standard code), while "Bohrarbeiter" provides human-readable context. This ensures both technical accuracy and clear communication.</p>
-    
-    <h3>Example 2: Piezometer Data Integration</h3>
-    <p>When integrating piezometer data from multiple vendors using different terminology:</p>
-    
-    <pre><code>&lt;measurand codeSpace="https://diggsml.org/def/codes/DIGGS/0.1/properties.xml#water_depth"&gt;PoreWaterPressure&lt;/measurand&gt;</code></pre>
-    
-    <p>The standard "#water_depth" ensures correct data integration, while "PoreWaterPressure" preserves the vendor's terminology.</p>
-    
-    <h2>Benefits of This Change</h2>
-    
+    <p>By following these updated guidelines, you'll help establish a more robust foundation for geotechnical data exchange
+        across the industry.</p>
+
+    <h2>What Are CodeTypes?</h2>
+
+    <p>DIGGS codeType properties are XML string elements representing terms from controlled vocabularies or code
+        lists. These elements include a codeSpace attribute – a value that references the dictionary, thesaurus, classification scheme or
+        authority that defines the term. The DIGGS schema defines over 250 codeType properties for cases where property values
+        might come from controlled lists of terms.</p>
+
+        <h2>How Can I Tell If a DIGGS Element Is a CodeType Property?</h2>
+        <p>Elements that use one of the following data types are DIGGS codeType properties.  Click on a link below and then select an element of
+            interest in the Used By section to view specific element documentation:
+            <ol>
+                <li><strong><a href="https://diggsml.org/docs/latest/gml3_2Profile_diggs_xsd_Complex_Type_gml_CodeType.html#CodeType">gml:codeType</a></strong> - string element with optional codeSpace attribute</li>
+                <li><strong><a href="https://diggsml.org/docs/latest/gml3_2Profile_diggs_xsd_Complex_Type_gml_CodeWithAuthorityType.html#CodeWithAuthorityType">gml:CodeWithAuthorityType</a></strong> - restriction of gml:codeType with a mandatory codeSpace attribute</li>
+                <li><strong><a href="https://diggsml.org/docs/latest/Kernel_xsd_Complex_Type_diggs_DescriptorCodeType.html#DescriptorCodeType">diggs:DescriptorCodeType</a></strong> - extension of gml:codeType, adding a howDetermined attribute</li>
+                <li><strong><a href="https://diggsml.org/docs/latest/Kernel_xsd_Complex_Type_diggs_SizeClassCodeType.html#SizeClassCodeType">diggs:SizeClassCodeType</a></strong> - extension of gml:codeType, adding a sizeClass attribute</li>
+                <li><strong><a href="https://diggsml.org/docs/latest/Kernel_xsd_Complex_Type_diggs_ConstituentCategoryCodeType.html#ConstituentCategoryCodeType">diggs:ConstituentCategoryCodeType</a></strong> - extension of gml:codeType, adding howDetermined and category attributes</li>
+            </ol>
+        </p>
+
+    <h2>Using codeSpace to Provide Context for a CodeType Property</h2>
+
+    </p>
+
+       <div class="important-block"><p>When the value of the codeType property is data only, and processing applications do not need to recognize its value or
+            understand its meaning, then:
+        </p>
+        <ul>
+            <li>the codeSpace value can be any plain language string that provides context for the value of the codeType property, or</li>
+            <li>the codeSpace can be omitted if the meaning of the codeType value is universally clear</li>
+        </ul> </div>
+       . Some examples:</p>
+
     <ol>
-        <li><strong>Consistency</strong>: One unified approach for all reference scenarios</li>
-        <li><strong>Flexibility</strong>: Supports translations, mapping to proprietary terms, and additional context</li>
-        <li><strong>Reliable Validation</strong>: Clear separation between the required standard code and optional metadata</li>
-        <li><strong>Future-Proofing</strong>: Better supports evolution of the standard while maintaining backward compatibility</li>
+        <li><strong>When no context is needed</strong>: ABC Drilling has an employee named Fred Smith. In a DIGGS
+            instance, Fred's name would be encoded in a BusinessAssociate object as follows:<br>
+            <pre><code>&lt;BusinessAssociate gml:id="FS&gt;
+    &lt;gml:name&gt;Fred Smith&lt;/gml:name&gt;
+&lt;/BusinessAssociat&gt;</code></pre>
+            <cp class="caption"><em>The codeType property gml:name needs no codeSpace because the meaning is clear from the element name.</em></p>
+        </li>
+
+        <li><strong>When context is necessary to distinguish between multiple values</strong>: If Fred also has a nickname, context helps
+            distinguish between them:<br>
+            <pre><code>&lt;BusinessAssociate gml:id="FS"&gt;
+    &lt;gml:name codeSpace="full name"&gt;Fred Smith&lt;/gml:name&gt;
+    &lt;gml:name codeSpace="nickname"&gt;Smitty&lt;/gml:name&gt;
+&lt;/BusinessAssociate&gt;</code></pre>
+        <cp class="caption"><em>Here, the codeSpace provides necessary context to understand the meanings of Fred's names.</em></p>
+        </li>
+
+        <li><strong>When referencing an authority</strong>: If Fred's role on a job has specific meaning within an
+            organization, his role might be encoded in a DIGGS instance as follows:<br>
+            <pre><code>&lt;Role&gt;
+    &lt;rolePerformed codeSpace="ABC Drilling"&gt;Roughneck&lt;/rolePerformed&gt;
+    &lt;businessAssociate&gt; 
+        &lt;BusinessAssociate gml:id="FS"&gt;
+            &lt;gml:name&gt;Fred Smith&lt;/gml:name&gt;
+        &lt;/BusinessAssociate&gt;
+    &lt;/businessAssociate&gt;
+&lt;/Role&gt;</code></pre>
+        <p class="caption"><em>The codeSpace attribute in the rolePerfomed codeType property indicates that "Roughneck" should be interpreted according to ABC Drilling's definition.</em></p>
+        </li>
     </ol>
+
+    <h2> The Case for Code List Dictionaries</h2>
+
+    <p>Using a plain language codeSpace value often doesn't provide sufficient information for automated processing.
+        Consider our earlier example: if an application needs to determine whether Fred's "Roughneck" role should map to a
+        database field named "DrillingAssistant," it must understand the precise definition of "Roughneck" in this context.
+    </p>
     
+    <p>This is where controlled vocabularies become essential. In DIGGS, controlled vocabularies are implemented through
+        standardized dictionaries that applications reference to process codeType values consistently. These dictionaries
+        provide the definitions, relationships, and metadata that software needs to make intelligent decisions about how to
+        handle each value.</p>
+    
+    <p>When dictionaries are needed, the codeSpace attribute no longer simply names an authority (like "ABC Drilling"), but
+        instead references the specific dictionary containing the controlled vocabulary. This reference allows applications
+        to:</p>
+
+    <ul>
+        <li>Validate that the provided value is permissible for that property</li>
+        <li>Access standardized definitions to determine proper handling</li>
+        <li>Map between different terminology systems consistently</li>
+        <li>Apply business rules based on the specific value's meaning</li>
+    </ul>        
+        <h2>What is a DIGGS Dictionary?</h2>
+
+        <p>DIGGS dictionaries hold values and definitions for specific codeType properties, providing controlled
+            vocabularies that ensure interoperability. These dictionaries allow for flexibility and future-proofing by enabling
+            creation and modification without schema changes, while also supporting custom vocabularies for different practices
+            and use cases. They are specialized GML dictionaries (XML files) following the <a
+                href="https://diggsml.org/docs/latest/gml3_2Profile_diggs_xsd_Element_gml_Dictionary.html#Dictionary">gml:Dictionary</a> 
+                schema specification. Each
+            dictionary contains <a href="https://diggsml.org/docs/latest/Dictionary_diggs_xsd_Element_diggs_Definition.html#http___diggsml.org_schema-dev_Definition">diggs:Definition</a> objects
+            (extensions of gml:Definition), with one or more synonymous codeType values associated with one Definition object.</p>
+    
+        <p>Each diggs:Definition object has four mandatory properties critical for interoperability:</p>
+        <ol>
+            <li><strong>gml:id</strong> <em>(attribute)</em>: An identifier for the codeType value</li>
+            <li><strong>gml:description</strong>: A definition of the codeType value</li>
+            <li><strong>gml:identifier</strong>: The full URL to this diggs:Definition object – a globally unique value</li>
+            <li><strong>gml:name</strong>: The codeType value itself. A Definition can have multiple synonymous names to support internationalization or localized terminology</li>
+        </ol>
+    
+        <p>Below is an example of a diggs:Definition object that defines a Unified Soil Classification Silty Sand for the classificationCode codeType property:</p>
+        
+        <pre><code>&lt;diggs:Definition gml:id="SM"&gt;
+    &lt;gml:description&gt;More than half of coarse soil passes No.4 sieve; passing No.200 &gt; 12%; Atterberg's limits plot below &quot;A&quot; line in the plasticity chart or plasticity index less than 4.&lt;/gml:description&gt;
+    &lt;gml:identifier codeSpace="https://diggsml.org/def/authorities.xml#DIGGS"&gt;https://diggsml.org/def/codes/DIGGS/0.1/astmD2487.xml#SM&lt;/gml:identifier&gt;
+    &lt;gml:name&gt;Silty sand&lt;/gml:name&gt;
+    &lt;diggs:dataType&gt;string&lt;/diggs:dataType&gt;
+    &lt;diggs:authority&gt;ASTM D2487&lt;/diggs:authority&gt;
+        &lt;diggs:reference&gt;https://www.astm.org/d2487-17.html&lt;/diggs:reference&gt;
+    &lt;diggs:occurrences&gt;
+        &lt;diggs:Occurrence&gt;
+            &lt;diggs:sourceElementXpath&gt;//diggs:Lithology/diggs:classificationCode&lt;/diggs:sourceElementXpath&gt;
+        &lt;/diggs:Occurrence&gt;
+    &lt;/diggs:occurrences&gt;
+&lt;/diggs:Definition&gt;</code></pre>
+    
+        <p class="caption"><em>In this example, the codeType property value is represented by the gml:name (Silty sand), defined by
+                the gml:description property, and identified by the gml:id attribute (SM) and globally unique gml:identifier property 
+                (https://diggsml.org/def/codes/DIGGS/0.1/astmD2487.xml#SM). The diggs:sourceElementXPath
+                property is used for code validation, indicating that this definition is valid for the classificationCode codeType
+                property that occurs within any Lithology object.</em></p>
+        
+        <div class="important-block">
+            <p>A DIGGS dictionary <strong>MUST</strong> be defined and referenced in the codeSpace attribute when the
+                value of a codeType property:</p>
+            <ol>
+                <li>Is used to map terms to a database or other schema</li>
+                <li>Is used in queries, automated processing, or data analysis</li>
+                <li>Is used to control data display or reporting formats</li>
+            </ol>
+            <p>Although not required, a DIGGS dictionary <strong>SHOULD</strong> be defined and used when term definitions might
+                not be universally understood, vary by authority, or depend on context.</p>
+        </div>
+        <h4>DIGGS Standard Dictionaries</h4>
+        
+        <p>The DIGGS project develops and maintains a growing library of online DIGGS Standard
+            dictionaries for critical and commonly used codeType properties. An index of these dictionaries, including links to
+            view the dictionary codes and definitions, is available <a href="https://diggsml.org/docs/dictionaries.html">at this web page</a>.
+        </p>
+        
+        <p>Most important among these are the measurement properties dictionaries that hold valid definitions for
+            the propertyClass codeType property, which defines measurement parameters reported for tests, monitoring, and
+            construction activities. These dictionaries are critical for DIGGS to function as an exchange standard. To ensure interoperability, the
+            propertyClass codeType element <strong>MUST</strong> reference an appropriate DIGGS Standard measurement properties
+            dictionary definition for an instance to be valid.
+        
+        <div class="note-block">
+            <p>To promote universal interoperability, codeType properties should reference definitions from DIGGS
+                Standard dictionaries whenever possible. Custom dictionaries and definitions should only be created if
+                appropriate definitions do not exist in the DIGGS Standard dictionaries.</p>
+        
+            <p>The use of custom dictionaries should be carefully considered. To enhance universal interoperability, 
+                you may request that your custom dictionaries or definitions be added to the DIGGS Standard library by posting an issue to the 
+                 <a href="https://github.com/DIGGSml/def/issues">DIGGSml Github def repository</a>.</p>
+        </div>
+
+    <h2 id="guidance">NEW GUIDANCE FOR ENCODING CODETYPE PROPERTIES</h2>
+
+    <p>Previous guidance on the use of DIGGS dictionaries with codeType properties was to have the codeSpace represent the URL
+         of the dictionary file, and the value hold the gml:id of the appropriate diggs:Definition. For example, a Unified Soil classification (ASTM D2487)
+        silty sand, the classificationCode codeType property would have been encoded as follows:</p>
+        <pre><code>&lt;classificationCode codeSpace="https://diggsml.org/def/codes/DIGGS/0.1/astmD2487.xml"&gt;SM&lt;/classificationCode&gt;</code></pre>
+        This encoding allows receiving and validating applications to retrieve the codeType property's definition unambiguously. 
+        However, there are several downsides to this encoding, in particular:
+        <ul>
+            <li>A dictionary lookup is always needed to obtain the property's value (eg. Silty sand).</li>
+            <li>Only one code value (gml:name) can be assigned to a definition in a dictionary for the code value lookup to be unambiguous.</li>
+            <li>Synonymous code values for the codeType cannot be transferred without creation of a custom dictionary (and the required lookup).</li>
+        </ul>
+       Because of these limitations, the DIGGS Team is issuing new guidance for encoding codeType properties in DIGGS instances.</p>
+       
+       <div class="important-block">CodeType properties that reference dictrionaries shall be encoded as follows:</p>
+    <p>The codeSpace attribute must be used and its value must be the gml:identifier for the code definition. This identifier is composed of:
+    <ol>
+        <li>The URL to the dictionary file</li>
+        <li>A fragment identifier (#)</li>
+        <li>The id of the code definition (gml:id)</li>
+    </ol>
+    The value of the codeType property shall be:
+    <ul>
+        <li>Any of the gml:name values from the dictionary definition represented by the codeSpace value, or</li>
+        <li>Any specialized term that is defined by the diggs:Definition object represented by the codeSpace value</li>
+    </ul></p>
+    <p><strong>Note:</strong> Moving forward, code list validators will throw an error if the URL does not contain the # (fragment identifier) followed by the id of a valid Definition object. If a specialized
+        term is used for the codeType value, it is incumbent on the user to ensure that the value is properly defined
+        by the referenced dictionary definition.</p></div>
+
+<h2>Example Encodings Using the New Guidance</h2>   
+<h3>DIGGS Standard Encoding of classificationCode (from the dictionary example above)</h3>
+
+<pre><code>&lt;classificationCode codeSpace="https://diggsml.org/def/codes/DIGGS/0.1/astmD2487.xml#SM"&gt;Silty sand&lt;/classificationCode&gt;</code></pre>
+
+<caption><em>The codeSpace attribute holds the value of the gml:identifier for the silty sand definition, while the codeType value matches the 
+    defnition's gml:name. Validators can retrieve the definition directly from the codeSpace value while processing applications can obtain the classificationCode value (Silty sand) without needing 
+    a dictionary lookup.
+</em></caption>
+
+    <h3>Using Locatlized Terms in codeType Properties</h3>
+    <p><strong>ABC Drilling Example</strong><br/>
+        From the example discussed earlier, ABC Drilling can transmit their localized value "Roughneck" for the rolePerformed value while still
+        maintaining interoperability by mapping "Roughneck" to the DIGGS Standard definition for the propertyCode with gml:id "helper" as follows:
+        <pre><code>&lt;rolePerformed codeSpace="https://diggsml.org/def/codes/DIGGS/0.1/roles.xml#helper"&gt;Roughneck&lt;/rolePerformed&gt;</code></pre>
+        <caption><em>As long as the DIGGS Standard definition for "helper" is equivalent to ABC Driller's definition, the localized term "Roughneck"
+        can be transmitted in the DIGGS instance, and processing applications that may not recognize that specific term can still process it properly by using the
+        definition from the codeSpace value.</em></caption>
+    <p><strong>International Collaboration</strong></p>
+    <p>Imagine you're working on a dam monitoring project with international partners. Your team in the US uses the term
+        "Driller" while your German colleagues use "Bohrarbeiter" to describe the person who is operating the drill rig used for
+        constructing boreholes. The <a href="https://diggsml.org/def/codes/DIGGS/0.1/roles.xml">
+        DIGGS Standard Roles Dictionary</a> has a definition with an id of "operator" that serves as the definition for both terms in this context. In your DIGGS
+    instances, you may encode the role as follows:
+
+    <pre><code>&lt;rolePerformed codeSpace="https://diggsml.org/def/codes/DIGGS/0.1/roles.xml#operator"&gt;Driller&lt;/rolePerformed&gt;</code></pre>
+   wheeeas your German colleagues would encode the role this way:
+    <pre><code>&lt;rolePerformed codeSpace="https://diggsml.org/def/codes/DIGGS/0.1/roles.xml#operator"&gt;Bohrarbeiter&lt;/rolePerformed&gt;</code></pre>
+
+   <caption><em>Even though the code values ("Driller" and "Bohrarbeiter") are different, both encodings are valid as they reference a DIGGS Standard 
+    definition that is appropriate for the context. Furthermore, because both encodings reference the same definition, applications that 
+    might use the rolePerformed property for processing would handle both encodings correctly and consistently. In this way, 
+    technical accuracy is preserved while clear communication is maintained through use of the localized terms. Note: because neither of the codeType
+    property values are in the DIGGS Standard dictionary, it is the responsibility of the users to ensure that the terms "Driller" and 
+    "Bohrarbeiter" match the "operator" definition.</em></caption>
+</p>
+
+    <h2>Benefits of This Change</h2>
+    <ol>
+        <ol>
+            <li>Consistent codeType encoding for any scenario that references a dictionary</li>
+            </li>
+            <li>The ability to transmit a preferred localized term without the need for a custom dictionary</li>
+            <li><strong>Reliable Validation</strong>: Clear separation between the required definition and the code</li>
+            <li><strong>Future-Proofing</strong>: Better supports evolution of the standard while maintaining backward
+                compatibility</li>
+        </ol>
+    </ol>
     <h2>What This Means for You</h2>
-    
-    <ul>
-        <li><strong>Existing Files</strong>: Older DIGGS files will need to be updated to this new format</li>
-        <li><strong>Tools & Validators</strong>: Updates are in progress for validators and codelist reference generation tools</li>
-        <li><strong>Documentation</strong>: We are updating our documentation to reflect this change</li>
-    </ul>
-    
-    <p>While this change will impact backward compatibility, it's a necessary step toward a more robust and flexible standard that will serve the geotechnical community better in the long run.</p>
-    
+        <ul>
+            <li><strong>Existing Files</strong>: Older DIGGS files that do not reference dictionaries in accordance with this new guidance
+                will need to be updated to pass code list validation</li>
+            <li><strong>Tools & Validators</strong>: Updates are in progress for validators and code list reference generation tools.</li>
+            <li><strong>Documentation</strong>: We are updating our documentation and example files to reflect this change</li>
+        </ul>
+        <p>While this change does impact backward compatibility, it's a necessary step toward a more robust and flexible
+            standard that will serve the geotechnical community better in the long run.</p>
+
     <h2>Join the DIGGS Effort!</h2>
+        <p>We're constantly working to improve DIGGS, and your input is valuable. Here's how you can participate:</p>
     
-    <p>We're constantly working to improve DIGGS, and your input is valuable. Here's how you can participate:</p>
+        <ul>
+            <li><strong>GitHub</strong>: Contribute to our repositories at <a href="https://github.com/DIGGSml/">https://github.com/DIGGSml/</a></li>
+            <li><strong>Monthly Meetings</strong>: Join our monthly onlinediscussions where we tackle issues like this one. Contact 
+            <a href="mailto:acadden@schnabel-eng.com">Allen Cadden</a> or <a href="mailto:rcutts@schnabel-eng.com">Ross Cutts</a> to receive
+            meeting invites.</li>
+            <li><strong>Feedback</strong>: Share your experiences implementing these changes</li>
+        </ul>
     
-    <ul>
-        <li><strong>GitHub</strong>: Contribute to our repositories at <a href="https://github.com/DIGGSml/">https://github.com/DIGGSml/</a></li>
-        <li><strong>Monthly Meetings</strong>: Join our monthly discussions where we tackle issues like this one</li>
-        <li><strong>Feedback</strong>: Share your experiences implementing these changes</li>
-    </ul>
-    
-    
-    <p>Stay tuned for more updates as we continue to refine and enhance the DIGGS standard.</p>
-    
-    <p>Best regards,</p>
-    
-    <div class="signature">
-        <p class="signature-name">Your DIGGS Team</p>
-    </div>
+            <p>Stay tuned for more updates as we continue to refine and enhance the DIGGS standard.</p>
+            <p>Best regards,</p>
+            <div class="signature">
+                    <p class="signature-name">Your DIGGS Team</p>
+                </div>
 </body>
+
 </html>
