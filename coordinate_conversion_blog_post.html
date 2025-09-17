@@ -166,11 +166,11 @@
 </head>
 
 <body>
-    <h1>Solving Geotechnical Data's 3 Billion Dollar Georeferencing Crisis: How DIGGS 2.7 and Historic Data Conversions Are Transforming Our Industry</h1>
+    <h1>Solving Geotechnical Data's 3 Billion Dollar Georeferencing Crisis: How DIGGS and Historic Data Conversions Are Transforming Our Industry</h1>
     
-    <p>Every day, geotechnical engineers and state transportation departments generate invaluable subsurface data through boring logs, SPT tests, and soil investigations. This data represents millions of taxpayer dollars and decades of engineering expertise. Yet across the United States, we're systematically discarding nearly half of this critical information due to a single, solvable problem: <strong>inadequate georeferencing</strong>.</p>
+    <p>Every day, geotechnical engineers and state transportation departments generate invaluable subsurface data through boring logs, SPT tests, and soil investigations. This data represents millions of taxpayer dollars and decades of engineering expertise. Yet across the United States, we're systematically discarding nearly half of this critical information due to a single, solvable problem: <strong>inadequate georeferencing of borehole and site locations</strong>.</p>
     
-    <p>After processing datasets from more than half of state DOTs and analyzing over 500,000 boring logs in the Geosetta database, we've uncovered a sobering reality about the state of geotechnical data management. The recent integration of Alabama DOT's 24-year project history provides a stark example of this crisis—and points toward a transformative solution.</p>
+    <p>After processing datasets from more than half of state DOTs and analyzing over 500,000 boring logs in the Geosetta database, we've uncovered a sobering reality about the state of geotechnical data management. The recent integration of Alabama DOT's 24-year project history provides a stark example of this crisis:
 
     <h2>The Hidden Crisis: Quantifying Our Data Loss</h2>
 
@@ -212,17 +212,17 @@
         </ul>
     </div>
 
-    <h2>The Root Cause: Inconsistent Coordinate Reference Systems</h2>
+    <h2>The Root Cause: Undocumented or Inconsistent Coordinate Reference Systems</h2>
 
-    <p>Our analysis reveals that the georeferencing crisis stems from three primary issues:</p>
+    <p>Our analysis reveals that the georeferencing crisis stems from four primary issues:</p>
 
     <ol>
           <li><strong>Project-Specific Stationing Systems</strong>: The most common issue involves boring logs referenced only by project
-  stationing (e.g., "STA 125+50, 85' LT") where the stationing baseline is completely arbitrary to that specific project and the survey
+  stationing (e.g., "STA 125+50, 85' LT") where the stationing baseline is specific to the particular project and the survey
   control data needed for conversion is not stored with the boring log data.</li>
-          <li><strong>Missing EPSG References</strong>: Legacy boring logs contain coordinates without specifying their coordinate reference
+          <li><strong>Missing Coordinate Reference System (CRS) Codes</strong>: Legacy boring logs contain coordinates without specifying their coordinate reference
   system. A coordinate pair like "567,890.5, 123,456.7" could represent State Plane, UTM, or any number of local coordinate systems.</li>
-          <li><strong>Inconsistent Coordinate System Usage</strong>: Within a single project, different consultants may use different
+          <li><strong>Inconsistent CRS Usage</strong>: Within a single project, different consultants may use different
   coordinate systems without proper documentation.</li>
           <li><strong>Format Variations</strong>: Coordinates appear in decimal degrees, degrees-minutes-seconds, feet, meters, and various
   state plane zones without consistent identification.</li>
@@ -233,50 +233,82 @@
     <pre><code>&lt;!-- Legacy DIGGS boring log with station/offset reference --&gt;
 &lt;samplingFeature&gt;
     &lt;Borehole gml:id="Borehole_IM_I065_390_BH1"&gt;
+        &lt;gml:description&gt;IM-I 065 (390) SOIL SURVEY, STA. 55+00, 85' LT OF SURVEY C/L&lt;/gml:description&gt;
         &lt;gml:name&gt;BH-1&lt;/gml:name&gt;
+        &lt;projectRef xlink:href="#p1"&gt;
         &lt;referencePoint&gt;
             &lt;PointLocation gml:id="Point_Location_STA_55_00"&gt;
                 &lt;gml:pos&gt;55.0 -85.0 0.0&lt;/gml:pos&gt;
             &lt;/PointLocation&gt;
         &lt;/referencePoint&gt;
-        &lt;gml:description&gt;IM-I 065 (390) SOIL SURVEY, STA. 55+00, 85' LT OF SURVEY C/L&lt;/gml:description&gt;
+        ...
     &lt;/Borehole&gt;
 &lt;/samplingFeature&gt;</code></pre>
 
-    <p class="caption"><em>This real ALDOT boring log shows the exact problem: coordinates stored as station/offset values (55.0, -85.0) relative to an undefined survey centerline. Without an EPSG code reference and the corresponding survey control, this boring log cannot be reliably positioned on any map or integrated with other datasets. This represents one of the 34,322 ALDOT boring logs that couldn't be georeferenced—$102.9 million in lost taxpayer-funded investigations.</em></p>
+    <p class="caption"><em>This DIIGS XML snippet from a real ALDOT boring log shows the exact problem: coordinates for the borehole reference point are obtained from the the borehole description which are station/offset values (55.0, -85.0) relative to an undefined survey centerline. Without a coordinate reference system reference and the corresponding survey control, a geographic position cannot be determined and thus this boring log cannot be reliably positioned on any map or integrated with other datasets. This represents one of the 34,322 ALDOT boring logs that couldn't be georeferenced—$102.9 million in lost taxpayer-funded investigations.</em></p>
 
-    <h2>The DIGGS 2.7 Solution: Mandatory EPSG Validation</h2>
+        <p>Since its inception, DIGGS, which is based on Geography Markup Language (GML), has had the capability of storing necessary CRS information in a GML-defined <code>srsName</code> attribute. However, GML's implementation of  <code>srsName</code> is quite general, which can complicate or hinder interoperability. Specifically:</p>
+    <ul>
+        <li><code>srsName</code> is optional, so a DIGGS instance can pass schema validation without a CRS reference, as is the case in the above example.</li>
+        <li>the value of <code>srsName</code> can be any string that conforms to the anyURI datatype. Without a standardized syntax for the <code>srsName</code> value, it may be impossible to determine what CRS is being referenced</li>
+        <li><code>srsName</code> can be specified at the geometry object level (eg. PointLocation above) or at the position level (gml:pos) which complicates extraction of the appropriate <code>srsName</code></li>
+    </ul>
+    <p>The above issues have prompted the DIGGS team to implement new guidance for the use of srsName along with a semantic validation tool to enforce the new rules. These new guidelines and tools will be implemented as part of the soon to be released version 3.0 update of DIGGS.
 
-    <p>I'm excited to announce that with the upcoming release of <strong>DIGGS version 2.7</strong>, this georeferencing crisis will finally be addressed through schema-level enforcement. DIGGS 2.7 introduces mandatory EPSG code validation for all location elements, ensuring that every boring log includes unambiguous spatial reference information.</p>
+    <h2>What's Changing in DIGGS 3.0?</h2>
 
-    <h3>What Changes in DIGGS 2.7</h3>
+     <div class="important-block">
+        <p>The new guidelines include:</p>
+        <ol>
+            <li>The srsName attribute <strong>MUST</strong> be used wherever coordinates are reported in a DIGGS instance and located at the geometry object level, or at the topmost geometry object level (for complex geometries)</li>
+            <li>The value of srsName MUST directly reference the GML definition of a coordinate reference system. This should be a georeferenced CRS (eg. a geographic, projected, or compound CRS that includes both horizontal and vertical CRS's), 
+                <strong>OR</strong> an Engineering CRS (as might be used for station/offset) whose definition contains sufficient information to transform the local coordinates to a georeferenced CRS.
+            </li>
+            <li>Implementation of a new semantic validation tool that includes modules to test and flag non-compliant DIGGS instances if the above conditions are not met.</li>
+        </ol>
+     </div>
 
-    <p>The new DIGGS 2.7 schema requires that all coordinate references include a mandatory <code>srsName</code> attribute with a valid EPSG code:</p>
+    <p>Specific guidance and examples of srsName usage will be covered in a future blog post, but for cases where georeferenced CRS's are defined in IOGP's EPSG Geodetic Parameter Dataset (<a href="https://epsg.org">https://epsg.org</a>), or by the Open Geospatial Consortium (OGC), we can take advantage of existing
+        CRS resolver web services to return the appropriate GML definition as shown here:
+    </p>
 
-    <pre><code>&lt;!-- DIGGS 2.7 compliant coordinate reference --&gt;
-&lt;samplingFeature&gt;
-    &lt;Borehole gml:id="Borehole_IM_I065_390_BH1"&gt;
-        &lt;gml:name&gt;BH-1&lt;/gml:name&gt;
-        &lt;referencePoint&gt;
-            &lt;PointLocation gml:id="Point_Location_STA_55_00" srsDimension="3" 
-                          srsName="http://www.opengis.net/def/crs/EPSG/0/26929"&gt;
-                &lt;gml:pos&gt;654321.45 1234567.89 287.5&lt;/gml:pos&gt;
-            &lt;/PointLocation&gt;
-        &lt;/referencePoint&gt;
-        &lt;centerLine&gt;
-            &lt;LinearExtent gml:id="Linear_Extent_0" srsDimension="3" 
-                         srsName="http://www.opengis.net/def/crs/EPSG/0/26929"&gt;
-                &lt;gml:posList&gt;654321.45 1234567.89 287.5 654321.45 1234567.89 265.0&lt;/gml:posList&gt;
-            &lt;/LinearExtent&gt;
-        &lt;/centerLine&gt;
-        &lt;gml:description&gt;IM-I 065 (390) SOIL SURVEY, STA. 55+00, 85' LT OF SURVEY C/L&lt;/gml:description&gt;
-    &lt;/Borehole&gt;
-&lt;/samplingFeature&gt;</code></pre>
+    <pre><code>&lt;!-- DIGGS 3.0 with compliant CRS reference --&gt;
 
-    <p class="caption"><em>With EPSG:26929 (Alabama State Plane East, NAD83) explicitly specified in the srsName attribute, the same ALDOT boring log now contains actual geographic coordinates instead of station/offset values. Processing systems can reliably convert these coordinates to any other coordinate system, integrate them with regional datasets, and display them on web maps. The station/offset description is preserved while the coordinates provide unambiguous spatial reference.</em></p>
+    &lt;samplingFeature&gt;
+        &lt;Borehole gml:id="Borehole_IM_I065_390_BH1"&gt;
+            &lt;gml:description&gt;IM-I 065 (390) SOIL SURVEY, STA. 55+00, 85' LT OF SURVEY C/L&lt;/gml:description&gt;
+            &lt;gml:name&gt;BH-1&lt;/gml:name&gt;
+            &lt;investigationTarget&gt;Natural Ground&lt;/investigationTarget&gt;
+            &lt;projectRef xlink:href="#p1"/&gt;
+            &lt;locality&gt;
+                &lt;Locality gml:id="Locality_ydg_wh3_rgc"&gt;
+                    &lt;station uom="ft"&gt;55&lt;/station&gt;
+                    &lt;offset uom="ft"&gt;-85&lt;/offset&gt;
+                    &lt;offsetDirection&gt;left&lt;/offsetDirection&gt;
+                &lt;/Locality&gt;
+            &lt;/locality&gt;
+            &lt;referencePoint&gt;
+                &lt;PointLocation gml:id="Point_Location_STA_55_00" srsDimension="3"
+                    srsName="http://www.opengis.net/def/crs-compound?1=http://www.opengis.net/def/crs/EPSG/0/26929%262=http://www.opengis.net/def/crs/EPSG/0/6360"&gt;
+                    &lt;gml:pos&gt;654321.45 1234567.89 287.5&lt;/gml:pos&gt;
+                &lt;/PointLocation&gt;
+            &lt;/referencePoint&gt;
+            &lt;centerLine&gt;
+                &lt;LinearExtent gml:id="Linear_Extent_0" srsDimension="3"
+                    srsName="http://www.opengis.net/def/crs-compound?1=http://www.opengis.net/def/crs/EPSG/0/26929%262=http://www.opengis.net/def/crs/EPSG/0/6360"&gt;
+                    &lt;gml:posList&gt;654321.45 1234567.89 287.5 654321.45 1234567.89 265.0&lt;/gml:posList&gt;
+                &lt;/LinearExtent&gt;
+            &lt;/centerLine&gt;
+            ...
+        &lt;/Borehole&gt;
+    &lt;/samplingFeature&gt;
+</code></pre>
+
+    <p class="caption"><em>The srsName attribute identifies the CRS for the coordinates of the borehole's referencePoint and centerLine properties. The URL specified uses the OGC CRS Definition Resolver to return a GML definition for
+        a 3D compound CRS that includes the horizontal CRS NAD83 / Alabama East (EPSG Code 26929) and the vertical CRS NAVD88 height in ftUS (EPSG Code 6360). The original station/offset information can still be included in the gml:description property and/or the locality property. With this information, processing systems can reliably interpret and convert these coordinates to any other coordinate system, integrate them with regional datasets, and display them on web maps.</em></p>
 
     <div class="success-block">
-        <p><strong>This simple change will revolutionize geotechnical data interoperability.</strong> Going forward, our profession can reliably georeference any DIGGS file in any coordinate system, enabling:</p>
+        <p><strong>This new guidance will revolutionize geotechnical data interoperability.</strong> Going forward, our profession can unambiguously georeference any DIGGS file in any coordinate system, enabling:</p>
         <ul>
             <li>Seamless data sharing between jurisdictions using different coordinate systems</li>
             <li>Automatic coordinate conversion for web mapping and GIS applications</li>
@@ -287,20 +319,19 @@
 
     <h2>Free Coordinate Conversion API: Enabling Interoperability</h2>
 
-    <p>To support DIGGS 2.7 compliance and enable seamless coordinate system interoperability, we've developed a comprehensive coordinate conversion API that's freely available through the <a href="https://diggs.geosetta.org">Geosetta DIGGS Tools platform</a>.</p>
+    <p>To support DIGGS 3.0 compliance and enable seamless coordinate system interoperability, we've also developed a comprehensive coordinate conversion API that's freely available through the <a href="https://diggs.geosetta.org">Geosetta DIGGS Tools platform</a>.</p>
 
     <h3>Current API Capabilities</h3>
 
     <p>Our coordinate conversion service supports over 6,000 EPSG coordinate reference systems and provides:</p>
 
     <ul>
-        <li><strong>Coordinate System Conversion</strong>: Convert between any EPSG coordinate systems for cross-jurisdictional projects</li>
-        <li><strong>DIGGS 2.7 Compliance Support</strong>: Ensure coordinates are in the correct system before creating DIGGS files</li>
+        <li><strong>Coordinate Reference System Conversion</strong>: Convert between any EPSG coordinate reference systems for cross-jurisdictional projects</li>
+        <li><strong>DIGGS 3.0 Compliance Support</strong>: Ensure coordinates are in the correct system before creating DIGGS files</li>
         <li><strong>Batch Processing</strong>: Convert up to 25 coordinates per request</li>
         <li><strong>US State Plane Finder</strong>: Identify the correct EPSG codes for DOT projects by state</li>
         <li><strong>Coordinate Validation</strong>: Verify that coordinates fall within expected geographic bounds</li>
         <li><strong>Elevation Integration</strong>: Automatic elevation data retrieval using Open Elevation API</li>
-        <li><strong>DIGGS File Upload & Enhancement</strong>: Upload existing DIGGS with various reference systems and automatically add calculated lat/lng coordinates</li>
     </ul>
 
     <h3>Real-World API Usage Examples</h3>
@@ -344,16 +375,17 @@ Response:
 
     <h3>Legacy Data Recovery Process</h3>
 
-    <p>For datasets like ALDOT's station/offset boring logs, the recovery process involves:</p>
+    <p>For datasets like ALDOT's station/offset boring logs, one possible recovery process would involve:</p>
 
     <ol>
         <li><strong>Survey Control Recovery</strong>: Locate original highway alignment and survey control data</li>
-        <li><strong>Manual Coordinate Calculation</strong>: Convert station/offset to state plane coordinates using survey data</li>
+        <li><strong>Manual Coordinate Calculation</strong>: Transform station/offset to state plane coordinates using survey data</li>
         <li><strong>API Validation & Conversion</strong>: Use our API to verify coordinates and convert between systems if needed</li>
-        <li><strong>DIGGS 2.7 File Creation</strong>: Generate compliant files with proper srsName attributes</li>
+        <li><strong>DIGGS 3.0 File Creation</strong>: Generate compliant files with proper srsName attributes</li>
     </ol>
 
-    <p><strong>ALDOT Success Example:</strong> Of the 34,322 boring logs that couldn't be automatically georeferenced, many contained station/offset references like "STA. 55+00, 85' LT OF SURVEY C/L." With access to original survey control data, these could potentially be recovered, converting $102.9 million in investigation value back to usable geospatial data.</p>
+    <p><strong>ALDOT Success Example:</strong> Of the 34,322 boring logs that couldn't be automatically georeferenced, many contained station/offset references like "STA. 55+00, 85' LT OF SURVEY C/L." With access to
+         original survey control data, these could potentially be recovered, converting $102.9 million in investigation value back to usable geospatial data.</p>
 
     <h3>Cross-Jurisdictional Project Integration</h3>
 
@@ -376,10 +408,10 @@ Response:
         <li><strong>Pennsylvania</strong>: State Plane South (EPSG:2272) in US Survey Feet</li>
     </ul>
 
-    <p>With DIGGS 2.7 compliance and our coordinate conversion API, the project workflow becomes:</p>
+    <p>With DIGGS 3.0 compliance and our coordinate conversion API, the project workflow becomes:</p>
 
     <ol>
-        <li><strong>Data Collection</strong>: Each state provides DIGGS 2.7 files with mandatory EPSG references</li>
+        <li><strong>Data Collection</strong>: Each state provides DIGGS 3.0 files with mandatory srsName references</li>
         <li><strong>Coordinate Standardization</strong>: All coordinates are automatically converted to WGS84 for web mapping</li>
         <li><strong>Unified Analysis</strong>: Regional subsurface modeling uses consistently referenced spatial data</li>
         <li><strong>Visualization</strong>: Interactive maps display boring logs from all three states in a unified coordinate system</li>
@@ -387,7 +419,16 @@ Response:
 
     <h2>Getting Started Today</h2>
 
-    <p>You don't need to wait for DIGGS 2.7's official release to start benefiting from improved georeferencing and coordinate standardization. Here's what you can do right now:</p>
+    <p>You don't need to wait for DIGGS 3.0's official release to start benefiting from improved georeferencing and coordinate standardization. Here's what you can do right now:</p>
+
+    <h3>Begin implementing the 3.0 CRS compliance guidance NOW</h3>
+   <ul>
+        <li><strong>Audit Your Data</strong>: Review existing boring log databases for coordinate system documentation</li>
+        <li><strong>Identify EPSG Codes</strong>: Determine which georeferenced coordinate systems your organization commonly uses</li>
+        <li><strong>Start adding srsName attributes to geometry elements using the OGC CRS Definition Resolver URL (for standard CRS's with EPSG codes)</li>
+        <li><strong>For local and station/offset CRS's, begin building GML CRS definitions that can be referenced by srsName</strong></li>
+        <li><strong>Engage with the DIGGS Community</strong>: Join monthly DIGGS meetings for further guidance and to stay updated on 3.0 development progress</li>
+    </ul>
 
     <h3>Try the Coordinate Conversion Tools</h3>
     <p>Visit <strong><a href="https://diggs.geosetta.org">diggs.geosetta.org</a></strong> to access our free coordinate conversion tools:</p>
@@ -398,22 +439,14 @@ Response:
         <li><strong>Validate Geographic Bounds</strong>: Verify that your coordinates fall within expected regions</li>
     </ul>
 
-    <h3>Start Planning for DIGGS 2.7</h3>
-    <p>Begin preparing your organization for the upcoming DIGGS 2.7 requirements:</p>
-    <ul>
-        <li><strong>Audit Your Data</strong>: Review existing boring log databases for coordinate system documentation</li>
-        <li><strong>Identify EPSG Codes</strong>: Determine which coordinate systems your organization commonly uses</li>
-        <li><strong>Test Conversions</strong>: Use our API to test coordinate conversions between your local systems and standard formats</li>
-        <li><strong>Engage with DIGGS Community</strong>: Join monthly DIGGS meetings to stay updated on 2.7 development progress</li>
-    </ul>
-
+   
     <div class="success-block">
         <p><strong>Are you a public agency with geotechnical data?</strong> As part of our nonprofit mission to advance geotechnical data accessibility, Geosetta will process and convert your public datasets to DIGGS format at no cost. We'll standardize coordinates, enhance georeferencing, and make your data available through our open platform. <strong><a href="https://geosetta.org/support">Contact us</a></strong> to contribute your data to the growing public geotechnical database.</p>
     </div>
 
     <h2>Looking Forward: The Future of Geotechnical Data</h2>
 
-    <p>DIGGS 2.7's mandatory georeferencing requirements represent more than a technical upgrade—they signal a fundamental shift toward data-driven geotechnical engineering. With reliable coordinate references, we're enabling:</p>
+    <p>DIGGS 3.0's mandatory georeferencing requirements represent more than a technical upgrade—they signal a fundamental shift toward data-driven geotechnical engineering. With reliable coordinate references, we're enabling:</p>
 
     <ul>
         <li><strong>Real-Time Field Validation</strong>: Mobile applications that instantly validate coordinates against state coordinate systems</li>
@@ -423,19 +456,19 @@ Response:
         <li><strong>International Collaboration</strong>: Seamless data sharing between countries using standardized coordinate transformations</li>
     </ul>
 
-    <h2>Join the DIGGS 2.7 Effort</h2>
+    <h2>Join the DIGGS Effort</h2>
 
-    <p>The transition to mandatory georeferencing in DIGGS 2.7 requires industry-wide coordination and support. Here's how you can participate:</p>
+    <p>The transition to mandatory georeferencing using DIGGS 3.0's new validation tools requires industry-wide coordination and support. Here's how you can participate:</p>
 
     <ul>
-        <li><strong>GitHub Contribution</strong>: Help develop DIGGS 2.7 validation tools at <a href="https://github.com/DIGGSml/">https://github.com/DIGGSml/</a></li>
+        <li><strong>GitHub Contribution</strong>: Help develop DIGGS validation tools at <a href="https://github.com/DIGGSml/">https://github.com/DIGGSml/</a></li>
         <li><strong>Monthly DIGGS Meetings</strong>: Join our monthly discussions where we tackle georeferencing implementation challenges. Contact <a href="mailto:acadden@schnabel-eng.com">Allen Cadden</a> or <a href="mailto:rcutts@schnabel-eng.com">Ross Cutts</a> for meeting invites.</li>
         <li><strong>Beta Testing</strong>: Volunteer your organization for DIGGS 2.7 pilot testing and coordinate conversion validation</li>
-        <li><strong>Industry Advocacy</strong>: Promote DIGGS 2.7 adoption within your professional networks and state DOT relationships</li>
+        <li><strong>Industry Advocacy</strong>: Promote DIGGS adoption within your professional networks and state DOT relationships</li>
     </ul>
 
     <div class="success-block">
-        <p>The georeferencing crisis that has plagued our industry for decades finally has a solution. DIGGS 2.7's mandatory EPSG requirements, combined with efforts to covert historic data into DIGGS, will recover hundreds of millions of dollars in previously unusable geotechnical data.</p>
+        <p>The georeferencing crisis that has plagued our industry for decades finally has a solution. DIGGS 3.0's mandatory srsName requirements, combined with efforts to comvert historic data into DIGGS, will recover hundreds of millions of dollars in previously unusable geotechnical data.</p>
         <p>This isn't just about better data management—it's about unlocking the full potential of our profession's collective knowledge for safer, more efficient infrastructure development.</p>
     </div>
 
@@ -443,7 +476,7 @@ Response:
 
     <p>We can no longer accept that nearly half of our taxpayer-funded geotechnical investigations remain effectively unusable due to coordinate system ambiguity.</p>
 
-    <p>DIGGS 2.7 represents our industry's commitment to solving this crisis through standards-based enforcement. The free coordinate conversion tools available today provide immediate relief for existing datasets while preparing the foundation for a fully interoperable geotechnical data ecosystem.</p>
+    <p>DIGGS 3.0 represents our industry's commitment to solving this crisis through standards-based enforcement. The free coordinate conversion tools available today provide immediate relief for existing datasets while preparing the foundation for a fully interoperable geotechnical data ecosystem.</p>
 
     <p>Every boring log that we successfully georeference is a victory against waste, inefficiency, and missed opportunities. Every DIGGS 2.7 compliant file created today is an investment in our profession's data-driven future.</p>
 
