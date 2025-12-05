@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linear Referencing in DIGGS 3.0: An Updated Approach to Positioning Data Along Boreholes and Other Linear Features</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 2em;
+            background-color: #fff;
+            color: #222;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            color: #0077cc;
+            margin-bottom: 0.5em;
+        }
+        h2 {
+            color: #0077cc;
+            margin-top: 1.5em;
+            margin-bottom: 0.5em;
+        }
+        h3 {
+            color: #0077cc;
+            margin-top: 1.2em;
+            margin-bottom: 0.4em;
+        }
+        code {
+            color: #321009;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-family: Consolas, Monaco, 'Andale Mono', monospace;
+        }
+        pre {
+            background-color: #bcb7b7f8;
+            padding: 1em;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-family: Consolas, Monaco, 'Andale Mono', monospace;
+        }
+        pre code {
+            color: #222;
+            background: none;
+            padding: 0;
+        }
+        strong {
+            font-weight: bold;
+        }
+        ol,
+        ul {
+            margin-bottom: 1.5em;
+        }
+        li {
+            margin-bottom: 0.5em;
+        }
+        .important-block {
+            background-color: #fffbea;
+            border-left: 4px solid #ff6f00ca;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 3px;
+            box-shadow: 0 1px 3px rgba(0,0,0,.7);
+        }
+        .important-block::before {
+            content: "⚠️ IMPORTANT";
+            display: block;
+            font-weight: bold;
+            font-size: 1.1em;
+            margin-bottom: 10px;
+            color: #9e5603;
+        }
+        .important-block p {
+            margin-top: 0;
+            margin-bottom: 1em;
+        }
+        .important-block ol {
+            margin-top: 0.5em;
+            margin-bottom: 0.5em;
+            padding-left: 25px;
+        }
+        .important-block strong {
+            color: #b45309;
+        }
+ 
+        .note-block {
+            background-color: #ecedf7;
+            border-left: 4px solid #704dd8ca;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 3px;
+            box-shadow: 0 1px 3px rgba(0,0,0,.7);
+        }
+        .note-block::before {
+            content: "💡 NOTE";
+            display: block;
+            font-weight: bold;
+            font-size: 1.1em;
+            margin-bottom: 10px;
+            color: #5306b1;
+        }
+        .note-block p {
+            margin-top: 0;
+            margin-bottom: 1em;
+        }
+        .note-block ol {
+            margin-top: 0.5em;
+            margin-bottom: 0.5em;
+            padding-left: 25px;
+        }
+        .note-block strong {
+            color: #b45309;
+        }
+        .byline {
+            color: #666;
+            font-style: italic;
+            margin-bottom: 30px;
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+        }
+        blockquote {
+            background-color: #f0f0f0;
+            border-left: 4px solid #0077cc;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 3px;
+        }
+        blockquote p {
+            margin: 0.5em 0;
+        }
+        blockquote strong {
+            color: #0077cc;
+        }
+        .figure {
+            margin: 30px 0;
+            text-align: center;
+        }
+        .figure img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+        .figure-caption {
+            margin-top: 10px;
+            font-style: italic;
+            color: #666;
+            font-size: 0.95em;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th {
+            background-color: #0077cc;
+            color: white;
+            padding: 10px;
+            text-align: left;
+            font-weight: bold;
+        }
+        td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        a {
+            color: #0077cc;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        hr {
+            border: none;
+            border-top: 1px solid #ddd;
+            margin: 30px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Linear Referencing in DIGGS 3.0: An Updated Approach to Positioning Data Along Boreholes and Other Linear Features</h1>
+    
+    <div class="byline">
+        Daniel Ponti | DIGGS Technical Committee
+    </div>
+    
+    <h2>Introduction: Linear Referencing and DIGGS</h2>
+    
+    <p>In geotechnical and geoenvironmental investigations, we constantly need to record <em>where</em> something was collected, observed or measured. For features that follow a linear path—boreholes, piezometers, cone penetration soundings, piles, geophysical tracklines, transects and trial pits—the most natural way to specify position is to measure distance along that path. This approach is called <strong>linear referencing</strong>.</p>
+    
+    <blockquote>
+        <p><strong>Why Linear Referencing Is Important</strong></p>
+        <p>When a geologist logging a borehole describes a soil layer as "12-18 ft depth; stiff gray clay", they are using linear referencing—measured depth along the borehole path—because that's the natural coordinate system for the work. Any transfer standard must therefore support linearly referenced coordinates.</p>
+    </blockquote>
+    
+    <p>However, in the example above, the coordinates defining the position of a linearly referenced soil layer (12 and 18 ft. respectively) are one-dimensional (hence <em>linearly</em> referenced) and by themselves do not provide the true spatial location of the layer. To determine that, we must also know the coordinates of the borehole path in a spatial (typically 3D) coordinate reference system. This information thus allows the true spatial position of the layer to be interpolated from the linearly referenced coordinates.</p>
+    
+    <p>DIGGS supports both absolute spatial positioning and linearly referenced positioning by providing a rigorous framework for defining linear spatial reference systems and encoding location coordinates in a standardized, machine-readable format that allows processing applications to understand and convert between linear referenced coordinates and the true spatial coordinates of samples, observations and measurements.</p>
+    
+    <h2>DIGGS 3.0: A Significant Update</h2>
+    
+    <p>Previous DIGGS versions supported linear referencing by adopting a subset of the GML 3.3 Linear Referencing schema for defining a linear spatial reference system. DIGGS 3.0 introduces a redesigned linear referencing framework based on the latest <strong>ISO 19148:2021 (Linear referencing)</strong> standard. While implementation of the new approach in DIGGS instances is very similar to how linear spatial reference systems were defined previously, the DIGGS 3.0 update is optimized specifically for geotechnical and geoenvironmental applications and offers enhancements over previous versions.</p>
+    
+    <h3>Why the Change?</h3>
+    
+    <p>The GML 3.3 Linear Referencing schema followed the 2012 version of ISO 19148 and was designed primarily for transportation applications. As implemented in DIGGS, the GML schema was subject to encoding variations that could result in inconsistent encoding, thus hampering interoperability. More importantly, the 2021 revision of ISO 19148 clarified and modernized linear referencing concepts, providing an opportunity to build a cleaner, more focused implementation.</p>
+    
+    <p><strong>Key Benefits:</strong></p>
+    
+    <ul>
+        <li><strong>✓ ISO 19148:2021 Compliance</strong>: Full alignment with the latest international standard for linear referencing.</li>
+        <li><strong>✓ Better Constrained Schema</strong>: Added geotechnical-specific enumerations to elements, improving validation and interoperability.</li>
+        <li><strong>✓ A New Linear Referencing Method Dictionary</strong>: Pre-defined, standard referencing methods enhance interoperability and adoption, reduce redundancy, and provide for more compact encoding.</li>
+        <li><strong>✓ Enhanced Functionality</strong>: Support for handling stretched or compressed core samples, the use of referents, and 2D positioning with lateral offsets for transects, tracklines and trial pits.</li>
+        <li><strong>✓ Future Proofing</strong>: Full support for other linear features, such as tunnels or pipelines, that might be introduced in future versions of DIGGS.</li>
+    </ul>
+    
+    <h2>Core Concepts: The Building Blocks</h2>
+    
+    <p>DIGGS 3.0 linear referencing is built on three fundamental components defined by ISO 19148:</p>
+    
+    <ol>
+        <li><strong>Linear Element (diggs:LinearExtent object)</strong>: The geometric feature along which measurements are made—the physical path of the borehole, trackline, or transect.</li>
+        <li><strong>Linear Referencing Method (diggs:LRMethod object)</strong>: The procedure or algorithm for determining positions—how measurements are calculated and what units are used.</li>
+        <li><strong>Linear Spatial Reference System (diggs:LinearSRS)</strong>: The complete coordinate system created by combining a Linear Element with a Linear Referencing Method.</li>
+    </ol>
+    
+    <div class="figure">
+        <img src="figure1_lr_components.svg" alt="Figure 1: Linear Referencing Components">
+        <div class="figure-caption">Figure 1: The three core components of DIGGS linear referencing combine to create a complete coordinate reference system</div>
+    </div>
+    
+    <h2>Understanding Linear Elements</h2>
+    
+    <p>A <strong>LinearExtent</strong> defines the geometric path along which measurements are made. For a borehole, this is typically a 3D line from the collar (top) to the bottom of the hole. The geometry is stored as an ordered list of coordinates.</p>
+    
+    <p>Here's how a simple borehole's centerline would be defined in DIGGS:</p>
+    
+    <pre><code>&lt;centerLine&gt;
+    &lt;LinearExtent gml:id="cl-B-001-0-20"
+                  srsDimension="3" 
+                  srsName="https://www.opengis.net/def/crs-compound?1=http://www.opengis.net/def/crs/EPSG/0/4326%262=http://www.opengis.net/def/crs/EPSG/0/5702"&gt; 
+                  
+        &lt;!-- srsName URL defines compound CRS with horizontal lat/lon (WGS84) and NAVD88 height in feet--&gt;
+        &lt;gml:posList&gt;39.474660 -81.796858 818.6 39.474660 -81.796858 777.6&lt;/gml:posList&gt;
+        &lt;datumReference&gt;groundSurface&lt;/datumReference&gt;
+    &lt;/LinearExtent&gt;
+&lt;/centerLine&gt;</code></pre>
+    
+    <p>The gml:posList element holds 2 3D coordinate tuples for the path, in the spatial coordinate reference system defined by the srsName attribute. These coordinates describe a vertical borehole at a specific latitude/longitude, extending from elevation 818.6 feet (ground surface) down to 777.6 feet (41 feet total depth). The <code>datumReference</code> value derives from an enumerated list and indicates that the origin of the path is at the ground surface.</p>
+    
+    <p>More complex paths that would describe an inclined or deviated borehole can be defined by simply altering and/or adding more coordinate tuples to define the path in 3D space. No other properties are necessary for defining complex paths.</p>
+    
+    <div class="figure">
+        <img src="figure2_linearextent_geometry.svg" alt="Figure 2: LinearExtent Geometry">
+        <div class="figure-caption">Figure 2: LinearExtent defines the geometric path of the borehole with ordered coordinates from top to bottom</div>
+    </div>
+    
+    <h2>Linear Referencing Methods</h2>
+    
+    <p>An <strong>LRMethod</strong> object defines <em>how</em> positions are determined along the linear element. DIGGS 3.0 supports three types per ISO 19148:</p>
+    
+    <table>
+        <tr>
+            <th>Method Type</th>
+            <th>Description</th>
+            <th>Example Use</th>
+        </tr>
+        <tr>
+            <td><strong>Absolute</strong></td>
+            <td>Distance from the linear element origin (typically first coordinate)</td>
+            <td>Measured depth from top of hole</td>
+        </tr>
+        <tr>
+            <td><strong>Relative</strong></td>
+            <td>Distance from a specified referent point</td>
+            <td>Depth below ground surface where, for example, linear element origin is referenced to the drill rig's rotary table</td>
+        </tr>
+        <tr>
+            <td><strong>Interpolative</strong></td>
+            <td>Position interpolated between control points</td>
+            <td>Observations on core samples where the cores are stretched or compressed relative to the cored interval</td>
+        </tr>
+    </table>
+    
+    <p>For the above example, the LRMethod object for measured depth down the borehole in feet would be encoded as follows:</p>
+    
+    <pre><code>&lt;LRMethod gml:id="md_ft"&gt;
+    &lt;gml:description&gt;Absolute measured depth from top of borehole or sounding in feet. Measurements are cumulative 3D distance along the borehole/sounding centerline from the first coordinate (typically top of hole or rig datum) proceeding downward through the hole. Suitable for vertical, slanted, and deviated boreholes and soundings.&lt;/gml:description&gt;
+    &lt;gml:identifier codeSpace="DIGGS"&gt;#md_ft&lt;/gml:identifier&gt;
+    &lt;gml:name&gt;Absolute Measured Depth (ft)&lt;/gml:name&gt;
+    &lt;type&gt;absolute&lt;/type&gt;
+    &lt;units&gt;ft&lt;/units&gt;
+    &lt;positiveDirection&gt;downward&lt;/positiveDirection&gt;
+    &lt;anchorDefinition&gt;Measurement in feet from the first coordinate of the centerline LinearExtent, which represents "top of hole" (or rig datum such as kelly bushing) with positive downward along the borehole path&lt;/anchorDefinition&gt;
+    &lt;requiresCalibration&gt;false&lt;/requiresCalibration&gt;
+&lt;/LRMethod&gt;</code></pre>
+    
+    <h3>The LRMethod Dictionary: A Time-Saver</h3>
+    
+    <p>Rather than defining LRMethods in every data file, DIGGS 3.0 provides a <strong>standard dictionary</strong> of common methods at:</p>
+    
+    <p><strong><a href="https://diggsml.org/def/crs/DIGGS/0.1/lrm.xml">https://diggsml.org/def/crs/DIGGS/0.1/lrm.xml</a></strong></p>
+    
+    <p>This dictionary includes 16 pre-defined methods covering:</p>
+    
+    <ul>
+        <li>Borehole measured depth (absolute and relative, feet and meters)</li>
+        <li>Trackline/transect distances</li>
+        <li>Core sample positioning (top-down, bottom-up, interpolative)</li>
+        <li>CPT soundings, pipelines, tunnels, and elevation-based systems</li>
+    </ul>
+    
+    <p>Users can reference these by URL in their LinearSRS definitions, eliminating the need to encode the same LRMethod objects repeatedly. This promotes consistency and reduces file size.</p>
+    
+    <h2>Creating a Linear SRS</h2>
+    
+    <p>A <strong>LinearSRS</strong> combines a LinearExtent with an LRMethod to create a complete coordinate reference system. This is the key object that gets referenced throughout your DIGGS data using <code>srsName</code> attributes.</p>
+    
+    <h3>Example 1: Absolute Measured Depth</h3>
+    
+    <p>Here's how to define a linear reference system for measuring absolute depth from top of hole:</p>
+    
+    <pre><code>&lt;linearReferencing&gt;
+    &lt;LinearSRS gml:id="lsr-B-001-0-20"&gt;
+        &lt;gml:identifier codeSpace="OGC"&gt;lsr-B-001-0-20&lt;/gml:identifier&gt;
+        &lt;gml:name&gt;Depth reference system for B-001-0-20&lt;/gml:name&gt;
+        
+        &lt;!-- Reference to the borehole's centerline geometry --&gt;
+        &lt;linearElement xlink:href="#cl-B-001-0-20"/&gt;
+        
+        &lt;!-- Reference the LRMethod from the standard dictionary --&gt;
+        &lt;lrm xlink:href="https://diggsml.org/def/crs/DIGGS/0.1/lrm.xml#md_ft"/&gt;
+    &lt;/LinearSRS&gt;
+&lt;/linearReferencing&gt;</code></pre>
+    
+    <p>Now, anywhere in your DIGGS file, you can reference this coordinate system:</p>
+    
+    <pre><code>&lt;!-- Backfill from 0 to 41 feet depth --&gt;
+&lt;LinearExtent srsDimension="1" srsName="#lsr-B-001-0-20"&gt;
+    &lt;gml:posList&gt;0.00 41.00&lt;/gml:posList&gt;
+&lt;/LinearExtent&gt;
+
+&lt;!-- Water level at 6 feet depth --&gt;
+&lt;PointLocation srsDimension="1" srsName="#lsr-B-001-0-20"&gt;
+    &lt;gml:pos&gt;6.00&lt;/gml:pos&gt;
+&lt;/PointLocation&gt;</code></pre>
+    
+    <div class="figure">
+        <img src="figure3_absolute_referencing.svg" alt="Figure 3: Absolute Linear Referencing">
+        <div class="figure-caption">Figure 3: Absolute linear referencing measures all positions from a fixed origin (top of hole)</div>
+    </div>
+    
+    <h3>Example 2: Relative Referencing with Referents</h3>
+    
+    <p>Sometimes you need to measure from a point other than the origin. For example, after installing casing, you might want to reference water levels from the top of casing rather than from the original ground surface. This is where <strong>referents</strong> come in.</p>
+    
+    <p>A <strong>referent</strong> is a reference point along the linear feature. Common referents include ground surface, top of casing, seafloor, kelly bushing, or any other significant datum point. When using a <em>relative</em> LRMethod, you specify which referent serves as the origin (zero point) for measurements.</p>
+    
+    <pre><code>&lt;linearReferencing&gt;
+    &lt;LinearSRS gml:id="lsr-B-001-0-20_casingTop"&gt;
+        &lt;gml:name&gt;Depth from top of casing in B-001-0-20&lt;/gml:name&gt;
+        &lt;linearElement xlink:href="#cl-B-001-0-20"/&gt;
+        
+        &lt;lrm xlink:href="https://diggsml.org/def/crs/DIGGS/0.1/lrm.xml#relative_md_ft"/&gt;
+       
+        &lt;!-- Specify the referent (origin) for this system --&gt;
+        &lt;referent&gt;
+            &lt;Referent&gt;
+                &lt;referentType&gt;topOfCasing&lt;/referentType&gt;
+                &lt;position&gt;
+                    &lt;PointLocation srsDimension="3" srsName="...Spatial CRS URL..."&gt;
+                        &lt;gml:pos&gt;39.474660 -81.796858 816.6&lt;/gml:pos&gt;
+                    &lt;/PointLocation&gt;
+                &lt;/position&gt;
+                &lt;!-- Location along the borehole (2 ft from top) --&gt;
+                &lt;distanceAlong uom="ft"&gt;2&lt;/distanceAlong&gt;
+            &lt;/Referent&gt;
+        &lt;/referent&gt;
+    &lt;/LinearSRS&gt;
+&lt;/linearReferencing&gt;</code></pre>
+    
+    <p>Now you can measure a water level relative to the top of casing:</p>
+    
+    <pre><code>&lt;!-- Water level 7 feet below top of casing --&gt;
+&lt;PointLocation srsDimension="1" srsName="#lsr-B-001-0-20_casingTop"&gt;
+    &lt;gml:pos&gt;7.00&lt;/gml:pos&gt;
+&lt;/PointLocation&gt;</code></pre>
+    
+    <div class="figure">
+        <img src="figure4_relative_referencing.svg" alt="Figure 4: Relative Linear Referencing">
+        <div class="figure-caption">Figure 4: Relative linear referencing uses a referent (top of casing) as the origin. The same physical location has different coordinate values in each system.</div>
+    </div>
+    
+    <h3>Real-World Application: Multiple Reference Systems</h3>
+    
+    <p>In the provided example, Borehole B-001-0-20 has <strong>two LinearSRS definitions</strong>:</p>
+    
+    <ol>
+        <li><strong>lsr-B-001-0-20</strong>: Absolute measured depth from top of hole (used for drilling operations, backfill intervals, construction methods)</li>
+        <li><strong>lsr-B-001-0-20_casingTop</strong>: Relative depth from top of casing (used for post-installation water level monitoring)</li>
+    </ol>
+    
+    <p>The initial water strike at 9 feet depth (during drilling) references the absolute system. A follow-up reading one day later, after casing installation, references the relative system at 7 feet below top of casing. Both describe the same physical water level, but use different coordinate systems appropriate to when and how the measurement was made.</p>
+    
+    <div class="important-block">
+        <p>Having multiple LinearSRS definitions for a single borehole is perfectly valid and often necessary. Each represents a different way of measuring position along the same physical feature, appropriate for different phases of work or different measurement conventions.</p>
+    </div>
+    
+    <h2>Advanced Features for DIGGS 3.0 Linear Referencing</h2>
+    
+    <h3>Anchor Points for Core Stretch/Compression</h3>
+    
+    <p>When core samples are recovered, the physical core length may differ from the cored interval due to expansion (common in clay-rich soils) or compression (from sampling disturbance or desiccation). <strong>Anchor points</strong> provide calibration points to adjust positions between the physical core and the borehole depth system.</p>
+    
+    <p>For example, if you core from 10-15 feet (5 feet drilled interval) but recover 5.5 feet of core (10% expansion), you can use an <em>interpolative</em> LRMethod with anchor points at the top and bottom of the core. This scales positions proportionally so that observations on the physical core can be accurately tied back to depth in the borehole. Anchor points are defined in the LinearExtent object defined for the core sample.</p>
+    
+    <h3>2D Linear Referencing with Lateral Offsets</h3>
+    
+    <p>For features like transects, trial pits, or geophysical tracklines, you may need to record positions that are offset from the centerline. DIGGS 3.0 supports <strong>2D linear referencing</strong> where coordinates include both distance along and lateral offset.</p>
+    
+    <p>An LRMethod that includes the <code>OffsetParameters</code> object becomes a 2D method. Positions are then encoded as <code>&lt;gml:pos&gt;distance offset&lt;/gml:pos&gt;</code>, where the first value is distance along the centerline LinearExtent and the second is the offset (by default positive to the right, negative to the left when facing the positive centerline direction). The <code>offsetType</code> property of the <code>OffsetParameters</code> object defines how the offset is measured from the centerline (perpendicular, constantBearing, or radial).</p>
+    
+    <h2>Migration from DIGGS 2.6</h2>
+    
+    <p>If you're currently using DIGGS 2.6 with the GML 3.3/lr-based linear referencing, here's what you need to know about migrating your instances to DIGGS 3.0:</p>
+    
+    <h3>Key Changes</h3>
+    
+    <ul>
+        <li><strong>Element names</strong>: <code>LinearSpatialReferenceSystem</code> becomes <code>LinearSRS</code> (legacy name using the GML 3.3 encoding will still validate under 3.0, but is deprecated)</li>
+        <li><strong>Namespace</strong>: Linear referencing elements that used the GML glr: namespace are now in the DIGGS namespace (<code>diggs:</code>).</li>
+    </ul>
+    
+    <p>The conceptual model remains the same—you're still defining coordinate systems for linear features—but the encoding is cleaner and better aligned with current standards.</p>
+    
+    <h2>Benefits of the New Approach</h2>
+    
+    <p><strong>Standards Compliance</strong>: Full alignment with ISO 19148:2021, ensuring interoperability with other geospatial systems and future-proofing your data.</p>
+    
+    <p><strong>Clarity &amp; Simplicity</strong>: The schema directly reflects geotechnical workflows with clearly defined enumerated values for defining linear reference system properties.</p>
+    
+    <p><strong>Enhanced Features</strong>: Support referents, stretched/compressed core samples, and lateral offset positions.</p>
+    
+    <p><strong>Reusability</strong>: Standard LRMethod dictionary eliminates redundant encoding. Reference common methods by URL instead of duplicating definitions.</p>
+    
+    <h2>Getting Started</h2>
+    
+    <p>Ready to implement DIGGS 3.0 linear referencing in your projects? Here are your next steps:</p>
+    
+    <ol>
+        <li><strong>Review the Schema</strong>: Until 3.0 is officially released, the linear referencing schema is available on GitHub at <a href="https://github.com/DIGGSml/schema-dev/tree/3.0">https://github.com/DIGGSml/schema-dev/tree/3.0</a>.</li>
+        <li><strong>Explore the Dictionary</strong>: Browse the standard <a href="https://diggsml.org/def/crs/DIGGS/0.1/lrm.xml">LRMethod dictionary</a></li>
+        <li><strong>Review Examples</strong>: Review <a href="https://github.com/DIGGSml/schema-dev/blob/3.0/Instances/DocExample3.0.xml">this example instance</a> in the DIGGS repository to see linear referencing in action</li>
+        <li><strong>Join the DIGGS Effort</strong>
+            <ul>
+                <li><strong>Github</strong>: Contribute to our repositories at <a href="https://github.com/DIGGSml">https://github.com/DIGGSml</a></li>
+                <li><strong>Monthly Meetings</strong>: Join our monthly online discussions where we tackle issues like this one. Contact <a href="mailto:acadden@schnabel-eng.com">Allen Cadden</a> or <a href="mailto:rcutts@schnabel-eng.com">Ross Cutts</a> to receive meeting invites.</li>
+                <li><strong>Feedback</strong>: Share your experiences implementing these changes</li>
+            </ul>
+        </li>
+    </ol>
+    
+    <h2>Conclusion</h2>
+    
+    <p>Linear referencing is fundamental to how we work with geotechnical data. The DIGGS 3.0 approach provides a robust, standards-compliant framework that directly serves the needs of our community and will grow with it. By adopting ISO 19148:2021 principles and focusing on geotechnical workflows, we've created a system that's both powerful and intuitive.</p>
+    
+    <p>Whether you're encoding borehole logs, CPT soundings, geophysical surveys, or any other linear sampling feature, DIGGS 3.0 gives you the tools to precisely, consistently, and interoperably describe where your data comes from. And with the standard LRMethod dictionary, implementing linear referencing in your DIGGS files is easier than ever.</p>
+    
+    <p>We encourage you to explore the new linear referencing schema, experiment with examples, and share your feedback. Together, we're building the future of geotechnical data exchange.</p>
+    
+    <hr>
+    
+    <div style="text-align: center; color: #666; font-size: 0.9em; margin-top: 40px;">
+        <p><em>Published by ASCE Geo-Institute | DIGGS Technical Committee</em></p>
+    </div>
+    
+</body>
+</html>
