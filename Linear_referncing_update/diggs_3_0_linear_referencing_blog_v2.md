@@ -1,8 +1,6 @@
 # Linear Referencing in DIGGS 3.0:  Improvements for Positioning Data Along Boreholes and Other Linear Features
 
-*Daniel Ponti | DIGGS Technical Committee*
-
----
+Daniel Ponti | DIGGS Technical Committee
 
 ## Introduction: Linear Referencing and DIGGS
 
@@ -96,12 +94,11 @@ For the above example, the LinearReferencingMethod object for measured depth dow
 </LinearReferencingMethod>
 ```
 
-
 ### The LinearReferencingMethod Dictionary: A Time-Saver
 
 Rather than defining linear referencing methods in every data file, DIGGS 3.0 provides a **standard dictionary** of common methods at:
 
-**https://diggsml.org/def/crs/DIGGS/0.1/lrm.xml**
+[**https://diggsml.org/def/crs/DIGGS/0.1/lrm.xml**](https://diggsml.org/def/crs/DIGGS/0.1/lrm.xml)
 
 This dictionary includes 16 pre-defined methods covering:
 
@@ -241,9 +238,10 @@ If you're currently using DIGGS 2.6 with the GML 3.3/lr-based linear referencing
 - `diggs:LinearReferencingMethod`: a new object that replaces `glr:LinearReferencingMethod`. It includes geotechnical-specific enumerations for the `name` property and adds properties to support lateral offsets.
 - `diggs:LinearSpatialReferenceSystem`: now includes a choice compositor to allow for either the legacy `glr:lrm` property (from GML 3.3/lr that references or holds the `glr:LinearReferencingMethod` object) or a new `diggs:lrm` property (that holds or references the new `diggs:LinearReferencingMethod` object). It also adds `referent` properties to support relative linear referencing methods.
 
-Linear referencing encodings from DIGGS v. 2.6 will validate under 3.0, but the GML 3.3/lr namespace elements `glr:lrm` and `glr:LinearReferencingMethod` are deprecated in v. 3.0. The new `diggs:` namespace elements `diggs:lrm` and `diggs:LinearReferencingMethod` should be used instead. In addition, the Linear Reference Method `name` property value of "`chainage`" has been deprecated and should be replaced with "`trueFootage`" or "`trueMeters`" depending on the `units` value. 
+Linear referencing encodings from DIGGS v. 2.6 will validate under 3.0, but the GML 3.3/lr namespace elements `glr:lrm` and `glr:LinearReferencingMethod` are deprecated in v. 3.0. The new `diggs:` namespace elements `diggs:lrm` and `diggs:LinearReferencingMethod` should be used instead. In addition, the Linear Reference Method `name` property value of "`chainage`" has been deprecated and should be replaced with "`trueFootage`" or "`trueMeters`" depending on the `units` value.
 
 To convert existing 2.6 linear referencing code to 3.0, you only need to replace the `<glr:lrm>` element with the new DIGGS namespace `<lrm>` element. For cases where your borehole positions are absolute measured depths (from top of hole) in feet (or neters), you can take advantage of the standard linear referencing dictionary, which will reduce the encoding to a single line:
+
 ```xml
  <lrm xlink:href="https://diggsml.org/def/crs/DIGGS/0.1/lrm.xml#md_ft"/> (#md_m) if depths are in meters
  ```
@@ -264,12 +262,12 @@ Processing applications should be updated to take advantage of the new features/
 
 Ready to implement DIGGS 3.0 linear referencing in your projects? Here are your next steps:
 
-1. **Review the Schema**: Until 3.0 is officially released, the linear referencing schema is available on GitHub at https://github.com/DIGGSml/schema-dev/tree/3.0.
+1. **Review the Schema**: Until 3.0 is officially released, the linear referencing schema is available on GitHub at [https://github.com/DIGGSml/schema-dev/tree/3.0](https://github.com/DIGGSml/schema-dev/tree/3.0).
 2. **Explore the Dictionary**: Browse the standard [LinearReferencingMethod dictionary](https://diggsml.org/def/crs/DIGGS/0.1/lrm.xml)
 3. **Review Examples**: Review [this example instance](https://github.com/DIGGSml/schema-dev/blob/3.0/Instances/DocExample3.0.xml) in the DIGGS repository to see linear referencing in action
 4. **Join the DIGGS Effort**
-    - **Github**: Contribute to our repositories at https://github.com/DIGGSml
-    - **Monthly Meetings**: Join our monthly online discussions where we tackle issues like this one. Contact Allen Cadden (acadden@schnabel-eng.com) or Ross Cutts (rcutts@schnabel-eng.com) to receive meeting invites.
+    - **Github**: Contribute to our repositories at [https://github.com/DIGGSml](https://github.com/DIGGSml)
+    - **Monthly Meetings**: Join our monthly online discussions where we tackle issues like this one. Contact [Allen Cadden](acadden@schnabel-eng.com) or [Ross Cutts](rcutts@schnabel-eng.com) to receive meeting invites.
     - **Feedback**: Share your experiences implementing these changes
 
 ## Conclusion
