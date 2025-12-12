@@ -451,7 +451,7 @@
     
     <p>Linear referencing encodings from DIGGS v. 2.6 will validate under 3.0, but the GML 3.3/lr namespace elements <code>glr:lrm</code> and <code>glr:LinearReferencingMethod</code> are deprecated in v. 3.0. The new <code>diggs:</code> namespace elements <code>diggs:lrm</code> and <code>diggs:LinearReferencingMethod</code> should be used instead. In addition, the Linear Reference Method <code>name</code> property value of "<code>chainage</code>" has been deprecated and should be replaced with "<code>trueFootage</code>" or "<code>trueMeters</code>" depending on the <code>units</code> value.</p>
     
-    <p>To convert existing 2.6 linear referencing code to 3.0, you only need to replace the <code>&lt;glr:lrm&gt;</code> element with the new DIGGS namespace <code>&lt;lrm&gt;</code> element. For cases where your borehole positions are absolute measured depths (from top of hole) in feet (or neters), you can take advantage of the standard linear referencing dictionary, which will reduce the encoding to a single line:</p>
+    <p>To convert existing 2.6 linear referencing code to 3.0, you only need to replace the <code>&lt;glr:lrm&gt;</code> element with the new DIGGS namespace <code>&lt;lrm&gt;</code> element. For cases where your borehole positions are absolute measured depths (from top of hole) in feet (or meters), you can take advantage of the standard linear referencing dictionary, which will reduce the encoding to a single line:</p>
     
     <pre><code>&lt;lrm xlink:href="https://diggsml.org/def/crs/DIGGS/0.1/lrm.xml#md_ft"/&gt; (#md_m) if depths are in meters</code></pre>
     
