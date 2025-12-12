@@ -3,137 +3,163 @@
   <!-- Generator: Adobe Illustrator 29.2.1, SVG Export Plug-In . SVG Version: 2.1.0 Build 116)  -->
   <defs>
     <style>
-      .st0, .st1, .st2, .st3, .st4 {
-        fill: none;
-      }
-
-      .st5 {
+      .st0 {
         fill: #f59e0b;
       }
 
-      .st5, .st6, .st7, .st8, .st2, .st9, .st10, .st4 {
+      .st0, .st1, .st2, .st3, .st4, .st5, .st6, .st7 {
         stroke-width: 2px;
       }
 
-      .st5, .st6, .st7, .st10 {
+      .st0, .st1, .st2, .st6 {
         stroke: #fff;
       }
 
-      .st11 {
+      .st8 {
         fill: #1e3a8a;
         font-size: 16px;
       }
 
-      .st11, .st12, .st13, .st14 {
-        font-weight: 700;
-      }
-
-      .st11, .st9 {
+      .st8, .st9, .st10, .st11, .st5, .st12 {
         isolation: isolate;
       }
 
-      .st11, .st13, .st14 {
+      .st8, .st11, .st12 {
+        font-weight: 700;
+      }
+
+      .st8, .st12 {
         font-family: Arial-BoldMT, Arial;
       }
 
-      .st6 {
+      .st1 {
         fill: #8b5cf6;
       }
 
-      .st7 {
+      .st2 {
         fill: #10b981;
       }
 
-      .st15 {
+      .st13 {
         font-size: 10px;
       }
 
-      .st15, .st12, .st16 {
+      .st13, .st11, .st14 {
         font-style: italic;
       }
 
-      .st15, .st16 {
+      .st13, .st14 {
         font-family: Arial-ItalicMT, Arial;
       }
 
-      .st12 {
-        font-family: Arial-BoldItalicMT, Arial;
-      }
-
-      .st12, .st17, .st18, .st13 {
-        font-size: 12px;
-      }
-
-      .st1 {
+      .st15 {
         stroke: #78716c;
         stroke-width: 3px;
       }
 
-      .st17, .st19 {
+      .st15, .st4, .st16, .st7 {
+        fill: none;
+      }
+
+      .st10, .st11, .st17, .st12 {
+        font-size: 12px;
+      }
+
+      .st10, .st18 {
         font-family: ArialMT, Arial;
       }
 
-      .st8 {
+      .st3 {
         fill: #faf064;
         stroke: #231f20;
       }
 
-      .st8, .st3, .st4 {
+      .st3, .st16, .st7 {
         stroke-miterlimit: 10;
       }
 
-      .st2 {
+      .st11 {
+        font-family: Arial-BoldItalicMT, Arial;
+      }
+
+      .st4 {
         stroke: #ef4444;
         stroke-dasharray: 4;
       }
 
-      .st9 {
+      .st5 {
         fill: #60a5fa;
         opacity: .7;
         stroke: #1e40af;
       }
 
-      .st3, .st4 {
+      .st16, .st7 {
         stroke: #000;
       }
 
-      .st10 {
+      .st6 {
         fill: #ef4444;
       }
 
-      .st20 {
+      .st19 {
         fill: #8d9092;
       }
     </style>
   </defs>
-  <polygon class="st8" points="618.3 113.8 326.3 113.8 329.2 221.2 621.2 221.2 618.3 113.8"/>
-  <text class="st11" transform="translate(83.3 25)"><tspan x="0" y="0">Absolute Linear Referencing: Measured Depth from Top of Hole</tspan></text>
-  <line class="st1" x1="50" y1="100" x2="550" y2="100"/>
-  <rect class="st9" x="285" y="99" width="30" height="300"/>
-  <path class="st2" d="M285,100"/>
-  <path class="st2" d="M200,100"/>
-  <circle class="st10" cx="300" cy="100" r="6"/>
-  <circle class="st5" cx="300" cy="400" r="6"/>
-  <path class="st0" d=""/>
-  <text class="st18" transform="translate(294 417.2)"><tspan class="st14" x="0" y="0">41.0 </tspan><tspan class="st19" x="26.7" y="0">(linear referenced coordinate at bottom of hole)</tspan></text>
-  <text class="st18" transform="translate(292 90.4)"><tspan class="st14" x="0" y="0">0.0 </tspan><tspan class="st19" x="20" y="0">(linear referenced coordinate at top of hole)</tspan></text>
-  <text class="st18" transform="translate(207.8 153.3)"><tspan class="st14"><tspan x="0" y="0">9.0 </tspan></tspan><tspan class="st19"><tspan x="-22.3" y="14.4">(water level </tspan></tspan><tspan class="st19"><tspan x="-12.7" y="28.8">location)</tspan></tspan></text>
-  <rect class="st20" x="285" y="194" width="30" height="37"/>
-  <line class="st4" x1="300" y1="106" x2="300" y2="394"/>
-  <circle class="st6" cx="300" cy="230" r="5"/>
-  <text class="st13" transform="translate(257 235)"><tspan x="0" y="0">18.0</tspan></text>
-  <text class="st17" transform="translate(208.5 216.7)"><tspan x="0" y="0">stiff clay layer</tspan></text>
-  <circle class="st7" cx="300" cy="170" r="5"/>
-  <circle class="st6" cx="300" cy="195" r="5"/>
-  <text class="st13" transform="translate(257 197.7)"><tspan x="0" y="0">12.0</tspan></text>
-  <g>
-    <line class="st3" x1="232" y1="148.7" x2="292.2" y2="167.7"/>
-    <path d="M290.5,167.2l-1-4.1h.1s4.9,4,4.9,4c1.8,1,3.6,2.1,5.4,3.1-2.1-.2-4.2-.4-6.3-.6l-6.3.5h0c0,0,3.2-2.9,3.2-2.9Z"/>
+  <polygon class="st3" points="618.3 113.8 326.3 113.8 329.2 235.2 621.2 235.2 618.3 113.8"/>
+  <g class="st9">
+    <text class="st8" transform="translate(83.3 25)"><tspan x="0" y="0">Absolute Linear Referencing: Measured Depth from Top of Hole</tspan></text>
   </g>
-  <text class="st13" transform="translate(343.3 234.4)"><tspan x="0" y="0">Positive</tspan><tspan x="-3" y="14.4">Direction</tspan><tspan x="-7.3" y="28.8">Downward</tspan></text>
-  <g>
-    <line class="st3" x1="361.6" y1="271.5" x2="361.6" y2="314.3"/>
-    <path d="M361.6,312.5l3.6-2.2h0c0,.1-2.3,6-2.3,6-.5,2-.9,4.1-1.4,6.1-.5-2-.9-4.1-1.4-6.1l-2.3-5.9h0c0-.1,3.6,2.1,3.6,2.1Z"/>
+  <line class="st15" x1="50" y1="100" x2="550" y2="100"/>
+  <rect class="st5" x="285" y="99" width="30" height="300"/>
+  <path class="st4" d="M285,100"/>
+  <path class="st4" d="M200,100"/>
+  <circle class="st6" cx="300" cy="100" r="6"/>
+  <circle class="st0" cx="300" cy="400" r="6"/>
+  <path class="st0" d="M0,0"/>
+  <g class="st9">
+    <text class="st12" transform="translate(294 417.2)"><tspan x="0" y="0">41.0 </tspan></text>
+    <text class="st10" transform="translate(320.7 417.2)"><tspan x="0" y="0">(linear referenced coordinate at bottom of hole)</tspan></text>
   </g>
-  <text transform="translate(395.3 129.9)"><tspan class="st13"><tspan x="0" y="0">Linear Referencing Method</tspan></tspan><tspan class="st12"><tspan x="47.7" y="14.4">Properties</tspan></tspan><tspan class="st18"><tspan class="st16" x="40" y="28.8">type</tspan><tspan class="st19" x="62.7" y="28.8">: absolute</tspan></tspan><tspan class="st18"><tspan class="st16" x="58" y="43.2">units</tspan><tspan class="st19" x="83.3" y="43.2">: ft</tspan></tspan><tspan class="st18"><tspan class="st16" x="2.6" y="57.6">positiveDirection</tspan><tspan class="st19" x="90.7" y="57.6">: downward</tspan></tspan><tspan class="st15"><tspan x="13.2" y="69.6">(all positions measured from </tspan></tspan><tspan class="st15"><tspan x="13.8" y="81.6">first coordinate = top of hole)</tspan></tspan></text>
+  <g class="st9">
+    <text class="st12" transform="translate(292 90.4)"><tspan x="0" y="0">0.0 </tspan></text>
+    <text class="st10" transform="translate(312 90.4)"><tspan x="0" y="0">(linear referenced coordinate at top of hole)</tspan></text>
+  </g>
+  <g class="st9">
+    <text class="st12" transform="translate(207.8 153.3)"><tspan x="0" y="0">9.0 </tspan></text>
+    <text class="st10" transform="translate(185.5 167.7)"><tspan x="0" y="0">(water level </tspan></text>
+    <text class="st10" transform="translate(195.1 182.1)"><tspan x="0" y="0">location)</tspan></text>
+  </g>
+  <rect class="st19" x="285" y="194" width="30" height="37"/>
+  <line class="st7" x1="300" y1="106" x2="300" y2="394"/>
+  <circle class="st1" cx="300" cy="230" r="5"/>
+  <g class="st9">
+    <text class="st12" transform="translate(257 235)"><tspan x="0" y="0">18.0</tspan></text>
+  </g>
+  <g class="st9">
+    <text class="st10" transform="translate(208.5 216.7)"><tspan x="0" y="0">stiff clay layer</tspan></text>
+  </g>
+  <circle class="st2" cx="300" cy="170" r="5"/>
+  <circle class="st1" cx="300" cy="195" r="5"/>
+  <g class="st9">
+    <text class="st12" transform="translate(257 197.7)"><tspan x="0" y="0">12.0</tspan></text>
+  </g>
+  <g>
+    <line class="st16" x1="232" y1="148.7" x2="292.2" y2="167.7"/>
+    <path d="M290.5,167.2l-1-4.1h.1l4.9,4c1.8,1,3.6,2.1,5.4,3.1-2.1-.2-4.2-.4-6.3-.6l-6.3.5h0l3.2-2.9h0Z"/>
+  </g>
+  <g class="st9">
+    <text class="st12" transform="translate(343.3 272.4)"><tspan x="0" y="0">Positive</tspan></text>
+    <text class="st12" transform="translate(340.3 286.8)"><tspan x="0" y="0">Direction</tspan></text>
+    <text class="st12" transform="translate(336 301.2)"><tspan x="0" y="0">Downward</tspan></text>
+  </g>
+  <g>
+    <line class="st16" x1="361.6" y1="309.5" x2="361.6" y2="352.3"/>
+    <path d="M361.6,350.5l3.6-2.2h0c0,.1-2.3,6-2.3,6-.5,2-.9,4.1-1.4,6.1-.5-2-.9-4.1-1.4-6.1l-2.3-5.9h0c0-.1,3.6,2.1,3.6,2.1h.2Z"/>
+  </g>
+  <g class="st9">
+    <text class="st12" transform="translate(390.3 129.9)"><tspan x="0" y="0">Linear Referencing Method</tspan></text>
+    <text class="st11" transform="translate(438 144.3)"><tspan x="0" y="0">Properties</tspan></text>
+    <text transform="translate(409.3 158.2)"><tspan class="st17"><tspan class="st14" x="0" y="0">name</tspan><tspan class="st18" x="30" y="0">: trueFootage</tspan></tspan><tspan class="st17"><tspan class="st14" x="13.3" y="14.4">type</tspan><tspan class="st18" x="36" y="14.4">: absolute</tspan></tspan><tspan class="st17"><tspan class="st14" x="31.4" y="28.8">units</tspan><tspan class="st18" x="56.7" y="28.8">: ft</tspan></tspan><tspan class="st17"><tspan class="st14" x="-24" y="43.2">positiveDirection</tspan><tspan class="st18" x="64" y="43.2">: downward</tspan></tspan><tspan class="st13"><tspan x="-12.1" y="55.2">(all positions measured from</tspan></tspan><tspan class="st13"><tspan x="-12.8" y="67.2">first coordinate = top of hole)</tspan></tspan></text>
+  </g>
 </svg>
