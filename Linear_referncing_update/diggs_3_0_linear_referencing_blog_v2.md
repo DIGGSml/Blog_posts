@@ -240,7 +240,7 @@ If you're currently using DIGGS 2.6 with the GML 3.3/lr-based linear referencing
 
 Linear referencing encodings from DIGGS v. 2.6 will validate under 3.0, but the GML 3.3/lr namespace elements `glr:lrm` and `glr:LinearReferencingMethod` are deprecated in v. 3.0. The new `diggs:` namespace elements `diggs:lrm` and `diggs:LinearReferencingMethod` should be used instead. In addition, the Linear Reference Method `name` property value of "`chainage`" has been deprecated and should be replaced with "`trueFootage`" or "`trueMeters`" depending on the `units` value.
 
-To convert existing 2.6 linear referencing code to 3.0, you only need to replace the `<glr:lrm>` element with the new DIGGS namespace `<lrm>` element. For cases where your borehole positions are absolute measured depths (from top of hole) in feet (or neters), you can take advantage of the standard linear referencing dictionary, which will reduce the encoding to a single line:
+To convert existing 2.6 linear referencing code to 3.0, you only need to replace the `<glr:lrm>` element with the new DIGGS namespace `<lrm>` element. For cases where your borehole positions are absolute measured depths (from top of hole) in feet (or meters), you can take advantage of the standard linear referencing dictionary, which will reduce the encoding to a single line:
 
 ```xml
  <lrm xlink:href="https://diggsml.org/def/crs/DIGGS/0.1/lrm.xml#md_ft"/> (#md_m) if depths are in meters
