@@ -1,9 +1,9 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Linear Referencing in DIGGS 3.0: New Improvements for Positioning Data Along Boreholes and Other Linear Features</title>
+    <title>Linear Referencing in DIGGS 3.0: Improvements for Positioning Data Along Boreholes and Other Linear Features</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -116,7 +116,6 @@
         }
         .byline {
             color: #666;
-            font-style: italic;
             margin-bottom: 30px;
             padding: 10px 0;
             border-bottom: 1px solid #ddd;
@@ -184,7 +183,7 @@
     </style>
 </head>
 <body>
-    <h1>Linear Referencing in DIGGS 3.0: New Improvements for Positioning Data Along Boreholes and Other Linear Features</h1>
+    <h1>Linear Referencing in DIGGS 3.0: Improvements for Positioning Data Along Boreholes and Other Linear Features</h1>
     
     <div class="byline">
         Daniel Ponti | DIGGS Technical Committee
@@ -228,7 +227,7 @@
     <ol>
         <li><strong>Linear Element (diggs:LinearExtent object, extended in 3.0)</strong>: The geometric feature along which measurements are made—the physical path of the borehole, trackline, or transect—with new properties that define anchor points for controlling interpolation.</li>
         <li><strong>Linear Referencing Method (diggs:LinearReferencingMethod object, new in 3.0)</strong>: The procedure or algorithm for determining positions—how measurements are calculated and what units are used.</li>
-        <li><strong>Linear Spatial Reference System (diggs:LinearSpatialReferenceSystem, extended in 3.0)</strong>: The complete coordinate system created by combining a Linear Element with                                                                  a Linear Referencing Method. Extended to provide for referents and the new diggs:LinearReferencingMethod.</li>
+        <li><strong>Linear Spatial Reference System (diggs:LinearSpatialReferenceSystem, extended in 3.0)</strong>: The complete coordinate system created by combining a Linear Element with a Linear Referencing Method. Extended to provide for referents and the new diggs:LinearReferencingMethod.</li>
     </ol>
     
     <div class="figure">
@@ -291,19 +290,12 @@
     
     <p>For the above example, the LinearReferencingMethod object for measured depth down the borehole in feet would be encoded as follows:</p>
     
-<<<<<<< HEAD:Linear_referncing_update/diggs_3_0_linear_referencing_blog_final.html
     <pre><code>&lt;LinearReferencingMethod gml:id="md_ft"&gt;
     &lt;gml:description&gt;
         Absolute measured depth from top of borehole or sounding in feet. Measurements are cumulative 3D distance along the borehole/sounding centerline from the first coordinate (typically top of hole or rig datum) proceeding downward through the hole. 
     &lt;/gml:description&gt;
     &lt;gml:identifier codeSpace="https://diggsml.org/def/authorities.xml#DIGGS"&gt;md_ft&lt;/gml:identifier&gt;
-    &lt;name&gt;trueFootage&lt;/name&gt;
-=======
-    <pre><code>&lt;LRMethod gml:id="md_ft"&gt;
-    &lt;gml:description&gt;Absolute measured depth from top of borehole or sounding in feet. Measurements are cumulative 3D distance along the borehole/sounding centerline from the first coordinate (typically top of hole or rig datum) proceeding downward through the hole. Suitable for vertical, slanted, and deviated boreholes and soundings.&lt;/gml:description&gt;
-    &lt;gml:identifier codeSpace="DIGGS"&gt;md_ft&lt;/gml:identifier&gt;
-    &lt;gml:name&gt;Absolute Measured Depth (ft)&lt;/gml:name&gt;
->>>>>>> 4fd54f11e73a1ac616603a605dea8fe4031ec90a:Linear_referncing_update/diggs_3.0_linear_referencing_blog_final.html
+    &lt;n&gt;trueFootage&lt;/n&gt;
     &lt;type&gt;absolute&lt;/type&gt;
     &lt;units&gt;ft&lt;/units&gt;
     &lt;positiveDirection&gt;downward&lt;/positiveDirection&gt;
@@ -311,24 +303,24 @@
     
     <h3>The LinearReferencingMethod Dictionary: A Time-Saver</h3>
     
-    <p>Rather than defining LinearReferencingMethods in every data file, DIGGS 3.0 provides a <strong>standard dictionary</strong> of common methods at:</p>
+    <p>Rather than defining linear referencing methods in every data file, DIGGS 3.0 provides a <strong>standard dictionary</strong> of common methods at:</p>
     
     <p><strong><a href="https://diggsml.org/def/crs/DIGGS/0.1/lrm.xml">https://diggsml.org/def/crs/DIGGS/0.1/lrm.xml</a></strong></p>
     
     <p>This dictionary includes 16 pre-defined methods covering:</p>
     
     <ul>
-        <li>Borehole measured depth (absolute and relative, feet and meters)</li>
+        <li>Borehole and sounding measured depth (absolute and relative, feet and meters)</li>
         <li>Trackline/transect distances (absolute and relative, feet and meters)</li>
         <li>Core sample positioning (top-down, bottom-up, interpolative)</li>
-        <li>Trial pit methods (absolute and relative, feet and meters) with lateral offset</li>
+        <li>Trial pit positioning with lateral offsets</li>
     </ul>
     
-    <p>Users can reference these by URL in their LinearSpatialReferenceSystem definitions, eliminating the need to encode the same LinearReferencingMethod objects repeatedly. This promotes consistency and reduces file size.</p>
+    <p>Users can reference these by URL in their <code>LinearSpatialReferenceSystem</code> definitions, eliminating the need to encode the same <code>LinearReferencingMethod</code> objects repeatedly. This promotes consistency and reduces file size.</p>
     
     <h2>Creating a Linear Spatial Reference System</h2>
     
-    <p>A <strong>LinearSpatialReferenceSystem</strong> combines a LinearExtent with a LinearReferencingMethod to create a complete coordinate reference system. This is the key object that gets referenced throughout your DIGGS data using <code>srsName</code> attributes.</p>
+    <p>A <strong>LinearSpatialReferenceSystem</strong> combines a <code>LinearExtent</code> with an <code>LinearReferencingMethod</code> to create a complete coordinate reference system. This is the key object that gets referenced throughout your DIGGS data using <code>srsName</code> attributes.</p>
     
     <h3>Example 1: Absolute Measured Depth</h3>
     
@@ -349,9 +341,9 @@
     
     <p>Now, anywhere in your DIGGS file, you can reference this coordinate system:</p>
     
-    <pre><code>&lt;!-- Backfill from 0 to 41 feet depth --&gt;
+    <pre><code>&lt;!-- Stiff, grey clay layer from 12 to 18 ft --&gt;
 &lt;LinearExtent srsDimension="1" srsName="#lsr-B-001-0-20"&gt;
-    &lt;gml:posList&gt;0.00 41.00&lt;/gml:posList&gt;
+    &lt;gml:posList&gt;12.00 18.00&lt;/gml:posList&gt;
 &lt;/LinearExtent&gt;
 
 &lt;!-- Water level at 9 feet depth --&gt;
@@ -368,21 +360,30 @@
     
     <p>Sometimes you need to measure from a point other than the origin. For example, after installing casing, you might want to reference water levels from the top of casing rather than from the original ground surface. This is where <strong>referents</strong> come in.</p>
     
-    <p>A <strong>referent</strong> is a reference point along the linear feature. Common referents include ground surface, top of casing, seafloor, kelly bushing, or any other significant datum point. When using a <em>relative</em> LinearReferencingMethod, you specify which referent serves as the origin (zero point) for measurements.</p>
+    <p>A <strong>referent</strong> is a reference point along the linear feature. Common referents include ground surface, top of casing, seafloor, kelly bushing, or any other significant datum point. When using a <em>relative</em> <code>LinearReferencingMethod</code>, you specify which referent serves as the origin (zero point) for measurements.</p>
     
     <pre><code>&lt;linearReferencing&gt;
     &lt;LinearSpatialReferenceSystem gml:id="lsr-B-001-0-20_casingTop"&gt;
         &lt;gml:identifier codeSpace="OGC"&gt;lsr-B-001-0-20_casingTop&lt;/gml:identifier&gt;
         &lt;gml:name&gt;Depth reference system from top of casing in B-001-0-20&lt;/gml:name&gt;
         &lt;glr:linearElement xlink:href="#cl-B-001-0-20"/&gt;
-        
-        &lt;!-- Reference a LinearReferencingMethod for relative measurement --&gt;
-        &lt;lrm xlink:href="https://diggsml.org/def/crs/DIGGS/0.1/lrm.xml#relative_md_ft"/&gt;
-       
-        &lt;!-- Specify the referent (origin) for this system --&gt;
-        &lt;referent&gt;
-            &lt;Referent gml:id="Referent_topOfCasing_B-001-0-20"&gt;
-                &lt;name&gt;TOC&lt;/name&gt;
+        &lt;lrm&gt;
+            &lt;LinearReferencingMethod gml:id="reference_md_ft"&gt;
+                &lt;gml:description&gt;
+                     Measured depth relative to a specified referent location within a borehole or sounding in feet. 
+                    The referent (e.g., ground surface, casing top, seafloor) must be defined in the LinearSRS. 
+                    Positive direction is downward from the referent.
+                &lt;/gml:description&gt;
+                &lt;gml:identifier codeSpace="https://diggsml.org/def/authorities.xml#DIGGS"&gt;reference_md_ft&lt;/gml:identifier&gt;
+                &lt;n&gt;referenceFootage&lt;/n&gt;
+                &lt;type&gt;relative&lt;/type&gt;
+                &lt;units&gt;ft&lt;/units&gt;
+                &lt;positiveDirection&gt;downward&lt;/positiveDirection&gt;
+            &lt;/LinearReferencingMethod&gt;
+         &lt;/lrm&gt;
+         &lt;referent&gt;
+            &lt;Referent gml:id="Referent_top_of_casing"&gt;
+                &lt;n&gt;TOC&lt;/n&gt;
                 &lt;referentType&gt;top of casing&lt;/referentType&gt;
                 &lt;position&gt;
                     &lt;PointLocation gml:id="topOfCasing" srsDimension="3" srsName="https://www.opengis.net/def/crs-compound?1=http://www.opengis.net/def/crs/EPSG/0/4326%262=http://www.opengis.net/def/crs/EPSG/0/5702"&gt;
@@ -450,9 +451,9 @@
     
     <p>Linear referencing encodings from DIGGS v. 2.6 will validate under 3.0, but the GML 3.3/lr namespace elements <code>glr:lrm</code> and <code>glr:LinearReferencingMethod</code> are deprecated in v. 3.0. The new <code>diggs:</code> namespace elements <code>diggs:lrm</code> and <code>diggs:LinearReferencingMethod</code> should be used instead. In addition, the Linear Reference Method <code>name</code> property value of "<code>chainage</code>" has been deprecated and should be replaced with "<code>trueFootage</code>" or "<code>trueMeters</code>" depending on the <code>units</code> value.</p>
     
-    <p>To convert existing 2.6 linear referencing code to 3.0, you only need to replace the <code>&lt;glr:lrm&gt;</code> element with the new DIGGS namespace <code>&lt;lrm&gt;</code> element. For cases where your borehole positions are absolute measured depths (from top of hole) in feet (or meters), you can take advantage of the standard linear referencing dictionary, which will reduce the encoding to a single line:</p>
+    <p>To convert existing 2.6 linear referencing code to 3.0, you only need to replace the <code>&lt;glr:lrm&gt;</code> element with the new DIGGS namespace <code>&lt;lrm&gt;</code> element. For cases where your borehole positions are absolute measured depths (from top of hole) in feet (or neters), you can take advantage of the standard linear referencing dictionary, which will reduce the encoding to a single line:</p>
     
-    <pre><code>&lt;lrm xlink:href="https://diggsml.org/def/crs/DIGGS/0.1/lrm.xml#md_ft"/&gt; (#md_m if depths are in meters)</code></pre>
+    <pre><code>&lt;lrm xlink:href="https://diggsml.org/def/crs/DIGGS/0.1/lrm.xml#md_ft"/&gt; (#md_m) if depths are in meters</code></pre>
     
     <p>Processing applications should be updated to take advantage of the new features/enumerations available in version 3.0. Xpath queries that use the local-name() function will correctly retrieve values from both <code>diggs:</code> and <code>glr:</code> namespace elements.</p>
     
@@ -477,7 +478,7 @@
         <li><strong>Join the DIGGS Effort</strong>
             <ul>
                 <li><strong>Github</strong>: Contribute to our repositories at <a href="https://github.com/DIGGSml">https://github.com/DIGGSml</a></li>
-                <li><strong>Monthly Meetings</strong>: Join our monthly online discussions where we tackle issues like this one. Contact <a href="mailto:acadden@schnabel-eng.com">Allen Cadden</a> or <a href="mailto:rcutts@schnabel-eng.com">Ross Cutts</a> to receive meeting invites.</li>
+                <li><strong>Monthly Meetings</strong>: Join our monthly online discussions where we tackle issues like this one. Contact Allen Cadden (acadden@schnabel-eng.com) or Ross Cutts (rcutts@schnabel-eng.com) to receive meeting invites.</li>
                 <li><strong>Feedback</strong>: Share your experiences implementing these changes</li>
             </ul>
         </li>
