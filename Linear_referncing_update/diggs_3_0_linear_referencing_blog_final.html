@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -291,12 +291,19 @@
     
     <p>For the above example, the LinearReferencingMethod object for measured depth down the borehole in feet would be encoded as follows:</p>
     
+<<<<<<< HEAD:Linear_referncing_update/diggs_3_0_linear_referencing_blog_final.html
     <pre><code>&lt;LinearReferencingMethod gml:id="md_ft"&gt;
     &lt;gml:description&gt;
         Absolute measured depth from top of borehole or sounding in feet. Measurements are cumulative 3D distance along the borehole/sounding centerline from the first coordinate (typically top of hole or rig datum) proceeding downward through the hole. 
     &lt;/gml:description&gt;
     &lt;gml:identifier codeSpace="https://diggsml.org/def/authorities.xml#DIGGS"&gt;md_ft&lt;/gml:identifier&gt;
     &lt;name&gt;trueFootage&lt;/name&gt;
+=======
+    <pre><code>&lt;LRMethod gml:id="md_ft"&gt;
+    &lt;gml:description&gt;Absolute measured depth from top of borehole or sounding in feet. Measurements are cumulative 3D distance along the borehole/sounding centerline from the first coordinate (typically top of hole or rig datum) proceeding downward through the hole. Suitable for vertical, slanted, and deviated boreholes and soundings.&lt;/gml:description&gt;
+    &lt;gml:identifier codeSpace="DIGGS"&gt;md_ft&lt;/gml:identifier&gt;
+    &lt;gml:name&gt;Absolute Measured Depth (ft)&lt;/gml:name&gt;
+>>>>>>> 4fd54f11e73a1ac616603a605dea8fe4031ec90a:Linear_referncing_update/diggs_3.0_linear_referencing_blog_final.html
     &lt;type&gt;absolute&lt;/type&gt;
     &lt;units&gt;ft&lt;/units&gt;
     &lt;positiveDirection&gt;downward&lt;/positiveDirection&gt;
@@ -312,9 +319,9 @@
     
     <ul>
         <li>Borehole measured depth (absolute and relative, feet and meters)</li>
-        <li>Trackline/transect distances</li>
+        <li>Trackline/transect distances (absolute and relative, feet and meters)</li>
         <li>Core sample positioning (top-down, bottom-up, interpolative)</li>
-        <li>CPT soundings, pipelines, tunnels, and elevation-based systems</li>
+        <li>Trial pit methods (absolute and relative, feet and meters) with lateral offset</li>
     </ul>
     
     <p>Users can reference these by URL in their LinearSpatialReferenceSystem definitions, eliminating the need to encode the same LinearReferencingMethod objects repeatedly. This promotes consistency and reduces file size.</p>
@@ -347,9 +354,9 @@
     &lt;gml:posList&gt;0.00 41.00&lt;/gml:posList&gt;
 &lt;/LinearExtent&gt;
 
-&lt;!-- Water level at 6 feet depth --&gt;
+&lt;!-- Water level at 9 feet depth --&gt;
 &lt;PointLocation srsDimension="1" srsName="#lsr-B-001-0-20"&gt;
-    &lt;gml:pos&gt;6.00&lt;/gml:pos&gt;
+    &lt;gml:pos&gt;9.00&lt;/gml:pos&gt;
 &lt;/PointLocation&gt;</code></pre>
     
     <div class="figure">
