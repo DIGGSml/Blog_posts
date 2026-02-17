@@ -295,7 +295,7 @@
         Absolute measured depth from top of borehole or sounding in feet. Measurements are cumulative 3D distance along the borehole/sounding centerline from the first coordinate (typically top of hole or rig datum) proceeding downward through the hole. 
     &lt;/gml:description&gt;
     &lt;gml:identifier codeSpace="https://diggsml.org/def/authorities.xml#DIGGS"&gt;md_ft&lt;/gml:identifier&gt;
-    &lt;n&gt;trueFootage&lt;/n&gt;
+    &lt;name&gt;trueFootage&lt;/name&gt;
     &lt;type&gt;absolute&lt;/type&gt;
     &lt;units&gt;ft&lt;/units&gt;
     &lt;positiveDirection&gt;downward&lt;/positiveDirection&gt;
@@ -375,7 +375,7 @@
                     Positive direction is downward from the referent.
                 &lt;/gml:description&gt;
                 &lt;gml:identifier codeSpace="https://diggsml.org/def/authorities.xml#DIGGS"&gt;reference_md_ft&lt;/gml:identifier&gt;
-                &lt;n&gt;referenceFootage&lt;/n&gt;
+                &lt;name&gt;referenceFootage&lt;/name&gt;
                 &lt;type&gt;relative&lt;/type&gt;
                 &lt;units&gt;ft&lt;/units&gt;
                 &lt;positiveDirection&gt;downward&lt;/positiveDirection&gt;
@@ -383,7 +383,7 @@
          &lt;/lrm&gt;
          &lt;referent&gt;
             &lt;Referent gml:id="Referent_top_of_casing"&gt;
-                &lt;n&gt;TOC&lt;/n&gt;
+                &lt;name&gt;TOC&lt;/name&gt;
                 &lt;referentType&gt;top of casing&lt;/referentType&gt;
                 &lt;position&gt;
                     &lt;PointLocation gml:id="topOfCasing" srsDimension="3" srsName="https://www.opengis.net/def/crs-compound?1=http://www.opengis.net/def/crs/EPSG/0/4326%262=http://www.opengis.net/def/crs/EPSG/0/5702"&gt;
@@ -451,7 +451,7 @@
     
     <p>Linear referencing encodings from DIGGS v. 2.6 will validate under 3.0, but the GML 3.3/lr namespace elements <code>glr:lrm</code> and <code>glr:LinearReferencingMethod</code> are deprecated in v. 3.0. The new <code>diggs:</code> namespace elements <code>diggs:lrm</code> and <code>diggs:LinearReferencingMethod</code> should be used instead. In addition, the Linear Reference Method <code>name</code> property value of "<code>chainage</code>" has been deprecated and should be replaced with "<code>trueFootage</code>" or "<code>trueMeters</code>" depending on the <code>units</code> value.</p>
     
-    <p>To convert existing 2.6 linear referencing code to 3.0, you only need to replace the <code>&lt;glr:lrm&gt;</code> element with the new DIGGS namespace <code>&lt;lrm&gt;</code> element. For cases where your borehole positions are absolute measured depths (from top of hole) in feet (or neters), you can take advantage of the standard linear referencing dictionary, which will reduce the encoding to a single line:</p>
+    <p>To convert existing 2.6 linear referencing code to 3.0, you only need to replace the <code>&lt;glr:lrm&gt;</code> element with the new DIGGS namespace <code>&lt;lrm&gt;</code> element. For cases where your borehole positions are absolute measured depths (from top of hole) in feet (or meters), you can take advantage of the standard linear referencing dictionary, which will reduce the encoding to a single line:</p>
     
     <pre><code>&lt;lrm xlink:href="https://diggsml.org/def/crs/DIGGS/0.1/lrm.xml#md_ft"/&gt; (#md_m) if depths are in meters</code></pre>
     
