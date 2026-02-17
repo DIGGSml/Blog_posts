@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>DIGGS Version 3.0 Released: Enhanced Capabilities for Geotechnical Data Exchange</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 2em;
+            background-color: #fff;
+            color: #222;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            color: #0077cc;
+            margin-bottom: 0.5em;
+        }
+        h2 {
+            color: #0077cc;
+            margin-top: 1.5em;
+            margin-bottom: 0.5em;
+        }
+        h3 {
+            color: #0077cc;
+            margin-top: 1.2em;
+            margin-bottom: 0.4em;
+        }
+        code {
+            color: #321009;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-family: Consolas, Monaco, 'Andale Mono', monospace;
+        }
+        pre {
+            background-color: #bcb7b7f8;
+            padding: 1em;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-family: Consolas, Monaco, 'Andale Mono', monospace;
+        }
+        pre code {
+            color: #222;
+            background: none;
+            padding: 0;
+        }
+        strong {
+            font-weight: bold;
+        }
+        ol,
+        ul {
+            margin-bottom: 1.5em;
+        }
+        li {
+            margin-bottom: 0.5em;
+        }
+        .important-block {
+            background-color: #fffbea;
+            border-left: 4px solid #ff6f00ca;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 3px;
+            box-shadow: 0 1px 3px rgba(0,0,0,.7);
+        }
+        .important-block::before {
+            content: "⚠️ IMPORTANT";
+            display: block;
+            font-weight: bold;
+            font-size: 1.1em;
+            margin-bottom: 10px;
+            color: #9e5603;
+        }
+        .important-block p {
+            margin-top: 0;
+            margin-bottom: 1em;
+        }
+        .important-block ol {
+            margin-top: 0.5em;
+            margin-bottom: 0.5em;
+            padding-left: 25px;
+        }
+        .important-block strong {
+            color: #b45309;
+        }
+ 
+        .note-block {
+            background-color: #ecedf7;
+            border-left: 4px solid #704dd8ca;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 3px;
+            box-shadow: 0 1px 3px rgba(0,0,0,.7);
+        }
+        .note-block::before {
+            content: "💡 NOTE";
+            display: block;
+            font-weight: bold;
+            font-size: 1.1em;
+            margin-bottom: 10px;
+            color: #5306b1;
+        }
+        .note-block p {
+            margin-top: 0;
+            margin-bottom: 1em;
+        }
+        .note-block ol {
+            margin-top: 0.5em;
+            margin-bottom: 0.5em;
+            padding-left: 25px;
+        }
+        .note-block strong {
+            color: #b45309;
+        }
+        .byline {
+            color: #666;
+            margin-bottom: 30px;
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+        }
+        blockquote {
+            background-color: #f0f0f0;
+            border-left: 4px solid #0077cc;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 3px;
+        }
+        blockquote p {
+            margin: 0.5em 0;
+        }
+        blockquote strong {
+            color: #0077cc;
+        }
+        .figure {
+            margin: 30px 0;
+            text-align: center;
+        }
+        .figure img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+        .figure-caption {
+            margin-top: 10px;
+            font-style: italic;
+            color: #666;
+            font-size: 0.95em;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th {
+            background-color: #0077cc;
+            color: white;
+            padding: 10px;
+            text-align: left;
+            font-weight: bold;
+        }
+        td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        a {
+            color: #0077cc;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        hr {
+            border: none;
+            border-top: 1px solid #ddd;
+            margin: 30px 0;
+        }
+    </style>
+</head>
+<body>
+        <h1>DIGGS Version 3.0 Released: Enhanced Capabilities for Geotechnical Data Exchange</h1>
+        <p>The DIGGS Technical Committee is pleased to announce the release of DIGGS v3.0, bringing
+            significant enhancements to the geotechnical data exchange format. This new version
+            introduces important improvements to interoperability, expanded capabilities for
+            specialized applications, and a streamlined architecture that will benefit both software
+            developers and end users.</p>
+        <h2>What's Driving the Change?</h2>
+        <p>The release of DIGGS v3.0 codifies incremental changes to the DIGGS development schema
+            that has occurred over the last ~15 months in response to real-world needs identified
+            through industry use and feedback. Key drivers for this update include:</p>
+        <ul>
+            <li><strong>Improved Interoperability</strong>: Insights from the 2025 DIGGS Hack-a-thon
+                revealed opportunities to constrain encoding options and reduce ambiguity, making it
+                easier for different software systems to exchange data reliably</li>
+            <li><strong>Better Maintainability</strong>: Enhanced internal documentation and
+                reorganized schema modules make the standard easier to understand, implement, and
+                maintain</li>
+            <li><strong>Expanded Capabilities</strong>: New support for emerging workflows including
+                geophysical surveys, pile installations, and measurement-while-drilling (MWD)
+                operations</li>
+        </ul>
+        <h2>Major Enhancements in Version 3.0</h2>
+        <h3>Improved Schema Organization</h3>
+        <p>DIGGS v3.0 features a completely reorganized set of schema files, with better-documented,
+            modular components. The schema has been split into focused modules including:</p>
+        <ul>
+            <li><strong>Core modules</strong>: Abstract Type, Common, Core, and Measure Type modules
+                provide the foundation</li>
+            <li><strong>Specialized modules</strong>: New dedicated modules for linear and local
+                spatial referencing, deep foundations, grouting, geophysics, and extended
+                features</li>
+            <li><strong>Smaller, more manageable files</strong>: The modular approach makes it
+                easier for developers to understand and implement specific capabilities</li>
+        </ul>
+        <h3>Core DIGGS Profile</h3>
+        <p>A new "Core Geotechnical Profile", a subset of the full DIGGS schema,  has been defined
+            to support the most common geotechnical data exchange scenarios:</p>
+        <ul>
+            <li>Existing ("as-built") boreholes, soundings, and trial pits</li>
+            <li>Soil and rock sampling and descriptions</li>
+            <li>Common laboratory and in-situ test procedures and results</li>
+            <li>Basic equipment and specimen information</li>
+        </ul>
+        <p>This profile provides a clear starting point for basic implementations, while maintaining
+            extensibility for specialized applications.</p>
+        <h3>Enhanced Measurement Framework</h3>
+        <ul>
+            <li><strong>Unified time-series structure</strong>: All time-series measurements
+                (general monitoring, pile driving, grouting activities, MWD) now follow a single,
+                consistent structure</li>
+            <li><strong>Improved Units of Measure (UoM) support</strong>: A new online Unit of
+                Measurement Dictionary that supports unit conversions and specialized geotechnical
+                units</li>
+            <li><strong>Better observation handling</strong>: Interoperability improvements for
+                observations and measurement procedures</li>
+        </ul>
+        <h3>Spatial Reference Improvements</h3>
+        <ul>
+            <li><strong>Engineering Coordinate Reference System (CRS) support</strong>: CRS
+                definitions (including an enhanced Cartesian CRS definition) can now be included in
+                a DIGGS instance, making it easier to incorporate local, project-specific coordinate
+                systems within DIGGS.</li>
+            <li><strong>Enhanced linear referencing</strong>: Improved framework for referencing
+                locations along linear features like boreholes or transects, including relative
+                referencing from a referent, handling stretched/compressed core samples, and
+                referencing via station/offset.</li>
+            <li><strong>Reduced gml:id requirements</strong>: Simplified requirements for GML
+                identifiers where they're not essential</li>
+        </ul>
+        <h3>New Domain Support</h3>
+        <p>Version 3.0 expands DIGGS capabilities to include:</p>
+        <ul>
+            <li><strong>Pile driving and PDA records</strong>: Support for transfer of pile
+                installation and PDA records</li>
+            <li><strong>Geophysical field surveys</strong>: Metadata and raw data support for
+                geophysical survey work</li>
+            <li><strong>Measurement While Drilling (MWD)</strong>: Data exchange for MWD operations
+                and measurements</li>
+        </ul>
+        <h2>Understanding Backward Compatibility</h2>
+        <p><strong>DIGGS Version 3.0 is not backward compatible with version 2.6.</strong> This was
+            a deliberate decision to enable the improvements and standardization that were
+            necessary. However, the impact has been carefully managed and the vast majority of
+            commonly used v2.6 objects will validate under v3.0 without modification. Most
+            non-compatible changes fall into these categories:</p>
+        <ol>
+            <li><strong>Constraining best practices</strong>: Well-coded 2.6 instances following
+                best practices will require minimal, if any, changes</li>
+            <li><strong>Specialty features</strong>: Most breaking changes affect specialty objects
+                (grouting, geophysics) that have seen limited implementation in v2.6.</li>
+        </ol>
+        <p>Migration effort will likely be minimal for most implementations. To aid in migration,
+            comprehensive documentation of all changes is available on the <a
+                href="https://github.com/DIGGSml/schema-dev/releases/tag/3.0.0">Version 3.0.0
+                release page</a>. The DIGGS technical team is also developing XSLT stylesheets to
+            assist in converting legacy 2.6 instances to version 3.0. The DIGGS Technical Committee
+            is also available to assist with migration questions.</p>
+        <h2>Getting Started with DIGGS v3.0</h2>
+        <ul>
+            <li><strong>Schema files</strong>: Available for download from the <a
+                    href="https://github.com/DIGGSml/schema-dev/releases/tag/3.0.0">Version 3.0.0
+                    release page</a> or directly referenceable at <a
+                    href="https://diggsml.org/schemas/3.0.0"
+                >https://diggsml.org/schemas/3.0.0</a></li>
+            <li><strong>Schema Documentation</strong>: Comprehensive documentation at <a
+                    href="https://diggsml.org/docs/3.0">https://diggsml.org/docs/3.0</a></li>
+            <li><strong>Example Instances</strong>: Example files in v 3.0 format can be found at <a
+                    href="https://github.com/DIGGSml/diggs-examples/tree/master/3.x%20Example%20Instances"
+                    >https://github.com/DIGGSml/diggs-examples/tree/master/3.x%20Example%20Instances</a></li>
+            <li><strong>Community support</strong>: Join the DIGGS effort to participate in DIGGS' development:<ul>
+                    <li><strong>Github</strong>: Contribute to our repositories at <a
+                            href="https://github.com/DIGGSml">https://github.com/DIGGSml</a></li>
+                    <li><strong>Monthly Meetings</strong>: Join our monthly online discussions where
+                        we tackle all DIGGS-related issues. Contact Allen Cadden
+                        (acadden@schnabel-eng.com) or Ross Cutts (rcutts@schnabel-eng.com) to
+                        receive meeting invites.</li>
+                </ul></li>
+        </ul>
+        <h2>Looking Ahead</h2>
+        <p>DIGGS v3.0 represents a significant maturation of the standard, balancing the needs of
+            existing users with the requirements of new applications and improved interoperability.
+            The DIGGS Technical Committee strongly recomments migration to the v 3.0 standard to not
+            only take advantage of its new capabilties, but to also future-proof legacy data
+            archives.</p>
+    
+    <div style="text-align: center; color: #666; font-size: 0.9em; margin-top: 40px;">
+        <p><em>Published by ASCE Geo-Institute | DIGGS Technical Committee</em></p>
+    </div>
+    </body>
+</html>
