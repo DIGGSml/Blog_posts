@@ -40,6 +40,9 @@ Your boring logs, CPT profiles, SPT charts, maps, lab data, and cross sections a
 
 ## What You'll See When You Open It
 
+![DIGGS Viewer Overview tab showing project summary, data inventory, and borehole table](image.png)
+*The DIGGS Viewer Overview tab: project metadata, data inventory at a glance, and a full borehole table — all from a single double-click.*
+
 When you open a wrapped DIGGS file, you'll find a tabbed interface that looks and feels like the geotechnical reports you're already used to working with. The viewer intelligently shows only the tabs relevant to the data in your file — if your file has SPT data but no CPT data, you'll see the SPT tab but not the CPT tab. No clutter, no empty screens.
 
 | Tab | What You'll See |
