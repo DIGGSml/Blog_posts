@@ -190,24 +190,6 @@
             margin-top: 0;
             margin-bottom: 0.5em;
         }
-        .steps-box {
-            background-color: #e3f2fd;
-            border: 2px solid #0077cc;
-            padding: 20px 25px;
-            margin: 25px 0;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,.15);
-        }
-        .steps-box h3 {
-            margin-top: 0;
-            color: #0077cc;
-        }
-        .steps-box ol {
-            margin-bottom: 0.5em;
-        }
-        .steps-box li {
-            margin-bottom: 0.8em;
-        }
     </style>
 </head>
 <body>
@@ -216,6 +198,8 @@
     <div class="byline">
         Ripon Chandra Malo &amp; DIGGS Technical Committee
     </div>
+
+    <!-- 1. THE PROBLEM -->
 
     <h2>The Problem: Your Data Is Brilliant, But Nobody Can Read It</h2>
 
@@ -232,30 +216,31 @@
 
     <p>We've heard this feedback loud and clear. So the DIGGS team asked a simple question: <strong>what if we could make DIGGS data just as easy to read for humans as it is for machines&mdash;without changing a single byte of the original file?</strong></p>
 
+    <!-- 2. ORIGIN STORY -->
+
+    <h2>How It Started: From Student Hackathon to Production Tool</h2>
+
+    <p>The answer didn't come from a corporate lab or a consulting firm. It came from a student who saw the problem and built a solution in nine weeks.</p>
+
+    <p>In early 2026, the Geo-Institute's DIGGS project launched the <a href="https://github.com/DIGGSml/2026-DIGGS-Student-Hackathon">2026 DIGGS Student Hackathon</a>&mdash;a nine-week challenge running from January through March that invited students to build innovative tools using the DIGGS standard. Teams could tackle any of five challenge themes, from data conversion and validation to visualization and cross-discipline integration. The hackathon provided sample DIGGS files, weekly office hours, and access to datasets through Geosetta.org to help teams hit the ground running.</p>
+
+    <p>The <strong>Ground Decoder</strong> team from the <strong>University of Utah</strong>&mdash;led by <strong>Ripon Chandra Malo</strong>, with advisors <strong>Dr. Tong Qiu</strong> and <strong>Dr. Kami Mohammadi</strong>&mdash;took on the Visualization theme and built <strong>DIGGS Analyzer</strong>: a tool that could parse a DIGGS XML file and render its contents as interactive boring logs, charts, maps, and tables, all running entirely in a web browser. No server. No installation. Just open a file and see your data.</p>
+
+    <p>When the teams presented their work in Salt Lake City in March 2026, Ground Decoder's approach stood out. The judges recognized what every geotechnical engineer in the room was thinking: <em>this is exactly what DIGGS has been missing</em>. DIGGS Analyzer took home the winning prize.</p>
+
+    <p>The DIGGS Technical Committee saw the potential immediately. Working with Ripon and the Ground Decoder team, the hackathon prototype has been developed into the full-featured DIGGS Viewer&mdash;and the wrapping concept that packages it all into a single, shareable file. What started as a student project is now a production tool serving the entire geotechnical community.</p>
+
+    <!-- 3. INTRODUCING THE WRAPPER -->
+
     <h2>Introducing the DIGGS Wrapper</h2>
 
-    <p>The DIGGS Wrapper takes your DIGGS XML file and wraps it inside a single, self-contained HTML file that works as an interactive data viewer. That's it. No software to install. No accounts to create. No server to connect to. No internet required.</p>
+    <p>The DIGGS Wrapper takes your DIGGS XML file and wraps it inside a single, self-contained HTML file that works as an interactive data viewer. No software to install. No accounts to create. No server to connect to. No internet required.</p>
 
-    <p>Here's how simple it is to use:</p>
+    <p><strong>Double-click the file. It opens in your web browser. You're done.</strong></p>
 
-    <div class="steps-box">
-        <h3>Two Clicks to Your Data</h3>
-        <ol>
-            <li><strong>Double-click</strong> the wrapped HTML file on your computer.</li>
-            <li>It opens in your web browser. <strong>You're done.</strong></li>
-        </ol>
-        <p>That's not a simplified summary. That's the entire process. Your boring logs, CPT profiles, SPT charts, maps, lab data, and cross sections are right there in front of you&mdash;interactive, zoomable, and ready to review.</p>
-    </div>
+    <p>Your boring logs, CPT profiles, SPT charts, maps, lab data, and cross sections are right there in front of you&mdash;interactive, zoomable, and ready to review. No Python. No command line. No IT department. If you can double-click a file and you have a web browser, you can view DIGGS data.</p>
 
-    <p>No Python. No command line. No IT department. If you can double-click a file and you have a web browser, you can view DIGGS data.</p>
-
-    <div class="important-block">
-        <p><strong>The wrapper does not modify your DIGGS file.</strong> Your original XML data is embedded inside the HTML wrapper completely intact and untouched. Think of it as putting your DIGGS file inside a display case&mdash;the glass lets you see everything beautifully, but the data inside hasn't been altered in any way. Any DIGGS-compliant software can extract the original file from the wrapper and process it exactly as if the wrapper never existed.</p>
-    </div>
-
-    <div class="analogy-box">
-        <p>Imagine mailing a document. The envelope doesn't change the letter inside&mdash;it just makes it deliverable to the right person in a protected package. The DIGGS Wrapper works the same way: it's the envelope that lets your data travel to <em>human</em> audiences while keeping the original content perfectly preserved inside.</p>
-    </div>
+    <!-- 4. WHAT YOU'LL SEE -->
 
     <h2>What You'll See When You Open It</h2>
 
@@ -302,38 +287,48 @@
 
     <p>The viewer automatically detects measurement units from your data&mdash;feet or meters, tsf or kPa&mdash;and displays them correctly throughout. Everything is interactive: hover over a data point to see its value, zoom into a chart, click a borehole on the map to jump to its details.</p>
 
-    <h2>Getting Started: Two Ways to View Your Data</h2>
+    <!-- 5. TRY IT -->
 
-    <h3>Option 1: Download the DIGGS Viewer (Easiest)</h3>
+    <h2>Try It Yourself</h2>
 
-    <p>If you already have a DIGGS XML file and just want to look at it, this is your fastest path:</p>
+    <h3>View Your Own DIGGS File</h3>
+
+    <p>If you have a DIGGS XML file and just want to look at it, this is your fastest path:</p>
 
     <ol>
-        <li><strong>Download the blank DIGGS Viewer</strong> HTML file from GitHub: <a href="https://raw.githubusercontent.com/DIGGSml/diggs-viewer/main/viewer.html">Download DIGGS Viewer</a></li>
-        <li><strong>Double-click</strong> the downloaded HTML file to open it in your browser.</li>
-        <li>Inside the viewer, use the <strong>file open button</strong> to browse to your DIGGS XML file&mdash;or simply <strong>drag and drop</strong> it onto the page.</li>
+        <li><strong>Download the DIGGS Viewer</strong> HTML file from GitHub: <a href="https://raw.githubusercontent.com/DIGGSml/diggs-viewer/main/viewer.html">Download DIGGS Viewer</a></li>
+        <li><strong>Double-click</strong> the downloaded file to open it in your browser.</li>
+        <li>Use the <strong>file open button</strong> to browse to your DIGGS XML file&mdash;or simply <strong>drag and drop</strong> it onto the page.</li>
         <li>Your data appears instantly. Explore the tabs, review your boring logs, check your CPT profiles.</li>
     </ol>
 
-    <p>That's it. You now have a portable, interactive viewer for your geotechnical data that you can keep on your desktop, share with a colleague, or stash in a project folder. The viewer file itself is reusable&mdash;open it any time you have a new DIGGS file to review.</p>
+    <p>That's it. The viewer file is reusable&mdash;keep it on your desktop and open it any time you have a new DIGGS file to review.</p>
 
-    <h3>Option 2: Create a Wrapped File with Your Data Inside</h3>
+    <h3>Share a Wrapped File</h3>
 
-    <p>Sometimes you don't just want to <em>view</em> a DIGGS file&mdash;you want to <em>package</em> it so that anyone who receives the file can see the data immediately, without needing to download a separate viewer. That's what the wrapper does: it bakes your DIGGS data directly into the HTML file so the recipient just double-clicks and sees everything.</p>
+    <p>Sometimes you don't just want to <em>view</em> a DIGGS file&mdash;you want to <em>package</em> it so that anyone who receives the file can see the data immediately, without needing to download a separate viewer. That's what the wrapper does: it bakes your DIGGS data directly into the HTML file so the recipient just double-clicks and sees everything. You can create wrapped files using the <a href="https://geosetta.org/api_docs/#diggs-viewer">Geosetta DIGGS Wrapper API</a>. (More details in the <em>For Developers</em> section below.)</p>
 
-    <p>You can create wrapped files using the <a href="https://geosetta.org/api_docs/#diggs-viewer">Geosetta DIGGS Wrapper API</a>. If your organization builds software that produces DIGGS files, the API lets you automatically generate wrapped versions for your users. (More details in the <em>For Developers</em> section below.)</p>
+    <h3>See It in Action with Real Data</h3>
 
-    <h2>Getting Your DIGGS File Back Out</h2>
+    <p>Want to see a wrapped DIGGS file before you try it with your own data? <a href="https://geosetta.org">Geosetta.org</a> is now serving all of its historic geotechnical exploration data as wrapped DIGGS files. Head to the <a href="https://geosetta.org/web_map/generateDIGGS/38.72929;-77.452841">Geosetta web map</a>, browse to a location, and download a wrapped file for any available borehole or exploration point. Double-click the file and you'll see boring logs, test data, and all&mdash;right in your browser.</p>
 
-    <p>One of the most common questions we hear: <em>"If my DIGGS file is wrapped inside an HTML file, can I get the original back?"</em></p>
+    <!-- 6. YOUR FILE IS STILL YOUR FILE -->
 
-    <p><strong>Absolutely.</strong> The viewer includes a built-in <strong>XML Export</strong> button that saves the embedded DIGGS data back to a standalone XML file. What you get out is identical to what you put in. No data is changed, reformatted, or lost during the wrapping process.</p>
+    <h2>Your DIGGS File Is Still Your DIGGS File</h2>
 
-    <p>For those working with software systems, the original DIGGS XML is embedded in a well-defined location within the HTML file and can be extracted programmatically with a few lines of code.</p>
+    <p>This is the part worth emphasizing: <strong>the wrapper does not modify your DIGGS file.</strong> Your original XML data is embedded inside the HTML wrapper completely intact and untouched. The wrapper adds a presentation layer on top of your data. It doesn't replace it, compete with it, or alter it in any way.</p>
+
+    <div class="analogy-box">
+        <p>Imagine mailing a document. The envelope doesn't change the letter inside&mdash;it just makes it deliverable to the right person in a protected package. The DIGGS Wrapper works the same way: it's the envelope that lets your data travel to <em>human</em> audiences while keeping the original content perfectly preserved inside.</p>
+    </div>
+
+    <p>Need the original back? The viewer includes a built-in <strong>XML Export</strong> button that saves the embedded DIGGS data back to a standalone XML file. What you get out is identical to what you put in. For those working with software systems, the original DIGGS XML can also be extracted programmatically&mdash;it's embedded in a well-defined location within the HTML file.</p>
 
     <div class="note-block">
         <p>The round-trip is lossless. Wrap a file, send it across the country, have someone view it in their browser, extract the XML&mdash;and you've got the exact same DIGGS file you started with. The wrapper adds <em>presentation</em>, not transformation.</p>
     </div>
+
+    <!-- 7. WHY THIS MATTERS -->
 
     <h2>Why This Matters for Your Practice</h2>
 
@@ -348,13 +343,7 @@
         <li><strong>Regulatory submittals</strong>: Some agencies are beginning to accept or require digital data. A wrapped DIGGS file gives them both the standardized data <em>and</em> a human-readable view in one package.</li>
     </ul>
 
-    <h2>See It in Action: Geosetta's Historic Data</h2>
-
-    <p>Want to see a wrapped DIGGS file before you try it with your own data? You don't have to look far.</p>
-
-    <p><a href="https://geosetta.org">Geosetta.org</a> is now serving all of its historic geotechnical exploration data as wrapped DIGGS files. Head to the <a href="https://geosetta.org/web_map/generateDIGGS/38.72929;-77.452841">Geosetta web map</a>, browse to a location, and download a wrapped file for any available borehole or exploration point. What you get back is a self-contained HTML file that you can double-click to view immediately&mdash;boring logs, test data, and all.</p>
-
-    <p>This is the wrapper concept in practice at scale: an entire repository of geotechnical data, fully machine-readable in DIGGS format, now also fully human-readable with a double-click. No special software needed on either end.</p>
+    <!-- 8. FOR DEVELOPERS -->
 
     <h2>For Developers: The Geosetta Wrapper API</h2>
 
@@ -371,17 +360,7 @@ Response: {filename}_viewer.html (self-contained, works offline)</code></pre>
 
     <p>For those who want full control, the <a href="https://github.com/DIGGSml/diggs-viewer">diggs-viewer repository</a> on GitHub is open source. You can build viewers locally using the included Python build script, customize the viewer for your needs, or integrate the source directly into your own tools.</p>
 
-    <h2>Origin Story: From Student Hackathon to Production Tool</h2>
-
-    <p>The viewer at the heart of the wrapper didn't come from a corporate lab or a consulting firm. It came from a student who saw a problem and built a solution in nine weeks.</p>
-
-    <p>In early 2026, the Geo-Institute's DIGGS project launched the <a href="https://github.com/DIGGSml/2026-DIGGS-Student-Hackathon">2026 DIGGS Student Hackathon</a>&mdash;a nine-week challenge running from January through March that invited students to build innovative tools using the DIGGS standard. Teams could tackle any of five challenge themes, from data conversion and validation to visualization and cross-discipline integration. The hackathon provided sample DIGGS files, weekly office hours, and access to datasets through Geosetta.org to help teams hit the ground running.</p>
-
-    <p>The <strong>Ground Decoder</strong> team from the <strong>University of Utah</strong>&mdash;led by <strong>Ripon Chandra Malo</strong>, with advisors <strong>Dr. Tong Qiu</strong> and <strong>Dr. Kami Mohammadi</strong>&mdash;took on the Visualization theme and built <strong>DIGGS Analyzer</strong>: a tool that could parse a DIGGS XML file and render its contents as interactive boring logs, charts, maps, and tables, all running entirely in a web browser. No server. No installation. Just open a file and see your data.</p>
-
-    <p>When the teams presented their work in Salt Lake City in March 2026, Ground Decoder's approach stood out. The judges recognized what every geotechnical engineer in the room was thinking: <em>this is exactly what DIGGS has been missing</em>. DIGGS Analyzer took home the winning prize.</p>
-
-    <p>The DIGGS Technical Committee saw the potential immediately. Working with Ripon and the Ground Decoder team, the hackathon prototype has been developed into the full-featured DIGGS Viewer now available through the <a href="https://geosetta.org/api_docs/#diggs-viewer">Geosetta API</a> and the open-source <a href="https://github.com/DIGGSml/diggs-viewer">diggs-viewer repository</a> on GitHub. What started as a student project is now a production tool serving the entire geotechnical community.</p>
+    <!-- 9. WHAT'S NEXT -->
 
     <h2>What's Next</h2>
 
@@ -389,19 +368,15 @@ Response: {filename}_viewer.html (self-contained, works offline)</code></pre>
 
     <p>Future enhancements will include additional in-situ test visualizations, expanded laboratory test reporting, instrumentation and monitoring data displays, and more geotechnical calculation tools. The viewer is open source, and we welcome contributions&mdash;if there's a data type or visualization you need, open an issue or submit a pull request on the <a href="https://github.com/DIGGSml/diggs-viewer">GitHub repository</a>.</p>
 
-    <h2>Try It Today</h2>
+    <!-- 10. GET INVOLVED + CONCLUSION -->
 
-    <ol>
-        <li><strong>Download the DIGGS Viewer</strong>: Grab the blank viewer from <a href="https://raw.githubusercontent.com/DIGGSml/diggs-viewer/main/viewer.html">GitHub</a>, double-click it, and load your DIGGS file.</li>
-        <li><strong>Share a wrapped file</strong>: Use the <a href="https://geosetta.org/api_docs/#diggs-viewer">Geosetta API</a> to create a self-contained viewer with your data baked in, then email it to a colleague.</li>
-        <li><strong>Join the DIGGS effort</strong>:
-            <ul>
-                <li><strong>GitHub</strong>: <a href="https://github.com/DIGGSml">https://github.com/DIGGSml</a></li>
-                <li><strong>Monthly Meetings</strong>: Contact Allen Cadden (acadden@schnabel-eng.com) or Ross Cutts (rcutts@schnabel-eng.com) for meeting invites.</li>
-                <li><strong>Feedback</strong>: Tell us what visualizations and data types matter most to you.</li>
-            </ul>
-        </li>
-    </ol>
+    <h2>Get Involved</h2>
+
+    <ul>
+        <li><strong>GitHub</strong>: <a href="https://github.com/DIGGSml">https://github.com/DIGGSml</a></li>
+        <li><strong>Monthly Meetings</strong>: Contact Allen Cadden (acadden@schnabel-eng.com) or Ross Cutts (rcutts@schnabel-eng.com) for meeting invites.</li>
+        <li><strong>Feedback</strong>: Tell us what visualizations and data types matter most to you.</li>
+    </ul>
 
     <h2>Conclusion</h2>
 
