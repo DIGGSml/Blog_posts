@@ -43,20 +43,9 @@ Your boring logs, CPT profiles, SPT charts, maps, lab data, and cross sections a
 ![DIGGS Viewer Overview tab showing project summary, data inventory, and borehole table](image.png)
 *The DIGGS Viewer Overview tab: project metadata, data inventory at a glance, and a full borehole table — all from a single double-click.*
 
-When you open a wrapped DIGGS file, you'll find a tabbed interface that looks and feels like the geotechnical reports you're already used to working with. The viewer intelligently shows only the tabs relevant to the data in your file — if your file has SPT data but no CPT data, you'll see the SPT tab but not the CPT tab. No clutter, no empty screens.
+As you can see, the viewer opens to an Overview tab with your project metadata, a data inventory showing exactly what's in the file, and a full borehole table. Across the top, tabs give you direct access to your SPT and CPT analysis, boring logs, cross sections, lab tests, and more. The viewer intelligently shows only the tabs relevant to your data — no clutter, no empty screens.
 
-| Tab | What You'll See |
-|-----|----------------|
-| **Overview** | Project summary, borehole inventory, and a quick snapshot of what's in the file |
-| **Map** | Interactive map showing your borehole and test locations — toggle between street and satellite views |
-| **SPT Analysis** | Standard Penetration Test data with depth charts and blow count profiles |
-| **CPT Profiles** | Cone Penetration Test data including qc, fs, u2, Rf, and Ic with Soil Behavior Type classification |
-| **Boring Logs** | Familiar boring log format with USCS soil patterns, blow counts, and lithology descriptions |
-| **Cross Sections** | Fence diagrams for visualizing subsurface conditions between boreholes |
-| **Lab Tests** | Laboratory test data organized by borehole and sample |
-| **Calculations** | Geotechnical interpretation and engineering calculations |
-
-The viewer automatically detects measurement units from your data — feet or meters, tsf or kPa — and displays them correctly throughout. Everything is interactive: hover over a data point to see its value, zoom into a chart, click a borehole on the map to jump to its details.
+Everything is interactive: hover over a data point to see its value, zoom into a chart, click a borehole on the map to jump to its details. The viewer automatically detects measurement units from your data — feet or meters, tsf or kPa — and displays them correctly throughout.
 
 ## Try It Yourself
 
