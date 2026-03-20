@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The DIGGS Wrapper: Giving Your Geotechnical Data a Face Only a Human Could Love</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 2em;
+            background-color: #fff;
+            color: #222;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            color: #0077cc;
+            margin-bottom: 0.5em;
+        }
+        h2 {
+            color: #0077cc;
+            margin-top: 1.5em;
+            margin-bottom: 0.5em;
+        }
+        h3 {
+            color: #0077cc;
+            margin-top: 1.2em;
+            margin-bottom: 0.4em;
+        }
+        code {
+            color: #321009;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-family: Consolas, Monaco, 'Andale Mono', monospace;
+        }
+        pre {
+            background-color: #bcb7b7f8;
+            padding: 1em;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-family: Consolas, Monaco, 'Andale Mono', monospace;
+        }
+        pre code {
+            color: #222;
+            background: none;
+            padding: 0;
+        }
+        strong {
+            font-weight: bold;
+        }
+        ol,
+        ul {
+            margin-bottom: 1.5em;
+        }
+        li {
+            margin-bottom: 0.5em;
+        }
+        .important-block {
+            background-color: #fffbea;
+            border-left: 4px solid #ff6f00ca;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 3px;
+            box-shadow: 0 1px 3px rgba(0,0,0,.7);
+        }
+        .important-block::before {
+            content: "KEY CONCEPT";
+            display: block;
+            font-weight: bold;
+            font-size: 1.1em;
+            margin-bottom: 10px;
+            color: #9e5603;
+        }
+        .important-block p {
+            margin-top: 0;
+            margin-bottom: 1em;
+        }
+        .important-block strong {
+            color: #b45309;
+        }
+
+        .note-block {
+            background-color: #ecedf7;
+            border-left: 4px solid #704dd8ca;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 3px;
+            box-shadow: 0 1px 3px rgba(0,0,0,.7);
+        }
+        .note-block::before {
+            content: "NOTE";
+            display: block;
+            font-weight: bold;
+            font-size: 1.1em;
+            margin-bottom: 10px;
+            color: #5306b1;
+        }
+        .note-block p {
+            margin-top: 0;
+            margin-bottom: 1em;
+        }
+        .note-block strong {
+            color: #b45309;
+        }
+        .byline {
+            color: #666;
+            margin-bottom: 30px;
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+        }
+        blockquote {
+            background-color: #f0f0f0;
+            border-left: 4px solid #0077cc;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 3px;
+        }
+        blockquote p {
+            margin: 0.5em 0;
+        }
+        blockquote strong {
+            color: #0077cc;
+        }
+        .figure {
+            margin: 30px 0;
+            text-align: center;
+        }
+        .figure img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+        .figure-caption {
+            margin-top: 10px;
+            font-style: italic;
+            color: #666;
+            font-size: 0.95em;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th {
+            background-color: #0077cc;
+            color: white;
+            padding: 10px;
+            text-align: left;
+            font-weight: bold;
+        }
+        td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        a {
+            color: #0077cc;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        hr {
+            border: none;
+            border-top: 1px solid #ddd;
+            margin: 30px 0;
+        }
+        .analogy-box {
+            background-color: #e8f4e8;
+            border-left: 4px solid #2e7d32;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 3px;
+            box-shadow: 0 1px 3px rgba(0,0,0,.5);
+        }
+        .analogy-box::before {
+            content: "THINK OF IT THIS WAY";
+            display: block;
+            font-weight: bold;
+            font-size: 1.1em;
+            margin-bottom: 10px;
+            color: #2e7d32;
+        }
+        .analogy-box p {
+            margin-top: 0;
+            margin-bottom: 0.5em;
+        }
+        .steps-box {
+            background-color: #e3f2fd;
+            border: 2px solid #0077cc;
+            padding: 20px 25px;
+            margin: 25px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,.15);
+        }
+        .steps-box h3 {
+            margin-top: 0;
+            color: #0077cc;
+        }
+        .steps-box ol {
+            margin-bottom: 0.5em;
+        }
+        .steps-box li {
+            margin-bottom: 0.8em;
+        }
+    </style>
+</head>
+<body>
+    <h1>The DIGGS Wrapper: Giving Your Geotechnical Data a Face Only a Human Could Love</h1>
+
+    <div class="byline">
+        Ripon Chandra Malo &amp; DIGGS Technical Committee
+    </div>
+
+    <h2>The Problem: Your Data Is Brilliant, But Nobody Can Read It</h2>
+
+    <p>Let's be honest. DIGGS files are not exactly beach reading.</p>
+
+    <p>Since its inception, DIGGS (Data Interchange for Geotechnical and Geoenvironmental Specialists) has excelled at what it was designed to do: give software a clean, standardized, machine-readable format for exchanging geotechnical data. Boring logs, CPT soundings, lab results, spatial coordinates&mdash;it's all in there, rigorously structured and ready for any compliant application to consume.</p>
+
+    <p>And that's the thing. <em>Software</em> loves DIGGS. Parsers love DIGGS. Databases love DIGGS. But when you open a DIGGS file and see a wall of angle brackets and namespace declarations? Not exactly the boring log you were hoping to review before your 2 o'clock meeting.</p>
+
+    <blockquote>
+        <p><strong>The Core Tension</strong></p>
+        <p>DIGGS was built to be machine-readable&mdash;and it's great at that job. But data doesn't just move between machines. It moves between <em>people</em>. Engineers review it. Clients ask about it. Regulators need to see it. The format that makes DIGGS powerful for interoperability is the same thing that makes it opaque to the human eye.</p>
+    </blockquote>
+
+    <p>We've heard this feedback loud and clear. So the DIGGS team asked a simple question: <strong>what if we could make DIGGS data just as easy to read for humans as it is for machines&mdash;without changing a single byte of the original file?</strong></p>
+
+    <h2>Introducing the DIGGS Wrapper</h2>
+
+    <p>The DIGGS Wrapper takes your DIGGS XML file and wraps it inside a single, self-contained HTML file that works as an interactive data viewer. That's it. No software to install. No accounts to create. No server to connect to. No internet required.</p>
+
+    <p>Here's how simple it is to use:</p>
+
+    <div class="steps-box">
+        <h3>Two Clicks to Your Data</h3>
+        <ol>
+            <li><strong>Double-click</strong> the wrapped HTML file on your computer.</li>
+            <li>It opens in your web browser. <strong>You're done.</strong></li>
+        </ol>
+        <p>That's not a simplified summary. That's the entire process. Your boring logs, CPT profiles, SPT charts, maps, lab data, and cross sections are right there in front of you&mdash;interactive, zoomable, and ready to review.</p>
+    </div>
+
+    <p>No Python. No command line. No IT department. If you can double-click a file and you have a web browser, you can view DIGGS data.</p>
+
+    <div class="important-block">
+        <p><strong>The wrapper does not modify your DIGGS file.</strong> Your original XML data is embedded inside the HTML wrapper completely intact and untouched. Think of it as putting your DIGGS file inside a display case&mdash;the glass lets you see everything beautifully, but the data inside hasn't been altered in any way. Any DIGGS-compliant software can extract the original file from the wrapper and process it exactly as if the wrapper never existed.</p>
+    </div>
+
+    <div class="analogy-box">
+        <p>Imagine mailing a document. The envelope doesn't change the letter inside&mdash;it just makes it deliverable to the right person in a protected package. The DIGGS Wrapper works the same way: it's the envelope that lets your data travel to <em>human</em> audiences while keeping the original content perfectly preserved inside.</p>
+    </div>
+
+    <h2>What You'll See When You Open It</h2>
+
+    <p>When you open a wrapped DIGGS file, you'll find a tabbed interface that looks and feels like the geotechnical reports you're already used to working with. The viewer intelligently shows only the tabs relevant to the data in your file&mdash;if your file has SPT data but no CPT data, you'll see the SPT tab but not the CPT tab. No clutter, no empty screens.</p>
+
+    <table>
+        <tr>
+            <th>Tab</th>
+            <th>What You'll See</th>
+        </tr>
+        <tr>
+            <td><strong>Overview</strong></td>
+            <td>Project summary, borehole inventory, and a quick snapshot of what's in the file</td>
+        </tr>
+        <tr>
+            <td><strong>Map</strong></td>
+            <td>Interactive map showing your borehole and test locations&mdash;toggle between street and satellite views</td>
+        </tr>
+        <tr>
+            <td><strong>SPT Analysis</strong></td>
+            <td>Standard Penetration Test data with depth charts and blow count profiles</td>
+        </tr>
+        <tr>
+            <td><strong>CPT Profiles</strong></td>
+            <td>Cone Penetration Test data including q<sub>c</sub>, f<sub>s</sub>, u<sub>2</sub>, R<sub>f</sub>, and I<sub>c</sub> with Soil Behavior Type classification</td>
+        </tr>
+        <tr>
+            <td><strong>Boring Logs</strong></td>
+            <td>Familiar boring log format with USCS soil patterns, blow counts, and lithology descriptions</td>
+        </tr>
+        <tr>
+            <td><strong>Cross Sections</strong></td>
+            <td>Fence diagrams for visualizing subsurface conditions between boreholes</td>
+        </tr>
+        <tr>
+            <td><strong>Lab Tests</strong></td>
+            <td>Laboratory test data organized by borehole and sample</td>
+        </tr>
+        <tr>
+            <td><strong>Calculations</strong></td>
+            <td>Geotechnical interpretation and engineering calculations</td>
+        </tr>
+    </table>
+
+    <p>The viewer automatically detects measurement units from your data&mdash;feet or meters, tsf or kPa&mdash;and displays them correctly throughout. Everything is interactive: hover over a data point to see its value, zoom into a chart, click a borehole on the map to jump to its details.</p>
+
+    <h2>Getting Started: Two Ways to View Your Data</h2>
+
+    <h3>Option 1: Download the DIGGS Viewer (Easiest)</h3>
+
+    <p>If you already have a DIGGS XML file and just want to look at it, this is your fastest path:</p>
+
+    <ol>
+        <li><strong>Download the blank DIGGS Viewer</strong> HTML file from GitHub: <a href="https://raw.githubusercontent.com/DIGGSml/diggs-viewer/main/viewer.html">Download DIGGS Viewer</a></li>
+        <li><strong>Double-click</strong> the downloaded HTML file to open it in your browser.</li>
+        <li>Inside the viewer, use the <strong>file open button</strong> to browse to your DIGGS XML file&mdash;or simply <strong>drag and drop</strong> it onto the page.</li>
+        <li>Your data appears instantly. Explore the tabs, review your boring logs, check your CPT profiles.</li>
+    </ol>
+
+    <p>That's it. You now have a portable, interactive viewer for your geotechnical data that you can keep on your desktop, share with a colleague, or stash in a project folder. The viewer file itself is reusable&mdash;open it any time you have a new DIGGS file to review.</p>
+
+    <h3>Option 2: Create a Wrapped File with Your Data Inside</h3>
+
+    <p>Sometimes you don't just want to <em>view</em> a DIGGS file&mdash;you want to <em>package</em> it so that anyone who receives the file can see the data immediately, without needing to download a separate viewer. That's what the wrapper does: it bakes your DIGGS data directly into the HTML file so the recipient just double-clicks and sees everything.</p>
+
+    <p>You can create wrapped files using the <a href="https://geosetta.org/api_docs/#diggs-viewer">Geosetta DIGGS Wrapper API</a>. If your organization builds software that produces DIGGS files, the API lets you automatically generate wrapped versions for your users. (More details in the <em>For Developers</em> section below.)</p>
+
+    <h2>Getting Your DIGGS File Back Out</h2>
+
+    <p>One of the most common questions we hear: <em>"If my DIGGS file is wrapped inside an HTML file, can I get the original back?"</em></p>
+
+    <p><strong>Absolutely.</strong> The viewer includes a built-in <strong>XML Export</strong> button that saves the embedded DIGGS data back to a standalone XML file. What you get out is identical to what you put in. No data is changed, reformatted, or lost during the wrapping process.</p>
+
+    <p>For those working with software systems, the original DIGGS XML is embedded in a well-defined location within the HTML file and can be extracted programmatically with a few lines of code.</p>
+
+    <div class="note-block">
+        <p>The round-trip is lossless. Wrap a file, send it across the country, have someone view it in their browser, extract the XML&mdash;and you've got the exact same DIGGS file you started with. The wrapper adds <em>presentation</em>, not transformation.</p>
+    </div>
+
+    <h2>Why This Matters for Your Practice</h2>
+
+    <p>If you've been on the fence about DIGGS, the wrapper removes one of the most common objections: <em>"I can't see what's in the file."</em> Now you can. And so can everyone you share it with.</p>
+
+    <p>Consider these scenarios:</p>
+
+    <ul>
+        <li><strong>Sending data to a client</strong>: Instead of shipping a DIGGS XML file that requires specialized software, send a wrapped file. They double-click it, see boring logs and CPT profiles in their browser, and your data speaks for itself.</li>
+        <li><strong>QA/QC review</strong>: Open a wrapped file to quickly spot-check that the DIGGS conversion captured your data correctly. See the boring logs, verify depths and blow counts, confirm locations on the map.</li>
+        <li><strong>Archiving</strong>: Store wrapped files alongside your raw DIGGS data. Years from now, anyone can open them without needing to track down compatible software&mdash;a web browser is all it takes.</li>
+        <li><strong>Regulatory submittals</strong>: Some agencies are beginning to accept or require digital data. A wrapped DIGGS file gives them both the standardized data <em>and</em> a human-readable view in one package.</li>
+    </ul>
+
+    <h2>See It in Action: Geosetta's Historic Data</h2>
+
+    <p>Want to see a wrapped DIGGS file before you try it with your own data? You don't have to look far.</p>
+
+    <p><a href="https://geosetta.org">Geosetta.org</a> is now serving all of its historic geotechnical exploration data as wrapped DIGGS files. Head to the <a href="https://geosetta.org/web_map/generateDIGGS/38.72929;-77.452841">Geosetta web map</a>, browse to a location, and download a wrapped file for any available borehole or exploration point. What you get back is a self-contained HTML file that you can double-click to view immediately&mdash;boring logs, test data, and all.</p>
+
+    <p>This is the wrapper concept in practice at scale: an entire repository of geotechnical data, fully machine-readable in DIGGS format, now also fully human-readable with a double-click. No special software needed on either end.</p>
+
+    <h2>For Developers: The Geosetta Wrapper API</h2>
+
+    <p>If you build software that produces or processes DIGGS files, the <a href="https://geosetta.org/api_docs/#diggs-viewer">Geosetta DIGGS Wrapper API</a> lets you integrate wrapping directly into your workflow. It's a single endpoint:</p>
+
+    <pre><code>POST https://geosetta.org/api/viewer/wrap
+
+Content-Type: multipart/form-data
+Body: DIGGS XML file (up to 50 MB, UTF-8)
+
+Response: {filename}_viewer.html (self-contained, works offline)</code></pre>
+
+    <p>No authentication required. Send a DIGGS file, get back a wrapped HTML viewer. The returned file includes all JavaScript, CSS, and visualization libraries bundled inside&mdash;your users won't need an internet connection to view it.</p>
+
+    <p>For those who want full control, the <a href="https://github.com/DIGGSml/diggs-viewer">diggs-viewer repository</a> on GitHub is open source. You can build viewers locally using the included Python build script, customize the viewer for your needs, or integrate the source directly into your own tools.</p>
+
+    <h2>Origin Story: From Student Hackathon to Production Tool</h2>
+
+    <p>The viewer at the heart of the wrapper didn't come from a corporate lab or a consulting firm. It came from a student who saw a problem and built a solution in nine weeks.</p>
+
+    <p>In early 2026, the Geo-Institute's DIGGS project launched the <a href="https://github.com/DIGGSml/2026-DIGGS-Student-Hackathon">2026 DIGGS Student Hackathon</a>&mdash;a nine-week challenge running from January through March that invited students to build innovative tools using the DIGGS standard. Teams could tackle any of five challenge themes, from data conversion and validation to visualization and cross-discipline integration. The hackathon provided sample DIGGS files, weekly office hours, and access to datasets through Geosetta.org to help teams hit the ground running.</p>
+
+    <p>The <strong>Ground Decoder</strong> team from the <strong>University of Utah</strong>&mdash;led by <strong>Ripon Chandra Malo</strong>, with advisors <strong>Dr. Tong Qiu</strong> and <strong>Dr. Kami Mohammadi</strong>&mdash;took on the Visualization theme and built <strong>DIGGS Analyzer</strong>: a tool that could parse a DIGGS XML file and render its contents as interactive boring logs, charts, maps, and tables, all running entirely in a web browser. No server. No installation. Just open a file and see your data.</p>
+
+    <p>When the teams presented their work in Salt Lake City in March 2026, Ground Decoder's approach stood out. The judges recognized what every geotechnical engineer in the room was thinking: <em>this is exactly what DIGGS has been missing</em>. DIGGS Analyzer took home the winning prize.</p>
+
+    <p>The DIGGS Technical Committee saw the potential immediately. Working with Ripon and the Ground Decoder team, the hackathon prototype has been developed into the full-featured DIGGS Viewer now available through the <a href="https://geosetta.org/api_docs/#diggs-viewer">Geosetta API</a> and the open-source <a href="https://github.com/DIGGSml/diggs-viewer">diggs-viewer repository</a> on GitHub. What started as a student project is now a production tool serving the entire geotechnical community.</p>
+
+    <h2>What's Next</h2>
+
+    <p>The current viewer already covers many of the most common geotechnical data types, but we're just getting started. The DIGGS team is actively working to expand the viewer with support for additional data formats and test types within the DIGGS standard. The goal is straightforward: <strong>if your data can be encoded in DIGGS, you should be able to <em>see</em> it in the viewer.</strong></p>
+
+    <p>Future enhancements will include additional in-situ test visualizations, expanded laboratory test reporting, instrumentation and monitoring data displays, and more geotechnical calculation tools. The viewer is open source, and we welcome contributions&mdash;if there's a data type or visualization you need, open an issue or submit a pull request on the <a href="https://github.com/DIGGSml/diggs-viewer">GitHub repository</a>.</p>
+
+    <h2>Try It Today</h2>
+
+    <ol>
+        <li><strong>Download the DIGGS Viewer</strong>: Grab the blank viewer from <a href="https://raw.githubusercontent.com/DIGGSml/diggs-viewer/main/viewer.html">GitHub</a>, double-click it, and load your DIGGS file.</li>
+        <li><strong>Share a wrapped file</strong>: Use the <a href="https://geosetta.org/api_docs/#diggs-viewer">Geosetta API</a> to create a self-contained viewer with your data baked in, then email it to a colleague.</li>
+        <li><strong>Join the DIGGS effort</strong>:
+            <ul>
+                <li><strong>GitHub</strong>: <a href="https://github.com/DIGGSml">https://github.com/DIGGSml</a></li>
+                <li><strong>Monthly Meetings</strong>: Contact Allen Cadden (acadden@schnabel-eng.com) or Ross Cutts (rcutts@schnabel-eng.com) for meeting invites.</li>
+                <li><strong>Feedback</strong>: Tell us what visualizations and data types matter most to you.</li>
+            </ul>
+        </li>
+    </ol>
+
+    <h2>Conclusion</h2>
+
+    <p>For years, DIGGS has been the language that machines use to talk about geotechnical data. With the DIGGS Wrapper, we're making sure humans are part of the conversation too.</p>
+
+    <p>Your DIGGS file doesn't change. It doesn't get converted, simplified, or dumbed down. It gets <em>wrapped</em>&mdash;given a presentation layer that lets anyone with a web browser see what's inside. And when software needs the raw data, it peels off the wrapper and finds the original file waiting, exactly as it was.</p>
+
+    <p>Machine-readable <em>and</em> human-readable. That's not a compromise&mdash;it's the best of both worlds.</p>
+
+    <hr>
+
+    <div style="text-align: center; color: #666; font-size: 0.9em; margin-top: 40px;">
+        <p><em>Published by ASCE Geo-Institute | DIGGS Technical Committee</em></p>
+    </div>
+
+</body>
+</html>
