@@ -1,6 +1,6 @@
 # The DIGGS Wrapper: Giving Your Geotechnical Data a Face Only a Human Could Love
 
-*Ripon Chandra Malo & DIGGS Technical Committee*
+*DIGGS Technical Committee*
 
 ---
 
