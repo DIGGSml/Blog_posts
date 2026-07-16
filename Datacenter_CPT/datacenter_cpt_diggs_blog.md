@@ -36,9 +36,9 @@ Field to engineer to client, without a single manual reformatting step in betwee
 
 ## See It for Yourself on Geosetta
 
-None of this depends on taking our word for it. **Geosetta.org** is already serving **267,178 CPT soundings** as DIGGS data, a growing share of them as wrapped, browser-ready files exactly like the ones described above.
+None of this depends on taking our word for it. **Geosetta.org** is already serving **267,178 CPT soundings** as DIGGS data, all of them available as wrapped, browser-ready files exactly like the ones described above.
 
-Head to [this cluster of CPT soundings on the Geosetta web map](https://geosetta.org/web_map/map/#16/46.7683/-92.1197), click a point, and download the sounding as a wrapped DIGGS file. Or skip straight to an example: we've included a real wrapped DIGGS file from a Minnesota DOT CPT sounding right alongside this post: [MnDOT_viewer.html](MnDOT_viewer.html). Download it, double-click it, and raw qc/fs/u2, interpreted parameters, and location data render instantly in your browser, no software and no DIGGS knowledge required.
+Head to [this cluster of CPT soundings on the Geosetta web map](https://geosetta.org/web_map/map/#16/46.7683/-92.1197), click a single point or draw a polygon to select several, and download them as a single wrapped DIGGS file. Or skip straight to an example: we've included a real wrapped DIGGS file combining CPT and SPT data from a Minnesota DOT site right alongside this post: [MnDOT_viewer.html](MnDOT_viewer.html). Download it, double-click it, and CPT curves, SPT blow counts, interpreted parameters, and location data all render instantly in your browser, no software and no DIGGS knowledge required.
 
 ## Why Speed and Efficiency Mattered Here
 
