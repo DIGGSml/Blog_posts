@@ -34,6 +34,12 @@ The same thing happens on the way out. Deliverables to the client move through t
 
 Field to engineer to client, without a single manual reformatting step in between.
 
+## See It for Yourself on Geosetta
+
+None of this depends on taking our word for it. **Geosetta.org** is already serving **267,178 CPT soundings** as DIGGS data, a growing share of them as wrapped, browser-ready files exactly like the ones described above.
+
+Head to [this cluster of CPT soundings on the Geosetta web map](https://geosetta.org/web_map/map/#16/46.7683/-92.1197), click a point, and download the sounding as a wrapped DIGGS file. Or skip straight to an example: we've included a real wrapped DIGGS file from a Minnesota DOT CPT sounding right alongside this post: [MnDOT_viewer.html](MnDOT_viewer.html). Download it, double-click it, and raw qc/fs/u2, interpreted parameters, and location data render instantly in your browser, no software and no DIGGS knowledge required.
+
 ## Why Speed and Efficiency Mattered Here
 
 On a program with this many pads, this much data, and this little schedule slack, the manual reformatting step was never a minor inconvenience, it was the bottleneck. Every hour spent transcribing a PDF or reconciling a spreadsheet was an hour a foundation decision sat waiting, and every manual re-entry was a chance for a transcription error to work its way into that decision. Removing that step didn't just save time. It removed a category of risk that used to be baked into every data handoff.
