@@ -55,6 +55,8 @@ That's not specific to CPT, or to data centers. Any large program with multiple 
 ## What You Can Do Monday
 
 - **Ask your CPT and drilling subs for DIGGS deliverables**, not PDFs and proprietary exports, on your next program.
+- **Begin sending drilling and laboratory assignments to your subconsultants via DIGGS**, so the scope travels in the same format as the data that comes back.
+- **Ask your laboratories to deliver results in DIGGS** instead of a lab-specific PDF or spreadsheet.
 - **Use the free [DIGGS Viewer](../DIGGS_Wrapper/diggs_wrapper_viewer_blog.html)** to spot-check incoming files before they leave your desk.
 - **Ask your analysis vendor for native DIGGS support** so the data you receive doesn't need a manual detour before it's usable.
 - **Archive the project as DIGGS** from the start, so the record you keep is the same one everyone worked from.
