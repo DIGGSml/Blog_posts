@@ -231,6 +231,11 @@
 
     <p>The difference shows up the moment a file lands. ConeTec runs the soundings across the site and delivers each one as a single validated DIGGS file: raw qc/fs/u2, interpreted Ic/SBT/Qtn/Fr, SCPT shear wave velocity, dissipation t50, and full location metadata, all in one container, all traceable back to the same sounding.</p>
 
+    <div class="figure">
+        <img src="blured.png" alt="Tracked CPT rig set up on site among pine trees">
+        <p class="figure-caption">A tracked CPT rig on site, one of the soundings that fed straight into the DIGGS pipeline described below.</p>
+    </div>
+
     <p>Those files feed directly into Schnabel's internal data pipeline. Because the file already speaks DIGGS, the pipeline reads it directly. There's no re-keying values out of a PDF, no reconciling a spreadsheet against a separate log, no reformatting to match what the analysis software expects. Validation happens automatically at the point of ingestion, so a malformed or incomplete file gets caught immediately, not three weeks later when an analyst notices the numbers don't add up. From there, the data flows straight into settlement and liquefaction analysis tools that read DIGGS natively.</p>
 
     <p>The same thing happens on the way out. Deliverables to the client move through the pipeline just as cleanly as they came in, including wrapped DIGGS viewer files the client's engineers can open directly in a browser, no specialized software required, to review a sounding before it ever gets to formal analysis. (We covered how that wrapping works in our <a href="../DIGGS_Wrapper/diggs_wrapper_viewer_blog.html">earlier post on the DIGGS Wrapper</a>.)</p>
