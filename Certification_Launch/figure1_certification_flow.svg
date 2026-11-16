@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 760 560" font-family="Arial, Helvetica, sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+    <marker id="arrow-red" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#b3261e"/>
+    </marker>
+    <style>
+      .box { fill: #f5f9fd; stroke: #0077cc; stroke-width: 2; }
+      .panel { fill: #ffffff; stroke: #0077cc; stroke-width: 2; }
+      .pill { fill: #e6f1fa; stroke: #0077cc; stroke-width: 1; }
+      .pill-key { fill: #fff3e0; stroke: #e67e00; stroke-width: 1.5; }
+      .fail { fill: #fdecea; stroke: #b3261e; stroke-width: 2; }
+      .cert { fill: #e8f4e8; stroke: #2e7d32; stroke-width: 2; }
+      .note { fill: #fafafa; stroke: #9ca3af; stroke-width: 1; stroke-dasharray: 4 3; }
+      .title { font-size: 18px; font-weight: bold; fill: #0077cc; }
+      .lane { font-size: 12px; font-weight: bold; fill: #475569; letter-spacing: 0.5px; }
+      .h { font-size: 13px; font-weight: bold; fill: #1f2937; text-anchor: middle; }
+      .t { font-size: 11px; fill: #475569; text-anchor: middle; }
+      .sub { font-size: 11px; font-style: italic; fill: #6b7280; }
+      .pt { font-size: 12px; fill: #1f2937; text-anchor: middle; }
+      .pt-key { font-size: 12px; font-weight: bold; fill: #9e5603; text-anchor: middle; }
+      .flow { stroke: #334155; stroke-width: 2; fill: none; marker-end: url(#arrow); }
+      .flow-fail { stroke: #b3261e; stroke-width: 2; fill: none; stroke-dasharray: 6 4; marker-end: url(#arrow-red); }
+      .lbl { font-size: 11px; font-weight: bold; fill: #334155; }
+      .lbl-fail { font-size: 11px; font-weight: bold; fill: #b3261e; }
+    </style>
+  </defs>
+
+  <rect x="0" y="0" width="760" height="560" fill="#ffffff"/>
+  <text class="title" x="20" y="32">How a product earns DIGGS certification</text>
+
+  <!-- EXPORT LANE -->
+  <text class="lane" x="20" y="64">EXPORT: CAN YOUR SOFTWARE WRITE DIGGS?</text>
+  <rect class="box" x="20" y="72" width="140" height="78" rx="6"/>
+  <text class="h" x="90" y="100">Challenge files</text>
+  <text class="t" x="90" y="118">plain CSV tables,</text>
+  <text class="t" x="90" y="134">watermarked for you</text>
+  <path class="flow" d="M160,111 L186,111"/>
+
+  <rect class="box" x="190" y="72" width="130" height="78" rx="6"/>
+  <text class="h" x="255" y="100">Your software</text>
+  <text class="t" x="255" y="118">loads the tables,</text>
+  <text class="t" x="255" y="134">exports DIGGS</text>
+  <path class="flow" d="M320,111 L346,111"/>
+
+  <rect class="box" x="350" y="72" width="110" height="78" rx="6"/>
+  <text class="h" x="405" y="106">DIGGS file</text>
+  <text class="t" x="405" y="124">submitted as a run</text>
+  <path class="flow" d="M460,111 L486,111"/>
+
+  <!-- IMPORT LANE -->
+  <text class="lane" x="20" y="254">IMPORT: CAN YOUR SOFTWARE READ DIGGS?</text>
+  <rect class="box" x="20" y="262" width="140" height="78" rx="6"/>
+  <text class="h" x="90" y="290">Challenge files</text>
+  <text class="t" x="90" y="308">a DIGGS 3.0 file</text>
+  <text class="t" x="90" y="324">+ answer template</text>
+  <path class="flow" d="M160,301 L186,301"/>
+
+  <rect class="box" x="190" y="262" width="130" height="78" rx="6"/>
+  <text class="h" x="255" y="290">Your software</text>
+  <text class="t" x="255" y="308">loads the file,</text>
+  <text class="t" x="255" y="324">shows the values</text>
+  <path class="flow" d="M320,301 L346,301"/>
+
+  <rect class="box" x="350" y="262" width="110" height="78" rx="6"/>
+  <text class="h" x="405" y="290">Answers</text>
+  <text class="t" x="405" y="308">in the units</text>
+  <text class="t" x="405" y="324">requested</text>
+  <path class="flow" d="M460,301 L486,301"/>
+
+  <!-- GRADING PANEL -->
+  <rect class="panel" x="490" y="56" width="250" height="284" rx="8"/>
+  <text class="h" x="615" y="78">Automated grading</text>
+  <text class="sub" x="506" y="98">Export runs: four stages</text>
+  <rect class="pill" x="506" y="106" width="218" height="24" rx="12"/>
+  <text class="pt" x="615" y="122">1. Schema (XSD)</text>
+  <rect class="pill" x="506" y="136" width="218" height="24" rx="12"/>
+  <text class="pt" x="615" y="152">2. Codelists</text>
+  <rect class="pill" x="506" y="166" width="218" height="24" rx="12"/>
+  <text class="pt" x="615" y="182">3. Business rules (Schematron)</text>
+  <rect class="pill-key" x="506" y="196" width="218" height="24" rx="12"/>
+  <text class="pt-key" x="615" y="212">4. Data fidelity + watermark</text>
+  <line x1="506" y1="236" x2="724" y2="236" stroke="#cbd5e1" stroke-width="1"/>
+  <text class="sub" x="506" y="256">Import runs</text>
+  <rect class="pill" x="506" y="266" width="218" height="24" rx="12"/>
+  <text class="pt" x="615" y="282">Every answer graded</text>
+  <text class="t" x="615" y="308">values checked against the file;</text>
+  <text class="t" x="615" y="324">compatible units converted</text>
+  <path class="flow" d="M615,340 L615,372"/>
+
+  <!-- REPORT -->
+  <rect class="box" x="490" y="376" width="250" height="64" rx="6"/>
+  <text class="h" x="615" y="402">Run report</text>
+  <text class="t" x="615" y="420">full diagnostics for every stage</text>
+
+  <!-- FAIL LOOP -->
+  <path class="flow-fail" d="M490,408 L464,408"/>
+  <text class="lbl-fail" x="466" y="398">fail</text>
+  <rect class="fail" x="190" y="376" width="270" height="64" rx="6"/>
+  <text class="h" x="325" y="402">Fix and resubmit</text>
+  <text class="t" x="325" y="420">unlimited retries, so it doubles as a dev tool</text>
+  <path class="flow-fail" d="M255,376 L255,344"/>
+
+  <!-- PASS -->
+  <path class="flow" d="M615,440 L615,472"/>
+  <text class="lbl" x="623" y="461">pass</text>
+  <rect class="box" x="490" y="476" width="250" height="64" rx="6"/>
+  <text class="h" x="615" y="502">Human review</text>
+  <text class="t" x="615" y="520">confirms the file came from your software</text>
+  <path class="flow" d="M490,508 L464,508"/>
+
+  <rect class="cert" x="190" y="476" width="270" height="64" rx="6"/>
+  <text class="h" x="325" y="502" fill="#2e7d32">Certificate issued</text>
+  <text class="t" x="325" y="520">2 years, public registry, live badge</text>
+
+  <!-- NOTE -->
+  <rect class="note" x="20" y="476" width="150" height="64" rx="6"/>
+  <text class="t" x="95" y="497">One type, both ways:</text>
+  <text class="t" x="95" y="512">Export + Import</text>
+  <text class="t" x="95" y="530" font-weight="bold">All eight: Full Suite</text>
+</svg>

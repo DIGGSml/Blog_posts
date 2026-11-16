@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trust, but Verify: Introducing DIGGS Certified Software</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 2em;
+            background-color: #fff;
+            color: #222;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            color: #0077cc;
+            margin-bottom: 0.5em;
+        }
+        h2 {
+            color: #0077cc;
+            margin-top: 1.5em;
+            margin-bottom: 0.5em;
+        }
+        h3 {
+            color: #0077cc;
+            margin-top: 1.2em;
+            margin-bottom: 0.4em;
+        }
+        code {
+            color: #321009;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-family: Consolas, Monaco, 'Andale Mono', monospace;
+        }
+        pre {
+            background-color: #bcb7b7f8;
+            padding: 1em;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-family: Consolas, Monaco, 'Andale Mono', monospace;
+        }
+        pre code {
+            color: #222;
+            background: none;
+            padding: 0;
+        }
+        strong {
+            font-weight: bold;
+        }
+        ol,
+        ul {
+            margin-bottom: 1.5em;
+        }
+        li {
+            margin-bottom: 0.5em;
+        }
+        .important-block {
+            background-color: #fffbea;
+            border-left: 4px solid #ff6f00ca;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 3px;
+            box-shadow: 0 1px 3px rgba(0,0,0,.7);
+        }
+        .important-block::before {
+            content: "KEY CONCEPT";
+            display: block;
+            font-weight: bold;
+            font-size: 1.1em;
+            margin-bottom: 10px;
+            color: #9e5603;
+        }
+        .important-block p {
+            margin-top: 0;
+            margin-bottom: 1em;
+        }
+        .important-block strong {
+            color: #b45309;
+        }
+
+        .note-block {
+            background-color: #ecedf7;
+            border-left: 4px solid #704dd8ca;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 3px;
+            box-shadow: 0 1px 3px rgba(0,0,0,.7);
+        }
+        .note-block::before {
+            content: "NOTE";
+            display: block;
+            font-weight: bold;
+            font-size: 1.1em;
+            margin-bottom: 10px;
+            color: #5306b1;
+        }
+        .note-block p {
+            margin-top: 0;
+            margin-bottom: 1em;
+        }
+        .note-block strong {
+            color: #b45309;
+        }
+        .byline {
+            color: #666;
+            margin-bottom: 30px;
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+        }
+        blockquote {
+            background-color: #f0f0f0;
+            border-left: 4px solid #0077cc;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 3px;
+        }
+        blockquote p {
+            margin: 0.5em 0;
+        }
+        blockquote strong {
+            color: #0077cc;
+        }
+        .figure {
+            margin: 30px 0;
+            text-align: center;
+        }
+        .figure img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+        .figure-caption {
+            margin-top: 10px;
+            font-style: italic;
+            color: #666;
+            font-size: 0.95em;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th {
+            background-color: #0077cc;
+            color: white;
+            padding: 10px;
+            text-align: left;
+            font-weight: bold;
+        }
+        td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        a {
+            color: #0077cc;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        hr {
+            border: none;
+            border-top: 1px solid #ddd;
+            margin: 30px 0;
+        }
+        .analogy-box {
+            background-color: #e8f4e8;
+            border-left: 4px solid #2e7d32;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 3px;
+            box-shadow: 0 1px 3px rgba(0,0,0,.5);
+        }
+        .analogy-box::before {
+            content: "THINK OF IT THIS WAY";
+            display: block;
+            font-weight: bold;
+            font-size: 1.1em;
+            margin-bottom: 10px;
+            color: #2e7d32;
+        }
+        .analogy-box p {
+            margin-top: 0;
+            margin-bottom: 0.5em;
+        }
+        .marks {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-items: flex-end;
+            gap: 24px;
+            margin: 30px 0 10px;
+            text-align: center;
+        }
+        .marks a {
+            display: block;
+            max-width: 220px;
+        }
+        .marks img {
+            height: 170px;
+            width: auto;
+            max-width: 100%;
+        }
+        .marks .mark-name {
+            margin-top: 8px;
+            font-weight: bold;
+            color: #222;
+        }
+        .marks .mark-product {
+            font-size: 0.9em;
+            color: #666;
+        }
+        .draft-tag {
+            display: inline-block;
+            background-color: #fdecea;
+            color: #b3261e;
+            border: 1px solid #b3261e;
+            border-radius: 3px;
+            padding: 2px 8px;
+            font-size: 0.85em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .perspective {
+            background-color: #f5f9fd;
+            border-left: 4px solid #0077cc;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 3px;
+        }
+        .perspective p {
+            margin-top: 0;
+            margin-bottom: 1em;
+        }
+    </style>
+</head>
+<body>
+    <h1>Trust, but Verify: Introducing DIGGS Certified Software</h1>
+    <div class="byline">
+        Ross Cutts (Schnabel Engineering), Scott Deaton (Dataforensics), and Alireza Afkhami (Rocscience)
+    </div>
+
+    <div class="figure">
+        <img src="geosetta_full_suite_mark.svg" alt="DIGGS Certified Full Suite mark" style="width:200px;">
+    </div>
+
+    <!-- 1. THE PROBLEM -->
+    <h2>The Problem: "Supports DIGGS" Has Been an Honor System</h2>
+    <p>Ask a software vendor whether their product supports DIGGS and you will almost always hear "yes." Until now, there has been no way to check that answer before you bet a project on it.</p>
+    <p>The trouble is that "supports DIGGS" can mean a lot of things. A file can pass the DIGGS schema check and still be wrong where it counts. It might drop half the SPTs from a boring, write a depth in feet where the file says meters, leave groundwater observations behind, or attach a lab test to the wrong sample. Schema validation tells you the file is shaped correctly. It does not tell you the data inside it survived the trip.</p>
+    <p>Most engineers find this out at handoff. The file arrives, it opens, and somebody spends an afternoon comparing it against the PDF log to see what went missing. That is the same manual re-checking DIGGS was supposed to eliminate, and it erodes trust in the standard itself.</p>
+
+    <!-- 2. THE TURNING POINT -->
+    <h2>The Turning Point: A Test Anyone Can Check</h2>
+    <p>Geosetta has launched the <strong>DIGGS Certification Program</strong>, a free, challenge-based program that grades vendor software against the DIGGS standard and publishes the results in a public registry.</p>
+    <p>The program was developed by a member of the DIGGS committee. It is built and operated by Geosetta and validates against the same published schema, codelists, and business rules that the ASCE Geo-Institute's DIGGS committee maintains. Certification is free to vendors thanks to support from Rocscience's RSLog.</p>
+    <p>The program covers the four data types that make up most day-to-day geotechnical data exchange, in both directions:</p>
+    <table>
+        <tr><th>Data type</th><th>What the challenge contains</th></tr>
+        <tr><td><strong>SPT</strong></td><td>Borings with Standard Penetration Tests, lithology, and groundwater, including weight-of-hammer and weight-of-rod tests</td></tr>
+        <tr><td><strong>CPT</strong></td><td>Piezocone soundings with full qc, fs, and u2 channels</td></tr>
+        <tr><td><strong>Lab</strong></td><td>A 12-sample program: water content, Atterberg limits, wash No. 200, gradation with hydrometer, USCS classification, specific gravity, unit weight, organic content, Standard Proctor, and corrosion</td></tr>
+        <tr><td><strong>MWD</strong></td><td>Measurement-while-drilling records in both the depth domain and the time domain, including rod changes</td></tr>
+    </table>
+    <p>Each data type is certified separately for <strong>export</strong> (your software writes DIGGS) and <strong>import</strong> (your software reads DIGGS). A product that holds both for a data type is listed as <strong>Export + Import</strong>, and a product that holds all eight is listed as <strong>Full Suite</strong>.</p>
+
+    <!-- 3. HOW GRADING WORKS -->
+    <h2>How Grading Works</h2>
+    <p>Certification is built around a simple idea: give the software real data, and check what comes out the other end.</p>
+    <p><strong>Export challenges</strong> hand the vendor a package of plain CSV tables, deliberately not DIGGS or AGS, so nobody can pass by copying a file through. The vendor loads the data into their software, exports DIGGS, and submits it. The submission then goes through four automated stages:</p>
+    <ol>
+        <li><strong>Schema (XSD):</strong> Is the file structurally valid DIGGS?</li>
+        <li><strong>Codelists:</strong> Are test methods, units, and classifications drawn from the published DIGGS codelists?</li>
+        <li><strong>Business rules (Schematron):</strong> Does the content make sense? For example, depths fall inside the hole and tests link to the right samples.</li>
+        <li><strong>Data fidelity:</strong> Did every boring, sounding, test, and value make it through within tolerance?</li>
+    </ol>
+    <div class="figure">
+        <img src="figure1_certification_flow.svg" alt="Figure 1: How a product earns DIGGS certification, from challenge files through automated grading, run report, human review, and certificate">
+        <p class="figure-caption">Figure 1: Export and import challenges are graded automatically, failed runs come back with a full report for unlimited retries, and passing runs go to human review before a certificate is issued.</p>
+    </div>
+    <div class="important-block">
+        <p>That fourth stage is the one that matters most to engineers, and it is the one schema validation alone never covered. <strong>A certified export is not just valid DIGGS; it is your data, complete and correct, in DIGGS.</strong></p>
+    </div>
+    <p>Each download is also watermarked per vendor, and the fidelity stage checks for that watermark, so files cannot be shared between vendors.</p>
+    <p><strong>Import challenges</strong> run the other way. The vendor gets a DIGGS file, loads it into their software, and answers a set of questions about what the software shows, in the units the question asks for. If the software misreads a unit or skips a test, the answers will not match.</p>
+    <p>Retries are unlimited, and every run returns a full diagnostic report, so the program also works as a development tool. A passing run is then reviewed by a person before the certificate is issued. A file that was edited by hand to get through the automated checks will not survive that review. Certificates last <strong>two years</strong>, appear in the public registry, and come with an embeddable badge that updates live: it turns grey if the certificate expires and red if it is revoked.</p>
+    <p>The challenges are also versioned and will keep getting harder. The SPT challenge now includes weight-of-hammer tests with zero blow counts. The MWD challenge now includes time-domain records with rod changes. The lab challenge has grown from three index tests to a full laboratory program. Certification tracks the cases that actually break software in practice, not just the easy ones.</p>
+
+    <!-- 4. FIRST CERTIFIED PRODUCTS -->
+    <h2>The First Certified Products</h2>
+    <p>Three products have completed certification so far. The marks below are live: they are served straight from the registry and update automatically as certificates are added, renewed, or expire. Click any mark to open the full registry.</p>
+    <div class="marks">
+        <a href="https://diggs.geosetta.org/?tool=certified_software">
+            <img src="https://diggs.geosetta.org/api/cert/mark/GS-SPT-EXP-2026-0004.svg?scope=product" alt="DIGGS Certified mark for Dataforensics DIGGS Conversion Service">
+            <div class="mark-name">Dataforensics</div>
+            <div class="mark-product">Dataforensics DIGGS Conversion Service v3</div>
+        </a>
+        <a href="https://diggs.geosetta.org/?tool=certified_software">
+            <img src="https://diggs.geosetta.org/api/cert/mark/GS-SPT-EXP-2026-0002.svg?scope=product" alt="DIGGS Certified Full Suite mark for Geosetta DIGGS Tools">
+            <div class="mark-name">Geosetta</div>
+            <div class="mark-product">Geosetta DIGGS Tools v2026</div>
+        </a>
+        <a href="https://diggs.geosetta.org/?tool=certified_software">
+            <img src="https://diggs.geosetta.org/api/cert/mark/GS-SPT-EXP-2026-0006.svg?scope=product" alt="DIGGS Certified mark for Rocscience RSLog">
+            <div class="mark-name">Rocscience</div>
+            <div class="mark-product">RSLog v5</div>
+        </a>
+    </div>
+    <table>
+        <tr><th>Product</th><th>SPT</th><th>CPT</th><th>Lab</th><th>MWD</th></tr>
+        <tr><td><strong>Dataforensics DIGGS Conversion Service v3</strong></td><td>Export + Import</td><td>Export + Import</td><td>Export + Import</td><td>Export + Import</td></tr>
+        <tr><td><strong>Geosetta DIGGS Tools v2026</strong></td><td>Export + Import</td><td>Export + Import</td><td>Export + Import</td><td>Export + Import</td></tr>
+        <tr><td><strong>Rocscience RSLog v5</strong></td><td>Export + Import</td><td>Export + Import</td><td></td><td>Export + Import</td></tr>
+    </table>
+    <p>Dataforensics and Geosetta hold the <strong>Full Suite</strong>. Geosetta's tools serve as the program's reference implementation: they were certified first, against the same challenges and grading as every other product. The live registry, with verification links for every certificate, is at <a href="https://diggs.geosetta.org/?tool=certified_software">diggs.geosetta.org/?tool=certified_software</a>.</p>
+
+    <!-- 5. DATAFORENSICS PERSPECTIVE -->
+    <h2>Why Dataforensics Certified (Scott Deaton)</h2>
+    <div class="perspective">
+        <span class="draft-tag">DRAFT - Scott to review and revise</span>
+        <p>At Dataforensics, our business is moving geotechnical data between systems for our clients. When a client hands us a project and asks for DIGGS, they are trusting that what comes out is complete and correct. Before this program, the best we could offer was "it validates." Now we can point to an independent test that checks the data itself, not just the file structure.</p>
+        <p>The process was more useful than we expected. Our early runs passed the schema check and still failed fidelity. The reports showed exactly which values were off and why, and those were the edge cases our customers would eventually have hit in production. Fixing them for certification made the service better for everyone using it. For our clients, the badge means one less thing to re-check by hand.</p>
+    </div>
+
+    <!-- 6. ROCSCIENCE PERSPECTIVE -->
+    <h2>Why Rocscience Certified RSLog (Alireza Afkhami)</h2>
+    <div class="perspective">
+        <span class="draft-tag">DRAFT - Alireza to review and revise</span>
+        <p>RSLog is where many engineers build and manage their boring logs, so it needs to read DIGGS as reliably as it writes it. That is why we certified SPT, CPT, and MWD in both directions. Data that comes in from a driller or a public source like Geosetta should land in RSLog intact, and data that leaves RSLog should arrive at the next tool the same way.</p>
+        <p>We are supporting the program so that certification stays free, because interoperability only works when everyone participates. A standard is only as useful as the number of tools that implement it correctly, and a cost barrier would keep exactly the smaller vendors out that the industry needs in. Every product that certifies makes every other certified product more valuable.</p>
+    </div>
+
+    <!-- 7. ENGINEERS AND OWNERS -->
+    <h2>For Engineers and Owners: Check Before You Commit</h2>
+    <p>You do not need to know anything about XML to benefit from this. Before you commit a project to a workflow, or a subconsultant to a deliverable format, look up the products involved in the <a href="https://diggs.geosetta.org/?tool=certified_software">public registry</a>. It shows which products are certified, for which data types, and in which direction. Every badge links to a verification page, so the claim can be confirmed rather than taken on faith.</p>
+    <div class="analogy-box">
+        <p>You wouldn't hire an engineer without checking their license, or send samples to a lab that never sits for proficiency testing. Certification gives software the same kind of check: a published standard, an independent test, a public lookup, and a renewal date. It doesn't say the engineering is right. It says the data arrives the way it left.</p>
+    </div>
+    <p>When both ends of an exchange are certified, the data moves as structured information that carries its units, coordinates, and test methods with it. That is what made the pipeline in our <a href="../Datacenter_CPT/datacenter_cpt_diggs_blog.html">data center CPT post</a> work without a single manual reformatting step, and it is what lets a <a href="../DIGGS_Wrapper/diggs_wrapper_viewer_blog.html">wrapped DIGGS viewer</a> show a client exactly what the engineer is working from.</p>
+    <div class="note-block">
+        <p>Owners and agencies can go one step further: reference certified software in data delivery specifications. "Deliver in DIGGS" is a good start. <strong>"Deliver in DIGGS from software certified for that data type"</strong> is a requirement you can verify.</p>
+    </div>
+
+    <!-- 8. VENDORS -->
+    <h2>For Vendors: How to Get Certified</h2>
+    <p>The whole process runs through the self-service vendor portal at <a href="https://diggs.geosetta.org/?tool=get_certified">diggs.geosetta.org/?tool=get_certified</a>:</p>
+    <ol>
+        <li><strong>Register</strong> your company and product. You will receive a certification API key by email.</li>
+        <li><strong>Download a challenge</strong> for a data type and direction.</li>
+        <li><strong>Submit a run</strong> and read the report. Retry as many times as you need.</li>
+        <li><strong>Pass review</strong> and receive your certificate, registry listing, and badge.</li>
+    </ol>
+    <p>Before you spend a submission, you can pre-check a file at certification strictness (schema, codelists, and business rules) with the free <a href="https://diggs.geosetta.org/?tool=diggs_validator">DIGGS Validator</a>. Teams that want to automate certification in their build pipeline can use the full API at <code>https://diggs.geosetta.org/api/cert</code>.</p>
+    <p>Once approved, embedding your badge on a website, in a proposal, or in release notes takes one line:</p>
+<pre><code>&lt;a href="https://diggs.geosetta.org/api/cert/verify/GS-SPT-EXP-2026-0001"&gt;
+  &lt;img src="https://diggs.geosetta.org/api/cert/badge/GS-SPT-EXP-2026-0001.svg"
+       alt="DIGGS Certified: SPT Export"&gt;
+&lt;/a&gt;</code></pre>
+
+    <!-- 9. MONDAY -->
+    <h2>What You Can Do Monday</h2>
+    <ul>
+        <li><strong>Check the <a href="https://diggs.geosetta.org/?tool=certified_software">registry</a></strong> for the software your team, your drillers, and your labs already use.</li>
+        <li><strong>Ask your vendors whether they are certified</strong>, and for which data types. If they are not, send them the portal link.</li>
+        <li><strong>Add certified-software language to your data delivery specs</strong> so DIGGS deliverables come from tools that have proven they write it correctly.</li>
+        <li><strong>If you build software, register</strong> and download your first challenge. It is free, retries are unlimited, and the report will tell you exactly where your DIGGS support stands.</li>
+    </ul>
+
+    <h2>Get Involved</h2>
+    <ul>
+        <li><strong>GitHub</strong>: <a href="https://github.com/DIGGSml">https://github.com/DIGGSml</a></li>
+        <li><strong>Monthly Meetings</strong>: Contact Allen Cadden (acadden@schnabel-eng.com) or Ross Cutts (rcutts@schnabel-eng.com) for meeting invites.</li>
+        <li><strong>Feedback</strong>: Tell us which data types you want certified next.</li>
+    </ul>
+
+    <h2>Conclusion</h2>
+    <p>A data standard earns trust one correct file at a time. For years the industry has had to take "supports DIGGS" on faith and then check the work by hand. Certification replaces that with something better: a public, repeatable test that any engineer can look up and any vendor can pass. The more products that carry the badge, the less time the profession spends moving data, and the more it spends interpreting it.</p>
+
+    <hr>
+    <p><em>Published by ASCE Geo-Institute | DIGGS Technical Committee</em></p>
+</body>
+</html>
