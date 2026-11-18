@@ -253,7 +253,7 @@
 
     <!-- 1. THE PROBLEM -->
     <h2>The Problem: "Supports DIGGS" Has Been an Honor System</h2>
-    <p>Ask a software vendor whether their product supports DIGGS and you will almost always hear "yes." Until now, there has been no way to check that answer before you bet a project on it.</p>
+    <p>Ask a software vendor whether their product supports DIGGS and you will often hear "yes." Until now, there has been no way to check that answer before you bet a project on it.</p>
     <p>The trouble is that "supports DIGGS" can mean a lot of things. A file can pass the DIGGS schema check and still be wrong where it counts. It might drop half the SPTs from a boring, write a depth in feet where the file says meters, leave groundwater observations behind, or attach a lab test to the wrong sample. Schema validation tells you the file is shaped correctly. It does not tell you the data inside it survived the trip.</p>
     <p>Most engineers find this out at handoff. The file arrives, it opens, and somebody spends an afternoon comparing it against the PDF log to see what went missing. That is the same manual re-checking DIGGS was supposed to eliminate, and it erodes trust in the standard itself.</p>
 
@@ -288,14 +288,12 @@
     <div class="important-block">
         <p>That fourth stage is the one that matters most to engineers, and it is the one schema validation alone never covered. <strong>A certified export is not just valid DIGGS; it is your data, complete and correct, in DIGGS.</strong></p>
     </div>
-    <p>Each download is also watermarked per vendor, and the fidelity stage checks for that watermark, so files cannot be shared between vendors.</p>
     <p><strong>Import challenges</strong> run the other way. The vendor gets a DIGGS file, loads it into their software, and answers a set of questions about what the software shows, in the units the question asks for. If the software misreads a unit or skips a test, the answers will not match.</p>
     <p>Retries are unlimited, and every run returns a full diagnostic report, so the program also works as a development tool. A passing run is then reviewed by a person before the certificate is issued. A file that was edited by hand to get through the automated checks will not survive that review. Certificates last <strong>two years</strong>, appear in the public registry, and come with an embeddable badge that updates live: it turns grey if the certificate expires and red if it is revoked.</p>
-    <p>The challenges are also versioned and will keep getting harder. The SPT challenge now includes weight-of-hammer tests with zero blow counts. The MWD challenge now includes time-domain records with rod changes. The lab challenge has grown from three index tests to a full laboratory program. Certification tracks the cases that actually break software in practice, not just the easy ones.</p>
 
     <!-- 4. FIRST CERTIFIED PRODUCTS -->
     <h2>The First Certified Products</h2>
-    <p>Three products have completed certification so far. The marks below are live: they are served straight from the registry and update automatically as certificates are added, renewed, or expire. Click any mark to open the full registry.</p>
+    <p>At the time of this publication, three products have completed certification. The marks below are live: they are served straight from the registry and update automatically as certificates are added, renewed, or expire. Click any mark to open the full registry.</p>
     <div class="marks">
         <a href="https://diggs.geosetta.org/?tool=certified_software">
             <img src="https://diggs.geosetta.org/api/cert/mark/GS-SPT-EXP-2026-0004.svg?scope=product" alt="DIGGS Certified mark for Dataforensics DIGGS Conversion Service">
@@ -324,17 +322,16 @@
     <!-- 5. DATAFORENSICS PERSPECTIVE -->
     <h2>Why Dataforensics Certified (Scott Deaton)</h2>
     <div class="perspective">
-        <span class="draft-tag">DRAFT - Scott to review and revise</span>
-        <p>At Dataforensics, our business is moving geotechnical data between systems for our clients. When a client hands us a project and asks for DIGGS, they are trusting that what comes out is complete and correct. Before this program, the best we could offer was "it validates." Now we can point to an independent test that checks the data itself, not just the file structure.</p>
-        <p>The process was more useful than we expected. Our early runs passed the schema check and still failed fidelity. The reports showed exactly which values were off and why, and those were the edge cases our customers would eventually have hit in production. Fixing them for certification made the service better for everyone using it. For our clients, the badge means one less thing to re-check by hand.</p>
+        <p>Dataforensics has been a longstanding advocate for data interchange within the U.S. geotechnical industry because the efficient exchange of data enables advances in geotechnical workflows, engineering analysis, design, and construction. Requiring consultants to adopt a client's preferred data management platform can introduce unnecessary inefficiencies and may disrupt established workflows that have been optimized over many years.</p>
+        <p>A common exchange standard such as DIGGS allows each organization to use the tools and workflows that best meet its operational needs while still delivering data in a format that can be reliably consumed by others. Certification validates that Dataforensics' DIGGS import and export capabilities within OpenGround conform to the standard and accurately exchange data. More importantly, certification provides assurance that data can be exchanged consistently between certified systems, reducing the risk of misinterpretation or data loss.</p>
+        <p>The certification reported exactly which values differed and why. In some cases, these were edge cases that customers could eventually encounter in production environments. In other cases, the process identified issues within the certification scenarios themselves that were subsequently resolved by the DIGGS committee. Addressing these issues during certification improved both the certification process and the robustness of Dataforensics' DIGGS implementation. For our clients, certification provides confidence that geotechnical data can be exchanged accurately between systems, reducing manual verification effort and lowering the risk of errors during project delivery.</p>
     </div>
 
     <!-- 6. ROCSCIENCE PERSPECTIVE -->
     <h2>Why Rocscience Certified RSLog (Alireza Afkhami)</h2>
     <div class="perspective">
-        <span class="draft-tag">DRAFT - Alireza to review and revise</span>
-        <p>RSLog is where many engineers build and manage their boring logs, so it needs to read DIGGS as reliably as it writes it. That is why we certified SPT, CPT, and MWD in both directions. Data that comes in from a driller or a public source like Geosetta should land in RSLog intact, and data that leaves RSLog should arrive at the next tool the same way.</p>
-        <p>We are supporting the program so that certification stays free, because interoperability only works when everyone participates. A standard is only as useful as the number of tools that implement it correctly, and a cost barrier would keep exactly the smaller vendors out that the industry needs in. Every product that certifies makes every other certified product more valuable.</p>
+        <p>Many engineers rely on RSLog to create and manage their boring logs and cross-sections, so it must read DIGGS as reliably as it writes it. That is why we certified SPT, CPT, and MWD for both import and export, with the lab compliance coming in early 2027. Data received from a site investigation program or a public source such as Geosetta should arrive in RSLog intact, and data exported from RSLog should reach the next tool unchanged.</p>
+        <p>We support the program to keep certification free, because interoperability depends on broad participation. A standard is only as useful as the number of tools that implement it correctly, and certification costs could exclude the smaller vendors the industry needs. Each newly certified product increases the value of every other certified product.</p>
     </div>
 
     <!-- 7. ENGINEERS AND OWNERS -->
@@ -357,7 +354,7 @@
         <li><strong>Submit a run</strong> and read the report. Retry as many times as you need.</li>
         <li><strong>Pass review</strong> and receive your certificate, registry listing, and badge.</li>
     </ol>
-    <p>Before you spend a submission, you can pre-check a file at certification strictness (schema, codelists, and business rules) with the free <a href="https://diggs.geosetta.org/?tool=diggs_validator">DIGGS Validator</a>. Teams that want to automate certification in their build pipeline can use the full API at <code>https://diggs.geosetta.org/api/cert</code>.</p>
+    <p>Before you submit, you can pre-check a file at certification strictness (schema, codelists, and business rules) with the free <a href="https://diggs.geosetta.org/?tool=diggs_validator">DIGGS Validator</a>. Teams that want to automate certification in their build pipeline can use the full API at <code>https://diggs.geosetta.org/api/cert</code>.</p>
     <p>Once approved, embedding your badge on a website, in a proposal, or in release notes takes one line:</p>
 <pre><code>&lt;a href="https://diggs.geosetta.org/api/cert/verify/GS-SPT-EXP-2026-0001"&gt;
   &lt;img src="https://diggs.geosetta.org/api/cert/badge/GS-SPT-EXP-2026-0001.svg"
